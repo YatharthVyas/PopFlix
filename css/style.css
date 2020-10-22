@@ -1,0 +1,221 @@
+body {
+  font-family: Arial;
+  margin: 0px 0px 30px 0px;
+  padding-top: 0px;
+  padding-bottom: 20px;
+}
+
+/* Grids and Alignments */
+.column-footer {
+  flex-grow: 1;
+  width: 25%;
+  padding: 30px 40px 30px 40px;
+}
+
+.column-6 {
+  flex-grow: 1;
+  width: 50%;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.row-fluid {
+  display: flex;
+  width: 100%;
+}
+
+/* End */
+
+/* URLS */
+a.custom-white {
+  color: gray;
+  text-decoration: none;
+}
+
+a.custom-white:hover {
+  color: white;
+}
+
+.white-text {
+  color: white;
+}
+
+/* End*/
+
+
+/* Navbar */
+/* Add a black background color to the top navigation bar */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.nav ul {
+  position: absolute;
+  /*To set margin-top: 0 , we need to keep the position as absolute*/
+  width: 100%;
+  top: 0;
+  padding: 0;
+  background-color: #181821;
+  margin: 0px;
+}
+
+/*To make the list elements horizontal*/
+.nav li {
+  float: left;
+}
+
+/* Style the links and Dropdown button inside the navigation bar */
+.nav li a,
+.dropbtn {
+  display: inline-block;
+  color: white;
+  padding: 18px 25px;
+  text-align: center;
+  text-decoration: none;
+  /*To remove the hyperlink underline*/
+}
+
+/* Style the "active" element to highlight the current page */
+.nav .active {
+  background-color: #4CAF50;
+}
+
+/*To show the hover effect over link other than the active*/
+.nav a:hover:not(.active) {
+  background-color: #333;
+}
+
+/*Dropdown elements will be in same line*/
+li.dropdown {
+  display: inline-block;
+}
+
+/*Styling the content in dropdown menu*/
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  padding: 0;
+}
+
+/*Styling the links which appear on dropdown*/
+.dropdown-content div {
+  background-color: black;
+  display: block;
+  color: white;
+  padding: 18px 25px;
+  min-width: 132px;
+}
+
+/*Adding Hover effect to dropdown menu*/
+.dropdown:hover .dropdown-content {
+  display: block;
+  background-color: #333;
+}
+
+/*Adding hover effect to drop button*/
+.dropdown:hover .dropbtn {
+  background-color: #111;
+}
+
+/* End of Navbar */
+
+/* Footer */
+#subscribe-news {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+#email-sub {
+  border: 1px solid #ccc;
+  outline: none !important;
+  font-size: 14px;
+  border-radius: 25px;
+  margin-left: 40px;
+  padding: 8px 15px 8px 20px;
+  min-width: 250px;
+}
+
+.sub-btn {
+  padding: 9px 22px 9px 22px;
+  background-color: #DF2626;
+  border: 0px;
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+.sub-btn:hover {
+  background-color: #EF6F6F;
+}
+
+.footer-homepg {
+  display: flex;
+  justify-content: center;
+  padding: 40px 10vw 40px 10vw;
+  background-color: #181821;
+  color: white;
+  text-align: left !important;
+  border-bottom: 1px solid gray;
+}
+
+.footer-head {
+  color: #ddd;
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+@media screen and (max-width: 900px) {
+  .footer-head {
+    margin-top: 60px;
+  }
+}
+
+.footer-para {
+  line-height: 20px;
+}
+
+.footer-text-description {
+  padding-right: 50px;
+}
+
+.sub-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #111119;
+  color: white;
+  padding: 15px 40px 25px 20vw;
+  font-size: 13px;
+  color: #ccc;
+}
+
+.icon-holder {
+  margin-left: 40vw;
+  display: inline;
+}
+
+.sub-footer .fa {
+  margin-left: 10px;
+}
+
+.sub-footer .fa:hover {
+  color: white;
+}
+
+.goUp {
+  background-color: inherit;
+  border: 0px;
+  border-radius: 50%;
+  outline: none !important;
+}
+
+/* Footer End */
