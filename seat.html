@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Seats</title>
+	<style type="text/css">
+	.occupied {
+		background-color: #aaa;
+	}
+
+	.available {
+		color: black;
+	}
+
+	.available:hover {
+		background-color: green;
+	}
+
+	#Screen {
+		text-align: center;
+	}
+	</style>
+</head>
+
+<body>
+	<table border="1" cellspacing="10" cellpadding="20">
+		<tbody id="Seats">
+		</tbody>
+	</table>
+	<script type="text/javascript">
+	var res = [{
+			id: 0,
+			allocated: true
+		},
+		{
+			id: 1,
+			allocated: true
+		},
+		{
+			id: 2,
+			allocated: false
+		},
+		{
+			id: 3,
+			allocated: false
+		},
+		{
+			id: 4,
+			allocated: false
+		},
+		{
+			id: 5,
+			allocated: false
+		},
+		{
+			id: 6,
+			allocated: false
+		},
+		{
+			id: 7,
+			allocated: false
+		},
+		{
+			id: 8,
+			allocated: true
+		},
+		{
+			id: 9,
+			allocated: true
+		},
+		{
+			id: 10,
+			allocated: false
+		},
+		{
+			id: 11,
+			allocated: false
+		},
+		{
+			id: 12,
+			allocated: true
+		},
+		{
+			id: 13,
+			allocated: true
+		},
+		{
+			id: 14,
+			allocated: true
+		},
+		{
+			id: 15,
+			allocated: true
+		},
+	]
+	ctr = Math.sqrt(res.length)
+	seat_table = document.getElementById("Seats");
+	var seat_content = "";
+	for (var x = 0; x < ctr; x++) {
+		seat_content += "<tr>";
+		for (var y = 0; y < ctr; y++) {
+			if (res[x * 4 + y].allocated) {
+				seat_content += "<td class='occupied'>" + res[x * 4 + y].id + " -> " + res[x * 4 + y].allocated + "</td>";
+			} else {
+				seat_content += "<td class='available'>" + res[x * 4 + y].id + " -> " + res[x * 4 + y].allocated + "</td>"
+			}
+
+		}
+		seat_content += "</tr>";
+
+	}
+	seat_table.innerHTML = seat_content + "<tr> <td id='Screen' colspan='" + ctr + "'> Screen This Way</td> </tr>";
+	</script>
+</body>
+
+</html>
