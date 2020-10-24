@@ -15,7 +15,7 @@
 	}
 
 	.site-heading {
-		padding-top: 110px;
+		padding-top: 60px;
 		padding-bottom: 150px;
 		background-color: #121212;
 		margin-bottom: 40px;
@@ -25,26 +25,56 @@
 	}
 
 	#heading span:first-child {
-		color: #DF2626;
+		color: #FF0000;
 	}
 	</style>
 </head>
 
 <body>
+	<!-- Navigation Bar -->
+	<div class="nav">
+		<ul type="none">
+			<li>
+				<a href="/">
+					<h4 id="navhome">
+						<span>Pop</span><span></span>Flix</span>
+					</h4>
+				</a>
+			</li>
+			<li><a href="#">Book a Flix</a></li>
+			<li><a href="#">Book a Movie</a></li>
+			<li><a href="#">About Us</a></li>
+			<li><a href="#">Login</a></li>
+			<!-- <li class="dropdown"><a href="" class="dropbtn">User Menu </a>
+	<div class="dropdown-content">
+		<a href="#">Login</a><br>
+		<a href="#">Profile</a>
+	</div>
+</li> -->
+		</ul>
+	</div>
+	<!-- End of Navigation Bar -->
 	<div class="site-heading">
 		<div class="row-fluid">
 			<div class="column-6" align="left">
 				<h1 id="heading">
 					<span>Pop</span><span></span>Flix</span>
 				</h1>
-				<h4 style="margin-left: 20%;margin-top: 50px;">100% <font color="orange">Made</font> in <font color="green">India</font>
+				<h4 style="margin-left: 20%;margin-top: 50px;">
+					<font color="#f00">Any Show</font>,
+					<font color="white">Any Time</font>
 				</h4>
-				<h3 style="margin-top: 30px;margin-left: 21%;"><button class="btn bg-dark panelbtn">Login</button> <button class="btn bg-dark panelbtn">Signup</button></h3>
+				<h3 style="margin-top: 30px;margin-left: 21%;"><button class="btn-curved">Login</button> <button class="btn-curved bg-red">Signup</button></h3>
 			</div>
-			<div class="column-6">
-				<img height="500px" src="./img/home-heading.png" width="90%">
+			<div class="column-6" align="center">
+				<img height="400px" src="./img/home-heading.svg">
 			</div>
 		</div>
+	</div>
+	<div class="row">
+		<div class="column-4" align="center">Col 4<br />This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4.</div>
+		<div class="column-2" align="center">Col 2<br />This is a column of size 2. This is a column of size 2. This is a column of size 2. This is a column of size 2. </div>
+		<div class="column-6" align="center">Col 6<br />This is a column of size 6. This is a column of size 6. This is a column of size 6. This is a column of size 6. This is a column of size 6. </div>
 	</div>
 	<div align="center" id="subscribe-news">
 		<form>
@@ -61,12 +91,12 @@
 		<div class="column-footer footer-text-description">
 			<h5 class="footer-head"> Get in Touch </h5>
 			<p class="footer-para">
-				PopFlix service inc,<br />
+				PopFlix Inc,<br />
 				Mumbai - 400050<br />
 				Phone: <a class="custom-white" href="tel:9999988888">9999988888</a><br />
 				<!-- This will initiate a call from Mobile devices on clicking the link -->
 			</p>
-			Email: abcservice@gmail.com<br />
+			Email: <a class="custom-white" href="mailto:abcservice@gmail.com">abcservice@gmail.com</a><br />
 			<br />
 			Fax:<br /><br /><br />
 		</div>
@@ -74,7 +104,7 @@
 			<h5 class="footer-head"> Latest Posts </h5>
 			<br />
 			<hr color="#888"><br />
-			<hr color="#777"><br />
+			<hr color="#888"><br />
 			<hr color="#888"><br /><br />
 		</div>
 		<div class="column-footer footer-text-description">

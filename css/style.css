@@ -12,14 +12,11 @@ body {
   padding: 30px 40px 30px 40px;
 }
 
-.column-6 {
-  flex-grow: 1;
-  width: 50%;
-}
-
 .row {
   display: flex;
   justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .row-fluid {
@@ -27,7 +24,50 @@ body {
   width: 100%;
 }
 
+.column-6 {
+  flex-grow: 1;
+  width: 50%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.column-2 {
+  flex-grow: 1;
+  width: 16.66%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.column-4 {
+  flex-grow: 1;
+  width: 33.33%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.column-3 {
+  flex-grow: 1;
+  width: 25%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.column-1 {
+  flex-grow: 1;
+  width: 8.33%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 /* End */
+
+.btn-curved {
+  padding: 10px 30px 10px 30px;
+  border-radius: 20px;
+  border: 0px;
+  font-weight: bold;
+}
+
 
 /* URLS */
 a.custom-white {
@@ -45,6 +85,15 @@ a.custom-white:hover {
 
 /* End*/
 
+.bg-red {
+  background-color: #f00;
+  color: white;
+}
+
+.bg-white {
+  background-color: #fff;
+  color: red;
+}
 
 /* Navbar */
 /* Add a black background color to the top navigation bar */
@@ -61,8 +110,20 @@ a.custom-white:hover {
   width: 100%;
   top: 0;
   padding: 0;
-  background-color: #181821;
+  background-color: #121212;
   margin: 0px;
+}
+
+#navhome {
+  font-family: 'Permanent Marker', cursive;
+  /*font-size: 20px;*/
+  color: white;
+  margin: 0px 0px 0px 10px;
+}
+
+
+#navhome span:first-child {
+  color: #FF0000;
 }
 
 /*To make the list elements horizontal*/
@@ -153,7 +214,7 @@ li.dropdown {
 }
 
 .sub-btn:hover {
-  background-color: #EF6F6F;
+  background-color: #FF0000;
 }
 
 .footer-homepg {
@@ -170,6 +231,7 @@ li.dropdown {
   color: #ddd;
   margin-bottom: 20px;
   font-size: 25px;
+  color: #DF4f4f;
 }
 
 @media screen and (max-width: 900px) {
