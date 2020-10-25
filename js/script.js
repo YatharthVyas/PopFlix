@@ -4,3 +4,13 @@ function goUp() {
 		behavior: 'smooth'
 	})
 }
+var prev_scroll_pos = 0;
+window.onscroll = function hideNav() {
+	if (window.pageYOffset > prev_scroll_pos) {
+		document.getElementsByClassName('nav')[0].style.display = "none";
+		prev_scroll_pos = window.pageYOffset;
+	} else {
+		document.getElementsByClassName('nav')[0].style.display = "flex";
+		prev_scroll_pos = window.pageYOffset;
+	}
+}

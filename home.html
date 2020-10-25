@@ -27,44 +27,47 @@
 	#heading span:first-child {
 		color: #FF0000;
 	}
+
 	</style>
 </head>
 
 <body>
 	<!-- Navigation Bar -->
-	<div class="nav">
-		<ul type="none">
-			<li>
-				<a href="/">
-					<h4 id="navhome">
-						<span>Pop</span><span></span>Flix</span>
-					</h4>
-				</a>
-			</li>
-			<li><a href="#">Book a Flix</a></li>
-			<li><a href="#">Book a Movie</a></li>
-			<li><a href="#">About Us</a></li>
-			<li><a href="#">Login</a></li>
-			<!-- <li class="dropdown"><a href="" class="dropbtn">User Menu </a>
+	<div class="nav row-fluid">
+		<div class="column-8" align="left">
+			<a href="/" class="brand">
+				<h4 id="navhome">
+					<span>Pop</span><span>Flix</span>
+				</h4>
+			</a>
+		</div>
+		<div class="column-4" align="right">
+			<ul type="none">
+				<li><a href="#">Book a Flix</a></li>
+				<li><a href="#">Book a Movie</a></li>
+				<li><a href="#">About Us</a></li>
+				<li><a href="#" class="login-nav">Login</a></li>
+			</ul>
+		</div>
+		<!-- <li class="dropdown"><a href="" class="dropbtn">User Menu </a>
 	<div class="dropdown-content">
 		<a href="#">Login</a><br>
 		<a href="#">Profile</a>
 	</div>
 </li> -->
-		</ul>
 	</div>
 	<!-- End of Navigation Bar -->
 	<div class="site-heading">
 		<div class="row-fluid">
 			<div class="column-6" align="left">
 				<h1 id="heading">
-					<span>Pop</span><span></span>Flix</span>
+					<span id="head-1">Pop</span><span id="head-2">Flix</span>
 				</h1>
-				<h4 style="margin-left: 20%;margin-top: 50px;">
-					<font color="#f00">Any Show</font>,
-					<font color="white">Any Time</font>
+				<h4 style="margin-left: 23%;margin-top: 50px;">
+					<font color="#f00">Any Show</font>
+					<font color="white">, Any Time</font>
 				</h4>
-				<h3 style="margin-top: 30px;margin-left: 21%;"><button class="btn-curved">Login</button> <button class="btn-curved bg-red">Signup</button></h3>
+				<h3 style="margin-top: 30px;margin-left: 21%;"><button class="btn-curved red-text login">Login</button> <button class="btn-curved bg-red signup">Signup</button></h3>
 			</div>
 			<div class="column-6" align="center">
 				<img height="400px" src="./img/home-heading.svg">
@@ -125,6 +128,32 @@
 			<button class="white-text goUp" onclick="goUp();console.log(1)">&#8593;</button>
 		</div>
 	</div>
+	<script type="text/javascript">
+	window.onload = function animateTitle() {
+		document.getElementById('head-1').innerHTML = "P"
+		document.getElementById('head-2').innerHTML = " "
+		setTimeout(function() {
+			document.getElementById('head-1').innerHTML = "Po"
+		}, 150);
+		setTimeout(function() {
+			document.getElementById('head-1').innerHTML = "Pop"
+		}, 300);
+		setTimeout(function() {
+			document.getElementById('head-2').innerHTML = "F"
+		}, 450);
+		setTimeout(function() {
+			document.getElementById('head-2').innerHTML = "Fl"
+		}, 600);
+
+		setTimeout(function() {
+			document.getElementById('head-2').innerHTML = "Fli"
+		}, 750);
+
+		setTimeout(function() {
+			document.getElementById('head-2').innerHTML = "Flix"
+		}, 900);
+	}
+	</script>
 </body>
 
 </html>
