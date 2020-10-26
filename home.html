@@ -101,12 +101,12 @@
 <!-- The Modal (contains the Sign Up form) -->
 <div id="id01" class="modal">
 	<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-	<form class="modal-content" action="/action_page.php">
-	  <div class="container">
-		
-		<h1>Sign Up</h1>
-		
-		<hr>
+	
+	<form class="modal-content" action="/action_page.php" >
+		<h1 style="margin-left: 3%;margin-right: 3%;">Sign Up</h1>
+		<hr style="margin-left: 3%;margin-right: 3%;">
+		<div style="flex-direction: row;display: flex;">
+	  <div class="container" style="flex:3" >
 		<label for="name"><b>Name</b></label><br/>
 		<input type="text"  class="ipp" style="margin-top: 8px ;" placeholder="Enter Name" name="name" required>
 		<br/>
@@ -127,6 +127,10 @@
 		  <button type="submit" class="btn-curved bg-red signup">Sign Up</button>
 		</div>
 	  </div>
+	  <div style="flex: 2;margin-top: 2%;">
+		<img height="400px" src="./img/home-heading.svg">
+	</div>
+</div>
 	</form>
   </div>
 </div>
