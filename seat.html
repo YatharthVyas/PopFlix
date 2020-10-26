@@ -6,27 +6,58 @@
 	<style type="text/css">
 	.occupied {
 		background-color: #aaa;
+		background-image: url("./img/seat.png");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 50px 50px;
+		height: 50px;
+		width: 50px;
+		text-align: center;
+		color: white;
+		filter: grayscale(100%);
+		border: 0px;
+		cursor: not-allowed;
 	}
 
 	.available {
 		color: black;
+		background-image: url("./img/seat.png");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 50px 50px;
+		height: 50px;
+		width: 50px;
+		text-align: center;
+		color: white;
+		border: 0px;
+		filter: opacity(60%);
+		cursor: pointer;
 	}
 
 	.available:hover {
-		background-color: green;
+		filter: opacity(100%);
 	}
 
 	#Screen {
 		text-align: center;
+		background-color: #cdcdcd;
+		padding: 10px 10px;
+	}
+
+	#seat-holder {
+		padding: 10px;
 	}
 	</style>
 </head>
 
 <body>
-	<table border="1" cellspacing="10" cellpadding="20">
+	<table border="1" cellspacing="10" cellpadding="0" id="seat-holder">
 		<tbody id="Seats">
 		</tbody>
 	</table>
+	<h3>
+		Selected = <font color="#f00" id="seats_picked">0</font>
+	</h3>
 	<script type="text/javascript">
 	var res = [{
 			id: 0,
@@ -100,9 +131,9 @@
 		seat_content += "<tr>";
 		for (var y = 0; y < ctr; y++) {
 			if (res[x * 4 + y].allocated) {
-				seat_content += "<td class='occupied'>" + res[x * 4 + y].id + " -> " + res[x * 4 + y].allocated + "</td>";
+				seat_content += "<td class='occupied'>" + res[x * 4 + y].id + "</td>";
 			} else {
-				seat_content += "<td class='available'>" + res[x * 4 + y].id + " -> " + res[x * 4 + y].allocated + "</td>"
+				seat_content += "<td class='available' onclick='selectSeat(event," + res[x * 4 + y].id + ")'>" + res[x * 4 + y].id + "</td>"
 			}
 
 		}
@@ -110,6 +141,18 @@
 
 	}
 	seat_table.innerHTML = seat_content + "<tr> <td id='Screen' colspan='" + ctr + "'> Screen This Way</td> </tr>";
+	var seats_selection = [];
+
+	function selectSeat(evt, id) {
+		if (seats_selection.includes(id)) {
+			evt.srcElement.style.filter = "opacity(60%)";
+			seats_selection = seats_selection.filter(function(value) { return value !== id; }); //Dekete Seat
+		} else {
+			evt.srcElement.style.filter = "opacity(100%)";
+			seats_selection.push(id);
+		}
+		document.getElementById('seats_picked').innerHTML = seats_selection.length;
+	}
 	</script>
 </body>
 

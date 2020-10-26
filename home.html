@@ -3,48 +3,62 @@
 
 <head>
 	<title>PopFlix</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Ticket booking service">
+	<meta name="keywords" content="Flix, Book, Movie, Plan, Entertainment, Fun, Friends, Group, Bollywood, Hollywood">
+	<meta name="author" content="Yatharth Vyas, Yashodhan Joshi, Vatsal Soni and Tejas Ghone">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 	<script type="text/javascript" src="js/script.js"></script>
 	<style>
 		#heading {
-		font-family: 'Permanent Marker', cursive;
-		font-size: 120px;
-		color: white;
-		margin-left: 20%;
-	}
+			font-family: 'Permanent Marker', cursive;
+			font-size: 120px;
+			color: white;
+			margin-left: 20%;
+		}
 
-	.site-heading {
-		padding-top: 60px;
-		padding-bottom: 150px;
-		background-color: #121212;
-		margin-bottom: 40px;
-		text-shadow: 1px 1px 0px #292929;
-		border-bottom: 5px solid gray;
-		color: white;
-	}
+		.site-heading {
+			padding-top: 100px;
+			padding-bottom: 170px;
+			background-color: #121212;
+			margin-bottom: 40px;
+			text-shadow: 1px 1px 0px #292929;
+			border-bottom: 5px solid gray;
+			color: white;
+			clip-path: polygon(0 0, 100% 0, 100% 81%, 0 100%);
+		}
 
-	#heading span:first-child {
-		color: #FF0000;
-	}
-
+		#heading span:first-child {
+			color: #FF0000;
+		}
+		.sub-heading-home{
+			margin-left: 23%;
+			margin-top: 50px;
+			font-size: large;
+		}
+		.heading-btns-home{
+			margin-top: 30px;
+			margin-left: 21%;
+		}
 	</style>
 </head>
 
 <body>
 	<!-- Navigation Bar -->
 	<div class="nav row-fluid">
-		<div class="column-8" align="left">
+		<div class="column-6" align="left">
 			<a href="/" class="brand">
 				<h4 id="navhome">
 					<span>Pop</span><span>Flix</span>
 				</h4>
 			</a>
 		</div>
-		<div class="column-4" align="right">
+		<div class="column-6" align="right">
 			<ul type="none">
-				<li><a href="#">Book a Flix</a></li>
-				<li><a href="#">Book a Movie</a></li>
+				<li><a href="#">Book Flix</a></li>
+				<li><a href="#">Book Movie</a></li>
 				<li><a href="#">About Us</a></li>
 				<li><a href="#" class="login-nav">Login</a></li>
 			</ul>
@@ -63,11 +77,11 @@
 				<h1 id="heading">
 					<span id="head-1">Pop</span><span id="head-2">Flix</span>
 				</h1>
-				<h4 style="margin-left: 23%;margin-top: 50px;">
+				<h4 class="sub-heading-home">
 					<font color="#f00">Any Show</font>
 					<font color="white">, Any Time</font>
 				</h4>
-				<h3 style="margin-top: 30px;margin-left: 21%;"><button class="btn-curved red-text login">Login</button> <button class="btn-curved bg-red signup">Signup</button></h3>
+				<h3 class="heading-btns-home"><button class="btn-curved red-text login">Login</button> <button class="btn-curved bg-red signup">Signup</button></h3>
 			</div>
 			<div class="column-6" align="center">
 				<img height="400px" src="./img/home-heading.svg">
@@ -78,6 +92,11 @@
 		<div class="column-4" align="center">Col 4<br />This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4.</div>
 		<div class="column-2" align="center">Col 2<br />This is a column of size 2. This is a column of size 2. This is a column of size 2. This is a column of size 2. </div>
 		<div class="column-6" align="center">Col 6<br />This is a column of size 6. This is a column of size 6. This is a column of size 6. This is a column of size 6. This is a column of size 6. </div>
+	</div>
+	<div class="row-sm">
+		<div class="column-sm-4" align="center">Col sm 4<br />This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4.</div>
+		<div class="column-sm-2" align="center">Col sm 2<br />This is a column of size 2. This is a column of size 2. This is a column of size 2. This is a column of size 2. </div>
+		<div class="column-sm-6" align="center">Col sm 6<br />This is a column of size 6. This is a column of size 6. This is a column of size 6. This is a column of size 6. This is a column of size 6. </div>
 	</div>
 	<div align="center" id="subscribe-news">
 		<form>

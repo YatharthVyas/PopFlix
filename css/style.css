@@ -1,8 +1,9 @@
 body {
   font-family: Arial;
-  margin: 0px 0px 30px 0px;
-  padding-top: 0px;
-  padding-bottom: 20px;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* Grids and Alignments */
@@ -12,61 +13,76 @@ body {
   padding: 30px 40px 30px 40px;
 }
 
-.row {
+.row,
+.row-sm {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
   margin-left: 5%;
   margin-right: 5%;
 }
 
-.row-fluid {
+.row-fluid,
+.row-fluid-sm {
   display: flex;
   width: 100%;
+  margin-bottom: : 20px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
-.column-8 {
-  flex-grow: 1;
-  width: 66.66%;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.column-9 {
+.column-9,
+.column-sm-9 {
   flex-grow: 1;
   width: 75%;
   padding-left: 10px;
   padding-right: 10px;
 }
 
-.column-6 {
+.column-8,
+.column-sm-8 {
+  flex-grow: 1;
+  width: 66.66%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+.column-6,
+.column-sm-6 {
   flex-grow: 1;
   width: 50%;
   padding-left: 10px;
   padding-right: 10px;
 }
 
-.column-2 {
-  flex-grow: 1;
-  width: 16.66%;
-  padding-left: 10px;
-  padding-right: 10px;
-}
 
-.column-4 {
+.column-4,
+.column-sm-4 {
   flex-grow: 1;
   width: 33.33%;
   padding-left: 10px;
   padding-right: 10px;
 }
 
-.column-3 {
+.column-3,
+.column-sm-3 {
   flex-grow: 1;
   width: 25%;
   padding-left: 10px;
   padding-right: 10px;
 }
 
-.column-1 {
+.column-2,
+.column-sm-2 {
+  flex-grow: 1;
+  width: 16.66%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.column-1,
+.column-sm-1 {
   flex-grow: 1;
   width: 8.33%;
   padding-left: 10px;
@@ -74,8 +90,20 @@ body {
 }
 
 
-@media screen and (max-width: 1100px) {
-  .column-6 {
+@media screen and (max-width: 800px) {
+
+  .row,
+  .row-fluid {
+    flex-direction: column;
+  }
+
+  .column-1,
+  .column-2,
+  .column-3,
+  .column-4,
+  .column-6,
+  .column-8,
+  .column-9 {
     width: 100%;
   }
 }
@@ -101,16 +129,18 @@ body {
 .login:hover {
   background-color: #f00;
   color: white;
+  border-radius: 5px;
 }
 
 .signup:hover {
   background-color: white;
   color: #f00;
+  border-radius: 5px;
 }
 
 /* URLS */
 a.custom-white {
-  color: gray;
+  color: #bbb;
   text-decoration: none;
 }
 
@@ -146,12 +176,12 @@ a.custom-white:hover {
   left: 0;
   width: 100%;
   background-color: #121212;
+  z-index: 200;
 }
 
 .nav ul {
-  position: absolute;
+  display: inline-flex;
   /*To set margin-top: 0 , we need to keep the position as absolute*/
-  width: 100%;
   top: 0;
   padding: 0;
   margin: 0px;
@@ -178,6 +208,11 @@ a.custom-white:hover {
   color: #f00 !important;
 }
 
+.login-nav:hover {
+  background-color: #f00;
+  color: white !important;
+}
+
 /* Style the links and Dropdown button inside the navigation bar */
 .nav li a,
 .nav .brand,
@@ -187,6 +222,7 @@ a.custom-white:hover {
   padding: 18px 25px;
   text-align: center;
   text-decoration: none;
+  transition: .75s;
   /*To remove the hyperlink underline*/
 }
 
@@ -206,44 +242,11 @@ a.custom-white:hover {
   color: #f00;
 }
 
-/*Dropdown elements will be in same line*/
-li.dropdown {
-  display: inline-block;
-}
-
-/*Styling the content in dropdown menu*/
-.dropdown-content {
-  display: none;
-  position: absolute;
-  z-index: 1;
-  padding: 0;
-}
-
-/*Styling the links which appear on dropdown*/
-.dropdown-content div {
-  background-color: black;
-  display: block;
-  color: white;
-  padding: 18px 25px;
-  min-width: 132px;
-}
-
-/*Adding Hover effect to dropdown menu*/
-.dropdown:hover .dropdown-content {
-  display: block;
-  background-color: #333;
-}
-
-/*Adding hover effect to drop button*/
-.dropdown:hover .dropbtn {
-  background-color: #111;
-}
-
 /* End of Navbar */
 
 /* Footer */
 #subscribe-news {
-  margin-top: 30px;
+  margin-top: 50px;
   margin-bottom: 20px;
 }
 
@@ -272,6 +275,7 @@ li.dropdown {
 }
 
 .footer-homepg {
+  margin-top: 30px;
   display: flex;
   justify-content: center;
   padding: 40px 10vw 40px 10vw;
@@ -303,7 +307,6 @@ li.dropdown {
 }
 
 .sub-footer {
-  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -332,6 +335,16 @@ li.dropdown {
   border: 0px;
   border-radius: 50%;
   outline: none !important;
+}
+
+@media screen and (max-width: 768px) {
+  .footer-homepg {
+    flex-direction: column;
+  }
+
+  .column-footer {
+    width: 80%;
+  }
 }
 
 /* Footer End */
