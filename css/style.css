@@ -2,8 +2,13 @@ body {
   font-family: Arial;
   margin: 0px;
   padding: 0px;
+  margin-top: 50px;
   width: 100%;
   overflow-x: hidden;
+}
+
+.content {
+  padding-top: 50px;
 }
 
 /* Grids and Alignments */
@@ -106,6 +111,27 @@ body {
   .column-9 {
     width: 100%;
   }
+}
+
+/* Card */
+
+.card {
+  border: 1px solid #aaa;
+}
+
+.card-header {
+  font-size: 2.5em;
+  font-family: fantasy;
+  border-bottom: 1px solid #ccc;
+}
+
+.border-right {
+  border-right: 2px solid #ccc;
+}
+
+.content-card {
+  padding: 40px;
+  font-family: Arial;
 }
 
 /* End */

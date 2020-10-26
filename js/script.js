@@ -6,7 +6,7 @@ function goUp() {
 }
 var prev_scroll_pos = 0;
 window.onscroll = function hideNav() {
-	if (window.pageYOffset > prev_scroll_pos) {
+	if (window.pageYOffset > prev_scroll_pos && window.pageYOffset > 40) {
 		document.getElementsByClassName('nav')[0].style.display = "none";
 		prev_scroll_pos = window.pageYOffset;
 	} else {
