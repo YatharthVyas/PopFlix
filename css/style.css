@@ -113,6 +113,10 @@ body {
   }
 }
 
+.full-width {
+  width: 100%
+}
+
 /* Card */
 
 .card {
@@ -192,6 +196,36 @@ a.custom-white:hover {
 .bg-white {
   background-color: #fff;
   color: red;
+}
+
+
+.input-text {
+  border: 1px solid #ccc;
+  outline: none !important;
+  font-size: 14px;
+  border-radius: 25px;
+  margin-left: 40px;
+  padding: 8px 15px 8px 20px;
+  min-width: 250px;
+}
+
+.input-text:focus {
+  border-color: #222;
+}
+
+.red-btn {
+  padding: 9px 22px 9px 22px;
+  background-color: #DF2626;
+  border: 0px;
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.red-btn:hover {
+  background-color: #FF0000;
 }
 
 /* Navbar */
@@ -276,29 +310,6 @@ a.custom-white:hover {
   margin-bottom: 20px;
 }
 
-#email-sub {
-  border: 1px solid #ccc;
-  outline: none !important;
-  font-size: 14px;
-  border-radius: 25px;
-  margin-left: 40px;
-  padding: 8px 15px 8px 20px;
-  min-width: 250px;
-}
-
-.sub-btn {
-  padding: 9px 22px 9px 22px;
-  background-color: #DF2626;
-  border: 0px;
-  color: white;
-  border-radius: 4px;
-  font-size: 14px;
-  margin-left: 20px;
-}
-
-.sub-btn:hover {
-  background-color: #FF0000;
-}
 
 .footer-homepg {
   margin-top: 30px;

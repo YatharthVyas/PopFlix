@@ -53,6 +53,27 @@
 	</div>
 	<!-- End of Navigation Bar -->
 	<div class="content">
+		<div class="row">
+			<input type="search" placeholder="Enter Movie Name" id="searchmovie" class="input-text full-width">
+			<select class="input-text">
+				<option>Language</option>
+				<option value="Hindi">Hindi</option>
+				<option value="English">English</option>
+				<option value="Tamil">Tamil</option>
+				<option value="Telugu">Telugu</option>
+				<option value="Others">Others</option>
+			</select>
+			<select class="input-text">
+				<option>Genre</option>
+				<option value="Action">Action</option>
+				<option value="Drama">Drama</option>
+				<option value="Romance">Romance</option>
+				<option value="Comedy">Comedy</option>
+				<option value="Thriller">Thriller</option>
+				<option value="Suspence">Suspence</option>
+			</select>
+			<button class="red-btn">Search</button>
+		</div>
 		<div class="row card">
 			<div class="column-4 border-right content-card">
 				<img src="./img/seat.png" width="80%">
@@ -86,8 +107,8 @@
 	<div align="center" id="subscribe-news">
 		<form>
 			<b><label htmlfor="#email-sub"> Get the latest updates</label></b>
-			<input type="email" minlength="5" maxlength="30" placeholder="Enter your Email" id="email-sub" name="email" required />
-			<button type="submit" class="sub-btn">Subscribe</button>
+			<input type="email" minlength="5" maxlength="30" placeholder="Enter your Email" id="email-sub" class="input-text" name="email" required />
+			<button type="submit" class="red-btn">Subscribe</button>
 		</form>
 	</div>
 	<footer class="footer-homepg">
