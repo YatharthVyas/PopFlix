@@ -1,9 +1,8 @@
-const mysql = require('mysql');
-const express = require('express');
-const path = require('path');
-const flixroutes=require('./routes/flix');
-const userroutes=require('./routes/user');
-
+const mysql = require("mysql");
+const express = require("express");
+const path = require("path");
+const flixroutes = require("./routes/flix");
+const userroutes = require("./routes/user");
 
 // const connection = mysql.createConnection({
 //   host     : 'localhost',
@@ -12,7 +11,6 @@ const userroutes=require('./routes/user');
 //   database : 'popflix'
 // });
 
-
 const app = express();
 // connection.connect();
 
@@ -20,15 +18,15 @@ const app = express();
 //   if (error) throw error;
 //   console.table(results);
 // });
- 
+
 // connection.end();
 
-app.set('view engine','ejs');
-app.set('views','views');
-app.use('/public',express.static(path.join(__dirname,'public')));
-app.use('/flix',flixroutes);
-app.use('/user',userroutes);
+app.set("view engine", "ejs");
+app.set("views", "views");
+app.use("/public", express.static(path.join(__dirname, "public")));
+app.use("/flix", flixroutes);
+app.use("/user", userroutes);
 
-app.listen(3000,()=>{
-    console.log("Hello");
-})
+app.listen(3000, () => {
+  console.log("Hello");
+});
