@@ -5,7 +5,6 @@ const passport = require('passport');
 const db = require('./util/db');
 const flixRoutes = require('./routes/flix');
 const userRoutes = require('./routes/user');
-const { decodeBase64 } = require('bcryptjs');
 
 db.connect();
 

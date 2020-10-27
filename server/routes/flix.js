@@ -1,10 +1,8 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const flixControllers = require("../controllers/flix");
+const { getHome, getAboutUs } = require('../controllers/flix');
 
-router.get("/home",flixControllers.getHome);
-
-
-
+router.get('/home', getHome);
+router.get('/aboutus', getAboutUs);
 
 module.exports = router;
