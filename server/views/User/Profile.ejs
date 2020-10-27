@@ -1,8 +1,8 @@
 <%- include('../Includes/header.ejs') %> 
-<body style="background-color: #001f33;">
+<body >
 <%- include('../Includes/nav.ejs') %> 
-<div>
-    <h1 style="margin-left: 3%;margin-right: 3%;margin-top: 5%; color:white;">Dashboard</h1>
+<div style="background-image: url('/public/img/background.png');">
+    <h1 style="margin-left: 3%;margin-right: 3%;margin-top: 4%; color:white;">Dashboard</h1>
     <hr style="margin-left: 3%;margin-right: 3%;"/>
     <div class="row-fluid">
         <div class="column-6 popfile"  align="center" id="p1" style="display: visible;">
@@ -18,21 +18,21 @@
             <h3 id="profname">&#x1F4E7; tejasghone72@gmail.com</h3>
             <button class="btn-curved red-text login" style="margin-bottom: 3%;margin-top: 3%;" onclick="showUpdate()">Update</button>
         </div>
-        <div class="column-6 popfile"  align="center" id="p2" style="display: none;">
+        <div class="column-6 popfile"  align="center" id="p2" style="display: none;margin-top:6%;">
             <h1 id="navhome" style="margin-bottom: 3%;margin-top: 3%;">
-                <span style="margin-right: 3%;">Update</span><span>PopFile</span>
+                <span style="margin-right: 3%;margin-bottom: 3%;">Update</span><span>PopFile</span>
             </h1>
-        <form action="/action_page.php"  id="login-form"  >
-            <label for="fname" style="font-size:medium; color:#b3b3b3;">Email</label><br/>
+        <form action="/action_page.php" >
+            <label for="fname" style="font-size:medium; color:#b3b3b3;margin-bottom: 5%;" >Email</label><br/>
             <input class="inp" type="email"  name="fname"><br><br>
-            <label for="lname"  style="font-size:medium ;color:#b3b3b3;" >Phone</label><br/>
+            <label for="lname"  style="font-size:medium ;color:#b3b3b3; margin-bottom: 5%;" >Phone</label><br/>
             <input class="inp" type="number"  name="lname"><br><br>
-            <label for="lname"  style="font-size:medium ;color:#b3b3b3;" >Image</label><br/><br/>
+            <label for="lname"  style="font-size:medium ;color:#b3b3b3;margin-bottom: 5%;" >Image</label><br/><br/>
             <label for="file-upload" class="custom-file-upload">
                 <i class="fa fa-cloud-upload"></i> &#x1F4C1; Image Upload
             </label><br/>
             <input id="file-upload" type="file" />
-            <h3  style="margin-top: 5%;margin-bottom: 3%;"align="center"><span class="btn-curved red-text login" style=" font-size: small;background-color: honeydew;" onclick="showProf()">Back</span><button class="btn-curved bg-red signup" onclick="showUpdate()">Update Profile</button></h3>
+            <h3  style="margin-top: 8%;margin-bottom: 4%;"align="center"><span class="btn-curved red-text login" style=" font-size: small;background-color: honeydew;" onclick="showProf()">Back</span><button class="btn-curved bg-red signup" onclick="showUpdate()">Update Profile</button></h3>
           </form>
         </div>
         <div class="column-6 popfile" align="center">

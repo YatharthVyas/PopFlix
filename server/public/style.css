@@ -14,7 +14,7 @@ body {
   height: 100%;
 }
 .popfile{
-  background-color: #000a1a;
+  background-color:#121212;
   margin: 1% 3%;
   height: 100%;
   border-radius: 3%;
@@ -87,6 +87,7 @@ input[type="file"] {
   color: white;
   clip-path: polygon(0 0, 100% 0, 100% 81%, 0 100%);
 }
+
 
 #heading span:first-child {
   color: #ff0000;
