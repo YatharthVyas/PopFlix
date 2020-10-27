@@ -11,37 +11,18 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 	<script type="text/javascript" src="js/script.js"></script>
-	<style>
-		#heading {
-			font-family: 'Permanent Marker', cursive;
-			font-size: 120px;
-			color: white;
-			margin-left: 20%;
-		}
+	<style type="text/css">
+	.btn-book-now {
+		margin-top: 30px;
+		transition: 1s;
+		background-color: #f66;
+		color: white;
+	}
 
-		.site-heading {
-			padding-top: 100px;
-			padding-bottom: 170px;
-			background-color: #121212;
-			margin-bottom: 40px;
-			text-shadow: 1px 1px 0px #292929;
-			border-bottom: 5px solid gray;
-			color: white;
-			clip-path: polygon(0 0, 100% 0, 100% 81%, 0 100%);
-		}
-
-		#heading span:first-child {
-			color: #FF0000;
-		}
-		.sub-heading-home{
-			margin-left: 23%;
-			margin-top: 50px;
-			font-size: large;
-		}
-		.heading-btns-home{
-			margin-top: 30px;
-			margin-left: 21%;
-		}
+	.btn-book-now:hover {
+		border-radius: 5px;
+		background-color: #f00;
+	}
 	</style>
 </head>
 
@@ -71,33 +52,51 @@
 </li> -->
 	</div>
 	<!-- End of Navigation Bar -->
-	<div class="site-heading">
-		<div class="row-fluid">
-			<div class="column-6" align="left">
-				<h1 id="heading">
-					<span id="head-1">Pop</span><span id="head-2">Flix</span>
-				</h1>
-				<h4 class="sub-heading-home">
-					<font color="#f00">Any Show</font>
-					<font color="white">, Any Time</font>
-				</h4>
-				<h3 class="heading-btns-home"><button class="btn-curved red-text login">Login</button> <button class="btn-curved bg-red signup">Signup</button></h3>
+	<div class="content">
+		<div class="row">
+			<input type="search" placeholder="Enter Flix Name" id="searchmovie" class="input-text full-width">
+			<select class="input-text">
+				<option>Region</option>
+				<option value="Mumbai West">Mumbai West</option>
+				<option value="Mumbai South">Mumbai South</option>
+				<option value="Mumbai North">Mumbai North</option>
+				<option value="Mumbai East">Mumbai East</option>
+				<option value="Vasai">Vasai</option>
+				<option value="Thane">Thane</option>
+				<option value="Others">Others</option>
+			</select>
+			<button class="red-btn">Search</button>
+		</div>
+		<div class="row card">
+			<div class="column-4 border-right content-card">
+				<img src="./img/seat.png" width="80%">
 			</div>
-			<div class="column-6" align="center">
-				<img height="400px" src="./img/home-heading.svg">
+			<div class="column-8 content-card">
+				<h2 class="card-header"> Flix Name</h2>
+				Rating: <span> </span>&#9733; <br />
+				Actors: <a href="https://www.imdb.com/search/name/?name="> Actor Name #1 </a> , <a href="https://www.imdb.com/search/name/?name="> Actor Name #2 </a>
+				<p> Description. Lorem ipsum cillum nostrud ullamco dolor est magna magna ut commodo fugiat enim ad ut. Magna sunt elit cupidatat esse duis ut sed est magna laboris est.</p>
+				<div align="right">
+					<button class="btn-curved btn-book-now"> Book Now! </button>
+				</div>
+			</div>
+		</div>
+		<div class="row card">
+			<div class="column-4 border-right content-card">
+				<img src="https://upload.wikimedia.org/wikipedia/en/8/84/Rocky_anthology_dvd_cover.jpg" width="80%">
+			</div>
+			<div class="column-8 content-card">
+				<h2 class="card-header"> PVR Juhu </h2>
+				Rating: <span> 4.3 </span>&#9733; <br />
+				Actors: <a href="https://www.imdb.com/search/name/?name=Sylvester+Stallone"> Sylvester Stallone </a> , <a href="https://www.imdb.com/search/name/?name=Talia+Shire"> Talia Shire </a>
+				<p> Rocky is a series of American boxing drama films. The first film, Rocky, and its five sequels centered on the boxing career of the eponymous fictional character, Rocky Balboa.</p>
+				<div align="right">
+					<button class="btn-curved bg-red btn-book-now"> Book Now! </button>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="column-4" align="center">Col 4<br />This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4.</div>
-		<div class="column-2" align="center">Col 2<br />This is a column of size 2. This is a column of size 2. This is a column of size 2. This is a column of size 2. </div>
-		<div class="column-6" align="center">Col 6<br />This is a column of size 6. This is a column of size 6. This is a column of size 6. This is a column of size 6. This is a column of size 6. </div>
-	</div>
-	<div class="row-sm">
-		<div class="column-sm-4" align="center">Col sm 4<br />This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4.</div>
-		<div class="column-sm-2" align="center">Col sm 2<br />This is a column of size 2. This is a column of size 2. This is a column of size 2. This is a column of size 2. </div>
-		<div class="column-sm-6" align="center">Col sm 6<br />This is a column of size 6. This is a column of size 6. This is a column of size 6. This is a column of size 6. This is a column of size 6. </div>
-	</div>
+	<!-- F<ooter -->
 	<div align="center" id="subscribe-news">
 		<form>
 			<b><label htmlfor="#email-sub"> Get the latest updates</label></b>
@@ -147,32 +146,7 @@
 			<button class="white-text goUp" onclick="goUp();console.log(1)">&#8593;</button>
 		</div>
 	</div>
-	<script type="text/javascript">
-	window.onload = function animateTitle() {
-		document.getElementById('head-1').innerHTML = "P"
-		document.getElementById('head-2').innerHTML = " "
-		setTimeout(function() {
-			document.getElementById('head-1').innerHTML = "Po"
-		}, 150);
-		setTimeout(function() {
-			document.getElementById('head-1').innerHTML = "Pop"
-		}, 300);
-		setTimeout(function() {
-			document.getElementById('head-2').innerHTML = "F"
-		}, 450);
-		setTimeout(function() {
-			document.getElementById('head-2').innerHTML = "Fl"
-		}, 600);
-
-		setTimeout(function() {
-			document.getElementById('head-2').innerHTML = "Fli"
-		}, 750);
-
-		setTimeout(function() {
-			document.getElementById('head-2').innerHTML = "Flix"
-		}, 900);
-	}
-	</script>
+	<!-- End of footer -->
 </body>
 
 </html>

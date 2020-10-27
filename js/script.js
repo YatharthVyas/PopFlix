@@ -14,3 +14,4 @@ window.onscroll = function hideNav() {
 		prev_scroll_pos = window.pageYOffset;
 	}
 }
+window.onreload = function() { window.scrollTo(0, 0); };
