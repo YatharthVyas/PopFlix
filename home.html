@@ -81,11 +81,59 @@
 					<font color="#f00">Any Show</font>
 					<font color="white">, Any Time</font>
 				</h4>
-				<h3 class="heading-btns-home"><button class="btn-curved red-text login">Login</button> <button class="btn-curved bg-red signup">Signup</button></h3>
+				<form action="/action_page.php" style="display: none;" id="login-form" class="login-form sub-heading-home">
+					<label for="fname" style="font-size:medium; color:#b3b3b3;">Email</label><br/>
+					<input class="inp" type="email"  name="fname"><br><br>
+					<label for="lname"  style="font-size:medium ;color:#b3b3b3;" >Password</label><br/>
+					<input class="inp" type="password"  name="lname"><br><br>
+					<button class="btn-curved red-text login">Login</button>
+					<p style="font-size: small;">Already a Member??<a href="./home.html" style="color: #ff0000; margin-left: 10px;">Register!</a></p>
+				  </form>
+				  <div id="btns">
+				<h3 class="heading-btns-home"><button class="btn-curved red-text login" onclick="showLogin()">Login</button> <button onclick="document.getElementById('id01').style.display='block'" class="btn-curved bg-red signup">Signup</button></h3>
+			</div>
 			</div>
 			<div class="column-6" align="center">
 				<img height="400px" src="./img/home-heading.svg">
 			</div>
+			
+
+<!-- The Modal (contains the Sign Up form) -->
+<div id="id01" class="modal">
+	<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+	
+	<form class="modal-content" action="/action_page.php" >
+		<h1 style="margin-left: 3%;margin-right: 3%;">Sign Up</h1>
+		<hr style="margin-left: 3%;margin-right: 3%;">
+		<div style="flex-direction: row;display: flex;">
+	  <div class="container" style="flex:3" >
+		<label for="name"><b>Name</b></label><br/>
+		<input type="text"  class="s_inp"  placeholder="Enter Name" name="name" required>
+		<br/>
+		<label for="email"><b>Email</b></label><br/>
+		<input type="text"  class="s_inp" style="margin-top: 8px ;" placeholder="Enter Email" name="email" required>
+		<br/>
+		<label for="psw"><b>Password</b></label><br/>
+		<input type="password" class="s_inp" style="margin-top: 8px ;" placeholder="Enter Password" name="psw" required>
+		<br/>
+		<label for="psw-repeat"><b>Repeat Password</b></label><br/>
+		<input type="password" class="s_inp" style="margin-top: 8px ;" placeholder="Repeat Password" name="psw-repeat" required>
+
+  
+		<p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+  
+		<div class="clearfix">
+		  <button type="button" style="background-color: gray;" onclick="document.getElementById('id01').style.display='none'" class="btn-curved bg-red signup">Cancel</button>
+		  <button type="submit" class="btn-curved bg-red signup">Sign Up</button>
+		</div>
+	  </div>
+	  <div style="flex: 2;margin-top: 2%;">
+		<img height="400px" style="transform:rotate(340deg);"src="./img/signup.png">
+	</div>
+</div>
+	</form>
+  </div>
+</div>
 		</div>
 	</div>
 	<div class="row">
