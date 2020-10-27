@@ -192,8 +192,7 @@ a.custom-white:hover {
   {
     padding: 6px 12px;
     color: #cccccc;
-    border-color: #111119;
-   
+    border-color: #111119
    border-radius: 6px;
     background-color:#262626;
     /* outline: none; */
@@ -319,14 +318,14 @@ a.custom-white:hover {
 
 /* Set a style for all buttons */
 
-input {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-  border-radius: 6px;
+.s_inp{
+    margin-top: 8px ; width: 100%;
+		padding: 15px;
+		margin: 5px 0 22px 0;
+		display: inline-block;
+		border: none;
+		background: #f1f1f1;
+		border-radius: 6px;
 }
 
 
