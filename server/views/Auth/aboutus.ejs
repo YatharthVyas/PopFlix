@@ -1,0 +1,137 @@
+<%- include('../Includes/header.ejs') %>
+
+<body>
+    <%- include('../Includes/nav.ejs') %>
+
+
+
+    <div class="site-heading" style="
+    padding-bottom: 40px; ">
+        <h1 align="center">About Us</h1>
+        <p align="center">PopFlix Service is a one stop solution for all your entertainment needs.</p>
+
+    </div>
+    <div>
+        <div align="center">
+            <table class="customTable" style="margin: 5px;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Technology Used</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>FRONTEND</td>
+                        <td>HTML5, CSS3, JAVASCRIPT</td>
+                    </tr>
+                    <tr>
+                        <td>BACKEND</td>
+                        <td>MYSQL, NODEJS</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h2 style="text-align:center">Our Team</h2>
+        <div class="row">
+            <div class="column-4" style="border-right: 6px black;">
+                <div align="center">
+                    <img src="../../public/img/person.png" alt="Jane" style="height: 100px;width:40%;">
+
+                    <h2>Tejas Ghone</h2>
+                    <p>60004180119</p>
+                    <p><button class="btn-curved red-text contact">Contact</button></p>
+                </div>
+            </div>
+            <div class="column-4">
+                <div align="center">
+
+
+                    <img src="../../public/img/person.png" alt="Jane" style="height: 100px;width:40%;display: block;
+                        margin: 0 auto;">
+
+                    <h2>Vatsal Soni</h2>
+                    <p>60004180119</p>
+                    <p><button class="btn-curved red-text contact">Contact</button></p>
+
+                </div>
+            </div>
+            <div class="column-4">
+                <div align="center">
+
+
+                    <img src="../../public/img/person.png" alt="Jane" style="height: 100px;width:40%;display: block;
+                    margin: 0 auto;">
+
+                    <h2>Yashodhan Joshi</h2>
+                    <p>60004180125</p>
+                    <p><button class="btn-curved red-text contact">Contact</button></p>
+
+                </div>
+            </div>
+            <div class="column-4">
+                <div align="center">
+
+
+                    <img src="../../public/img/person.png" alt="Jane" style="height: 100px;width:40%;display: block;
+                        margin: 0 auto;">
+
+                    <h2>Yatharth Vyas</h2>
+                    <p>60004180127</p>
+                    <p><button class="btn-curved red-text contact">Contact</button></p>
+
+                </div>
+            </div>
+        </div>
+        <h2 style="text-align:center">Quick Facts</h2>
+        <hr style="width: 50%; text-align: center;color: #181818;">
+        <div class="row">
+            <div class="column-4 line-spacing" align="center">
+                <img height="100px" width="100px" src="../../public/img/customer.jpg"><br />
+                <p><b><span id="count1"></span>+</b></p>
+                <p>Strong</p>
+            </div>
+            <div class="column-4 line-spacing" align="center">
+                <img height="100px" width="100px" src="../../public/img/india.png"><br />
+                <p><b><span id="count2"></span>+</b></p>
+                <p>Cities</p>
+            </div>
+            <div class="column-4 line-spacing" align="center">
+                <img height="100px" width="100px" src="../../public/img/screen.png"><br />
+                <p><b><span id="count3"></span>+</b></p>
+                <p>Screens</p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <%- include('../Includes/footer.ejs') %>
+
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", () => {
+            function counter(id, start, end, duration) {
+                let obj = document.getElementById(id),
+                    current = start,
+                    range = end - start,
+                    increment = end > start ? 1 : -1,
+                    step = Math.abs(Math.floor(duration / range)),
+                    timer = setInterval(() => {
+                        current += increment;
+                        obj.textContent = current;
+                        if (current == end) {
+                            clearInterval(timer);
+                        }
+                    }, step);
+            }
+            counter("count1", 0, 4000, 1);
+            counter("count2", 0, 100, 2500);
+            counter("count3", 0, 1000, 3000);
+        });
+
+    </script>
+</body>
+
+
+</html>

@@ -4,7 +4,7 @@
   "description": "Backend Server For Popflix",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index"
+    "dev": "nodemon app"
   },
   "author": "",
   "license": "MIT",
