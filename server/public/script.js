@@ -30,7 +30,20 @@ function showLogin() {
 
 
 }
+function showUpdate() {
 
+	document.getElementById('p2').style.display = "block";
+	document.getElementById('p1').style.display = "none";
+
+
+}
+function showProf() {
+
+	document.getElementById('p1').style.display = "block";
+	document.getElementById('p2').style.display = "none";
+
+
+}
 document.onload = window.scrollTo({
 	x: 0,
 })
