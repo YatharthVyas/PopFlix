@@ -14,3 +14,19 @@ window.onscroll = function hideNav() {
 		prev_scroll_pos = window.pageYOffset;
 	}
 }
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+function showLogin()
+{
+
+	document.getElementById('login-form').style.display="block";
+	document.getElementById('btns').style.display="none";
+
+
+}
