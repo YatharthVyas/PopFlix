@@ -1,0 +1,61 @@
+<%- include('../Includes/header.ejs') %> 
+
+<body>
+<%- include('../Includes/nav.ejs') %> 
+	<div class="content">
+		<div class="row">
+			<input type="search" placeholder="Enter Flix Name" id="searchmovie" class="input-text full-width">
+			<select class="input-text">
+				<option>Region</option>
+				<option value="Mumbai West">Mumbai West</option>
+				<option value="Mumbai South">Mumbai South</option>
+				<option value="Mumbai North">Mumbai North</option>
+				<option value="Mumbai East">Mumbai East</option>
+				<option value="Vasai">Vasai</option>
+				<option value="Thane">Thane</option>
+				<option value="Others">Others</option>
+			</select>
+			<button class="red-btn">Search</button>
+		</div>
+		<div class="row card">
+			<div class="column-4 border-right content-card">
+				<img src="/public/img/seat.png" width="80%">
+			</div>
+			<div class="column-8 content-card">
+				<h2 class="card-header"> Flix Name</h2>
+				Rating: <span> </span>&#9733; <br />
+				Now Showing: <a href="#"> Movie Name #1 </a> , <a href="#"> Movie Name #2 </a>
+				<p> Address. Lorem ipsum cillum nostrud ullamco dolor est magna magna ut commodo fugiat enim ad ut. Magna sunt elit cupidatat esse duis ut sed est magna laboris est.</p>
+				<div align="right">
+					<button class="btn-curved btn-book-now"> Book Now! </button>
+				</div>
+			</div>
+		</div>
+		<div class="row card">
+			<div class="column-4 border-right content-card">
+				<img src="/public/img/seat.png" width="80%">
+			</div>
+			<div class="column-8 content-card">
+				<h2 class="card-header"> PVR Juhu</h2>
+				Rating: <span> 4.6 </span>&#9733; <br />
+				Now Showing: <a href="#"> Movie Name #1 </a> , <a href="#"> Movie Name #2 </a>
+				<p> Address. Lorem ipsum cillum nostrud ullamco dolor est magna magna ut commodo fugiat enim ad ut. Magna sunt elit cupidatat esse duis ut sed est magna laboris est.</p>
+				<div align="right">
+					<button class="btn-curved btn-book-now"> Book Now! </button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- F<ooter -->
+	<div align="center" id="subscribe-news">
+		<form>
+			<b><label htmlfor="#email-sub"> Get the latest updates</label></b>
+			<input type="email" minlength="5" maxlength="30" placeholder="Enter your Email" id="email-sub" class="input-text" name="email" required />
+			<button type="submit" class="red-btn">Subscribe</button>
+		</form>
+	</div>
+	<%- include('../Includes/footer.ejs') %> 
+	<!-- End of footer -->
+</body>
+
+</html>
