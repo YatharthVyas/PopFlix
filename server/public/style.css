@@ -33,11 +33,48 @@ body {
 .row-fluid-sm {
   display: flex;
   width: 100%;
-  margin-bottom: : 20px;
+  margin-bottom:20px;
   margin-left: 0px;
   margin-right: 0px;
 }
+.on{
+  background-color: #262626;
+  border-bottom: 3px solid white;
+  border-top: 3px solid white;
+}
+#heading {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 120px;
+  color: white;
+  margin-left: 20%;
+}
 
+.site-heading {
+  padding-top: 100px;
+  padding-bottom: 170px;
+  background-color: #121212;
+  margin-bottom: 40px;
+  text-shadow: 1px 1px 0px #292929;
+  border-bottom: 5px solid gray;
+  color: white;
+  clip-path: polygon(0 0, 100% 0, 100% 81%, 0 100%);
+}
+
+#heading span:first-child {
+  color: #FF0000;
+}
+.sub-heading-home{
+  margin-left: 23%;
+  margin-top: 50px;
+  font-size: large;
+}
+.heading-btns-home{
+  margin-top: 30px;
+  margin-left: 21%;
+}
+.hh{
+  color: #ccc;
+}
 .column-9,
 .column-sm-9 {
   flex-grow: 1;
@@ -193,11 +230,22 @@ a.custom-white:hover {
 .inp {
   padding: 6px 12px;
   color: #cccccc;
-  border-color: #111119 border-radius: 6px;
+  border-color: #111119; 
+  border-radius: 6px;
   background-color: #262626;
   /* outline: none; */
 }
+.btn-book-now {
+  margin-top: 30px;
+  transition: 1s;
+  background-color: #f66;
+  color: white;
+}
 
+.btn-book-now:hover {
+  border-radius: 5px;
+  background-color: #f00;
+}
 .bg-red {
   background-color: #f00;
   color: white;

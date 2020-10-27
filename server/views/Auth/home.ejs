@@ -1,76 +1,6 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-	<title>PopFlix</title>
-	<meta charset="UTF-8">
-	<meta name="description" content="Ticket booking service">
-	<meta name="keywords" content="Flix, Book, Movie, Plan, Entertainment, Fun, Friends, Group, Bollywood, Hollywood">
-	<meta name="author" content="Yatharth Vyas, Yashodhan Joshi, Vatsal Soni and Tejas Ghone">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/style.css">
-	<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-	<script type="text/javascript" src="js/script.js"></script>
-	<style>
-		#heading {
-			font-family: 'Permanent Marker', cursive;
-			font-size: 120px;
-			color: white;
-			margin-left: 20%;
-		}
-
-		.site-heading {
-			padding-top: 100px;
-			padding-bottom: 170px;
-			background-color: #121212;
-			margin-bottom: 40px;
-			text-shadow: 1px 1px 0px #292929;
-			border-bottom: 5px solid gray;
-			color: white;
-			clip-path: polygon(0 0, 100% 0, 100% 81%, 0 100%);
-		}
-
-		#heading span:first-child {
-			color: #FF0000;
-		}
-		.sub-heading-home{
-			margin-left: 23%;
-			margin-top: 50px;
-			font-size: large;
-		}
-		.heading-btns-home{
-			margin-top: 30px;
-			margin-left: 21%;
-		}
-	</style>
-</head>
-
+<%- include('../Includes/header.ejs') %> 
 <body>
-	<!-- Navigation Bar -->
-	<div class="nav row-fluid">
-		<div class="column-6" align="left">
-			<a href="home.html" class="brand">
-				<h4 id="navhome">
-					<span>Pop</span><span>Flix</span>
-				</h4>
-			</a>
-		</div>
-		<div class="column-6" align="right">
-			<ul type="none">
-				<li><a href="flix.html">Book Flix</a></li>
-				<li><a href="movie.html">Book Movie</a></li>
-				<li><a href="#">About Us</a></li>
-				<li><a href="#" class="login-nav">Login</a></li>
-			</ul>
-		</div>
-		<!-- <li class="dropdown"><a href="" class="dropbtn">User Menu </a>
-	<div class="dropdown-content">
-		<a href="#">Login</a><br>
-		<a href="#">Profile</a>
-	</div>
-</li> -->
-	</div>
-	<!-- End of Navigation Bar -->
+<%- include('../Includes/nav.ejs') %> 
 	<div class="site-heading">
 		<div class="row-fluid">
 			<div class="column-6" align="left">
@@ -87,14 +17,14 @@
 					<label for="lname"  style="font-size:medium ;color:#b3b3b3;" >Password</label><br/>
 					<input class="inp" type="password"  name="lname"><br><br>
 					<button class="btn-curved red-text login">Login</button>
-					<p style="font-size: small;">Already a Member??<a href="./home.html" style="color: #ff0000; margin-left: 10px;">Register!</a></p>
+					<p style="font-size: small;">Not yet Registered??<a href="/flix/home" style="color: #ff0000; margin-left: 10px;">Go Back!</a></p>
 				  </form>
 				  <div id="btns">
 				<h3 class="heading-btns-home"><button class="btn-curved red-text login" onclick="showLogin()">Login</button> <button onclick="document.getElementById('id01').style.display='block'" class="btn-curved bg-red signup">Signup</button></h3>
 			</div>
 			</div>
 			<div class="column-6" align="center">
-				<img height="400px" src="./img/home-heading.svg">
+				<img height="400px" src="/public/img/home-heading.svg">
 			</div>
 			
 
@@ -103,24 +33,24 @@
 	<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 	
 	<form class="modal-content" action="/action_page.php" >
-		<h1 style="margin-left: 3%;margin-right: 3%;">Sign Up</h1>
+		<h1 style="margin-left: 3%;margin-right: 3%; color:white;">Sign Up</h1>
 		<hr style="margin-left: 3%;margin-right: 3%;">
 		<div style="flex-direction: row;display: flex;">
 	  <div class="container" style="flex:3" >
-		<label for="name"><b>Name</b></label><br/>
+		<label for="name" class="hh"><b>Name</b></label><br/>
 		<input type="text"  class="s_inp"  placeholder="Enter Name" name="name" required>
 		<br/>
-		<label for="email"><b>Email</b></label><br/>
+		<label for="email"  class="hh"><b>Email</b></label><br/>
 		<input type="text"  class="s_inp" style="margin-top: 8px ;" placeholder="Enter Email" name="email" required>
 		<br/>
-		<label for="psw"><b>Password</b></label><br/>
+		<label for="psw"  class="hh"><b>Password</b></label><br/>
 		<input type="password" class="s_inp" style="margin-top: 8px ;" placeholder="Enter Password" name="psw" required>
 		<br/>
-		<label for="psw-repeat"><b>Repeat Password</b></label><br/>
+		<label for="psw-repeat"  class="hh"><b>Repeat Password</b></label><br/>
 		<input type="password" class="s_inp" style="margin-top: 8px ;" placeholder="Repeat Password" name="psw-repeat" required>
 
   
-		<p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+		<p class="hh">By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
   
 		<div class="clearfix">
 		  <button type="button" style="background-color: gray;" onclick="document.getElementById('id01').style.display='none'" class="btn-curved bg-red signup">Cancel</button>
@@ -128,7 +58,7 @@
 		</div>
 	  </div>
 	  <div style="flex: 2;margin-top: 2%;">
-		<img height="400px" style="transform:rotate(340deg);"src="./img/signup.png">
+		<img height="400px" style="transform:rotate(340deg);" src="/public/img/signup.png">
 	</div>
 </div>
 	</form>
@@ -153,49 +83,8 @@
 			<button type="submit" class="red-btn">Subscribe</button>
 		</form>
 	</div>
-	<footer class="footer-homepg">
-		<div class="column-footer footer-text-description">
-			<h5 class="footer-head"> About Us </h5>
-			PopFlix Service is a one stop solution for all your entertainment needs.<br /><br /><br />
-		</div>
-		<div class="column-footer footer-text-description">
-			<h5 class="footer-head"> Get in Touch </h5>
-			<p class="footer-para">
-				PopFlix Inc,<br />
-				Mumbai - 400050<br />
-				Phone: <a class="custom-white" href="tel:9999988888">9999988888</a><br />
-				<!-- This will initiate a call from Mobile devices on clicking the link -->
-			</p>
-			Email: <a class="custom-white" href="mailto:abcservice@gmail.com">abcservice@gmail.com</a><br />
-			<br />
-			Fax:<br /><br /><br />
-		</div>
-		<div class="column-footer footer-text-description">
-			<h5 class="footer-head"> Latest Posts </h5>
-			<br />
-			<hr color="#888"><br />
-			<hr color="#888"><br />
-			<hr color="#888"><br /><br />
-		</div>
-		<div class="column-footer footer-text-description">
-			<h5 class="footer-head">Payment </h5>
-			<br />
-			Select from these options<br /><br />
-		</div>
-		</div>
-	</footer>
-	<div class="sub-footer">
-		<strong>All Copyrights Reserved</strong>
-		<div class="icon-holder">
-			<i class="fa fa-twitter" aria-hidden="true"></i>
-			<i class="fa fa-facebook" aria-hidden="true"></i>
-			<i class="fa fa-google-plus" aria-hidden="true"></i>
-			<i class="fa fa-linkedin" aria-hidden="true"></i>
-			<i class="fa fa-vimeo" aria-hidden="true"></i>
-			<button class="white-text goUp" onclick="goUp();console.log(1)">&#8593;</button>
-		</div>
-	</div>
-	<script type="text/javascript">
+<%- include('../Includes/footer.ejs') %> 
+<script type="text/javascript">
 	window.onload = function animateTitle() {
 		document.getElementById('head-1').innerHTML = "P"
 		document.getElementById('head-2').innerHTML = " "
@@ -211,16 +100,16 @@
 		setTimeout(function() {
 			document.getElementById('head-2').innerHTML = "Fl"
 		}, 600);
-
+	
 		setTimeout(function() {
 			document.getElementById('head-2').innerHTML = "Fli"
 		}, 750);
-
+	
 		setTimeout(function() {
 			document.getElementById('head-2').innerHTML = "Flix"
 		}, 900);
 	}
-	</script>
+</script>
 </body>
 
 </html>
