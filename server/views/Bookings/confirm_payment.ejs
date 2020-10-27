@@ -1,0 +1,68 @@
+<%- include('../Includes/header.ejs') %> 
+<body>
+<%- include('../Includes/nav.ejs') %> 
+	<style type="text/css">
+	.ticket-frame {
+		border-radius: -25px;
+		padding-top: 80px;
+		padding-left: 120px;
+		padding-right: 90px;
+		padding-bottom: 60px;
+		width: 600px;
+		height: 230px;
+		background-image: url("/public/img/ticket.svg");
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	.arrow {
+		clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+		justify-content: center;
+		padding: 30px;
+		font-family: 'Roboto', sans-serif;
+		font-weight: 900;
+	}
+
+	.ticket-content {
+		margin-top: 30px;
+		font-size: large;
+	}
+	</style>
+	<div class="content row">
+		<div class="column-3">
+			<div class="arrow bg-red">
+				Movie Name
+			</div>
+		</div>
+		<div class="column-3">
+			<div class="arrow bg-red">
+				Show Time
+			</div>
+		</div>
+		<div class="column-3">
+			<div class="arrow bg-red">
+				Select Seat
+			</div>
+		</div>
+		<div class="column-3">
+			<div class="arrow bg-red">
+				Confirm Payment
+			</div>
+		</div>
+	</div>
+	<div class="content" align="center">
+		<div class="ticket-frame" align="left">
+			<div class="card-header" style="border-bottom: 0px">Movie Name</div>
+			<div class="ticket-content">
+				Seats: <b>12,13,14 </b><br />
+				Cinema Name: <b> PVR Juhu </b><br />
+				Timing: <b> 2 P.M. </b><br />
+				Date: <b> 24/10/2020</b><br />
+			</div>
+		</div>
+		<a href=""><button class="btn-curved bg-red">View All Tickets</button></a>
+	</div>
+	<%- include('../Includes/footer.ejs') %> 
+</body>
+
+</html>

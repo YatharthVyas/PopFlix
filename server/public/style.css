@@ -1,5 +1,5 @@
 body {
-  font-family: Arial;
+  font-family: Roboto, sans-serif;
   margin: 0px;
   padding: 0px;
   margin-top: 50px;
@@ -33,15 +33,17 @@ body {
 .row-fluid-sm {
   display: flex;
   width: 100%;
-  margin-bottom:20px;
+  margin-bottom: 20px;
   margin-left: 0px;
   margin-right: 0px;
 }
-.on{
+
+.on {
   background-color: #262626;
   border-bottom: 3px solid white;
   border-top: 3px solid white;
 }
+
 #heading {
   font-family: 'Permanent Marker', cursive;
   font-size: 120px;
@@ -63,18 +65,22 @@ body {
 #heading span:first-child {
   color: #FF0000;
 }
-.sub-heading-home{
+
+.sub-heading-home {
   margin-left: 23%;
   margin-top: 50px;
   font-size: large;
 }
-.heading-btns-home{
+
+.heading-btns-home {
   margin-top: 30px;
   margin-left: 21%;
 }
-.hh{
+
+.hh {
   color: #ccc;
 }
+
 .column-9,
 .column-sm-9 {
   flex-grow: 1;
@@ -156,6 +162,15 @@ body {
   width: 100%
 }
 
+
+.arrow {
+  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  justify-content: center;
+  padding: 30px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+}
+
 /* Card */
 
 .card {
@@ -225,16 +240,29 @@ a.custom-white:hover {
   color: #f00;
 }
 
+/*Date and Time Select page*/
+.time-block {
+  padding: 50px;
+}
+
+
+/*For arrow bg*/
+
+.silver-bg {
+  background-color: #bdbdbd;
+}
+
 /* End*/
 
 .inp {
   padding: 6px 12px;
   color: #cccccc;
-  border-color: #111119; 
+  border-color: #111119;
   border-radius: 6px;
   background-color: #262626;
   /* outline: none; */
 }
+
 .btn-book-now {
   margin-top: 30px;
   transition: 1s;
@@ -246,6 +274,7 @@ a.custom-white:hover {
   border-radius: 5px;
   background-color: #f00;
 }
+
 .bg-red {
   background-color: #f00;
   color: white;
@@ -511,7 +540,6 @@ hr {
 .sub-footer {
   bottom: 0;
   left: 0;
-  width: 100%;
   background: #111119;
   color: white;
   padding: 15px 40px 25px 20vw;

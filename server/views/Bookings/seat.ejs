@@ -1,63 +1,85 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-	<title>Seats</title>
-	<style type="text/css">
-	.occupied {
-		background-color: #aaa;
-		background-image: url("./img/seat.png");
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: 50px 50px;
-		height: 50px;
-		width: 50px;
-		text-align: center;
-		color: white;
-		filter: grayscale(100%);
-		border: 0px;
-		cursor: not-allowed;
-	}
-
-	.available {
-		color: black;
-		background-image: url("./img/seat.png");
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: 50px 50px;
-		height: 50px;
-		width: 50px;
-		text-align: center;
-		color: white;
-		border: 0px;
-		filter: opacity(60%);
-		cursor: pointer;
-	}
-
-	.available:hover {
-		filter: opacity(100%);
-	}
-
-	#Screen {
-		text-align: center;
-		background-color: #cdcdcd;
-		padding: 10px 10px;
-	}
-
-	#seat-holder {
-		padding: 10px;
-	}
-	</style>
-</head>
-
+<%- include('../Includes/header.ejs') %> 
 <body>
-	<table border="1" cellspacing="10" cellpadding="0" id="seat-holder">
-		<tbody id="Seats">
-		</tbody>
-	</table>
-	<h3>
-		Selected = <font color="#f00" id="seats_picked">0</font>
-	</h3>
+<%- include('../Includes/nav.ejs') %> 
+	<style type="text/css">
+		.occupied {
+			background-color: #aaa;
+			background-image: url("/public/img/seat.png");
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 50px 50px;
+			height: 50px;
+			width: 50px;
+			text-align: center;
+			color: white;
+			filter: grayscale(100%);
+			border: 0px;
+			cursor: not-allowed;
+		}
+
+		.available {
+			color: black;
+			background-image: url("/public/img/seat.png");
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 50px 50px;
+			height: 50px;
+			width: 50px;
+			text-align: center;
+			color: white;
+			border: 0px;
+			filter: opacity(60%);
+			cursor: pointer;
+		}
+
+		.available:hover {
+			filter: opacity(100%);
+		}
+
+		#Screen {
+			text-align: center;
+			background-color: #cdcdcd;
+			padding: 10px 10px;
+		}
+
+		#seat-holder {
+			padding: 10px;
+		}
+	</style>
+	<div class="content row">
+		<div class="column-3">
+			<div class="arrow bg-red">
+				Select Movie
+			</div>
+		</div>
+		<div class="column-3">
+			<div class="arrow bg-red">
+				Show Time
+			</div>
+		</div>
+		<div class="column-3">
+			<div class="arrow bg-red">
+				Select Seat
+			</div>
+		</div>
+		<div class="column-3">
+			<div class="arrow silver-bg">
+				Confirm Payment
+			</div>
+		</div>
+	</div>
+	<div align="center">
+		<h2 class="card-header"> Select Your Seats </h2>
+		<table border="1" cellspacing="10" cellpadding="0" id="seat-holder">
+			<tbody id="Seats">
+			</tbody>
+		</table>
+		<h3>
+			Selected = <font color="#f00" id="seats_picked">0</font><br/>
+			Total Cost = <font color="#f00" >Rs <font id="total_cost">0</font>/-</font>
+		</h3>
+		<a href="confirm-payment"><button class="btn-curved bg-red">Proceed to pay</button></a>
+	</div>
 	<script type="text/javascript">
 	var res = [{
 			id: 0,
@@ -124,6 +146,7 @@
 			allocated: true
 		},
 	]
+	var cost = 100;
 	ctr = Math.sqrt(res.length)
 	seat_table = document.getElementById("Seats");
 	var seat_content = "";
@@ -152,8 +175,10 @@
 			seats_selection.push(id);
 		}
 		document.getElementById('seats_picked').innerHTML = seats_selection.length;
+		document.getElementById('total_cost').innerHTML = seats_selection.length*cost;
 	}
 	</script>
+	<%- include('../Includes/footer.ejs') %> 
 </body>
 
 </html>

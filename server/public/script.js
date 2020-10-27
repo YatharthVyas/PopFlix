@@ -30,3 +30,7 @@ function showLogin() {
 
 
 }
+
+document.onload = window.scrollTo({
+	x: 0,
+})

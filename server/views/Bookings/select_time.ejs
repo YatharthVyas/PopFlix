@@ -1,0 +1,51 @@
+<%- include('../Includes/header.ejs') %> 
+<body>
+<%- include('../Includes/nav.ejs') %> 
+	<div class="content row">
+		<div class="column-3">
+			<div class="arrow bg-red">
+				Movie Name
+			</div>
+		</div>
+		<div class="column-3">
+			<div class="arrow bg-red">
+				Show Time
+			</div>
+		</div>
+		<div class="column-3">
+			<div class="arrow silver-bg">
+				Select Seat
+			</div>
+		</div>
+		<div class="column-3">
+			<div class="arrow silver-bg">
+				Confirm Payment
+			</div>
+		</div>
+	</div>
+	<div class="content row">
+		<div class="card bg-red time-block">
+			<div class="card-header">
+				Date and Time
+			</div>
+			<div class="content-card">
+				<label>Date: </label>
+				<input type="date" class="input-text" style="width: 220px;">
+				<br /><br /><br />
+				<label>Time: </label>
+				<select class="input-text" style="width: 280px;">
+					<option>Time</option>
+					<option value="10:00:00">10 A.M.</option>
+					<option value="12:00:00">12 NOON</option>
+					<option value="14:00:00">2 P.M.</option>
+					<option value="16:00:00">4 P.M.</option>
+					<option value="18:00:00">6 P.M.</option>
+				</select>
+			</div>
+			<div align="right"><a href="select-seat"><button class="btn-curved">Proceed</button></a></div>
+		</div>
+	</div>
+	<%- include('../Includes/footer.ejs') %> 
+</body>
+
+</html>
