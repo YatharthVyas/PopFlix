@@ -11,11 +11,11 @@
 					<font color="#f00">Any Show</font>
 					<font color="white">, Any Time</font>
 				</h4>
-				<form action="/action_page.php" style="display: none;" id="login-form" class="login-form sub-heading-home">
-					<label for="fname" style="font-size:medium; color:#b3b3b3;">Email</label><br/>
-					<input class="inp" type="email"  name="fname"><br><br>
-					<label for="lname"  style="font-size:medium ;color:#b3b3b3;" >Password</label><br/>
-					<input class="inp" type="password"  name="lname"><br><br>
+				<form action="/user/login" method="POST" style="display: none;" id="login-form" class="login-form sub-heading-home">
+					<label for="email" style="font-size:medium; color:#b3b3b3;">Email</label><br/>
+					<input class="inp" type="email"  name="username"><br><br>
+					<label for="password"  style="font-size:medium ;color:#b3b3b3;" >Password</label><br/>
+					<input class="inp" type="password"  name="password"><br><br>
 					<button class="btn-curved red-text login">Login</button>
 					<p style="font-size: small;">Not yet Registered??<a href="/flix/home" style="color: #ff0000; margin-left: 10px;">Go Back!</a></p>
 				  </form>
@@ -32,7 +32,7 @@
 <div id="id01" class="modal">
 	<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 	
-	<form class="modal-content" action="/action_page.php" >
+	<form class="modal-content" action="/user/signup" method="POST">
 		<h1 style="margin-left: 3%;margin-right: 3%; color:white;">Sign Up</h1>
 		<hr style="margin-left: 3%;margin-right: 3%;">
 		<div style="flex-direction: row;display: flex;">
