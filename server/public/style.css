@@ -6,7 +6,33 @@ body {
   width: 100vw;
   overflow-x: hidden;
 }
+/* Profile  */
 
+.prof-div{
+  background-color: #262626;
+  padding: 32px;
+  height: 100%;
+}
+.popfile{
+  background-color: #000a1a;
+  margin: 1% 3%;
+  height: 100%;
+  border-radius: 3%;
+}
+
+
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  color: white;
+}
+
+/* Profile ends*/
 .content {
   padding-top: 50px;
   padding-left: 5%;
@@ -191,6 +217,10 @@ body {
   padding: 40px;
   font-family: Arial;
 }
+.content-card-2 {
+  padding: 5px;
+  font-family: Arial;
+}
 
 /* End */
 
@@ -262,14 +292,24 @@ a.custom-white:hover {
   background-color: #262626;
   /* outline: none; */
 }
-
+nav ul{height:415px}
+nav ul{overflow:hidden; overflow-y:scroll;}
+ul, li { margin-left: 0; padding-left: 0; }
 .btn-book-now {
   margin-top: 30px;
   transition: 1s;
   background-color: #f66;
   color: white;
 }
-
+.btn-book-now-2 {
+  transition: 1s;
+  background-color: #f66;
+  color: white;
+}
+.btn-book-now-2:hover{
+  border-radius: 5px;
+  background-color: #f00;
+}
 .btn-book-now:hover {
   border-radius: 5px;
   background-color: #f00;
@@ -339,6 +379,13 @@ a.custom-white:hover {
   /*font-size: 20px;*/
   color: white;
   margin: 0px 0px 0px 10px;
+}
+#profname{
+  font-family:  cursive;
+  word-spacing: 3%;
+  /*font-size: 20px;*/
+  color:  #bfbfbf;
+  margin: 2% 2%; 
 }
 
 
