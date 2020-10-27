@@ -5,23 +5,19 @@ const flixroutes=require('./routes/flix');
 const userroutes=require('./routes/user');
 
 
-// const connection = mysql.createConnection({
-//   host     : 'localhost',
-//   user     : 'root',
-//   password : 'Tejas@18',
-//   database : 'popflix'
-// });
+const connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : 'Tejas@18',
+  database : 'popflix'
+});
 
 
 const app = express();
-// connection.connect();
+connection.connect();
 
-// connection.query('SELECT * FROM theater', function (error, results, fields) {
-//   if (error) throw error;
-//   console.table(results);
-// });
  
-// connection.end();
+connection.end();
 
 app.set('view engine','ejs');
 app.set('views','views');
