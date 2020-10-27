@@ -9,12 +9,17 @@ exports.getMovieFlix = (req, res, next) => {
 	});
 }
 
+exports.getSelectFlix = (req, res, next) => {
+	res.render("Bookings/select_flix", {
+		pg: "select-flix"
+	});
+}
 exports.getSelectSeat = (req, res, next) => {
 	res.render("Bookings/seat", {
 		pg: "select-seat"
 	});
 }
-exports.getSelectMovieFlix = (req, res, next) => {
+exports.getSelectMovie = (req, res, next) => {
 	res.render("Bookings/select_movie", {
 		pg: "select-movie"
 	});

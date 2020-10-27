@@ -391,8 +391,71 @@ a.custom-white:hover {
 
 /* End of Navbar */
 
-/* Add a background color when the inputs get focus */
+/*Confirm ticket payment*/
 
+.ticket-frame {
+  border-radius: -25px;
+  padding-top: 80px;
+  padding-left: 120px;
+  padding-right: 90px;
+  padding-bottom: 60px;
+  width: 600px;
+  height: 230px;
+  background-image: url("/public/img/ticket.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ticket-content {
+  margin-top: 30px;
+  font-size: large;
+}
+
+
+/* Seat Booking */
+.occupied {
+  background-color: #aaa;
+  background-image: url("/public/img/seat.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50px 50px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  color: white;
+  filter: grayscale(100%);
+  border: 0px;
+  cursor: not-allowed;
+}
+
+.available {
+  color: black;
+  background-image: url("/public/img/seat.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50px 50px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  color: white;
+  border: 0px;
+  filter: opacity(60%);
+  cursor: pointer;
+}
+
+.available:hover {
+  filter: opacity(100%);
+}
+
+#Screen {
+  text-align: center;
+  background-color: #cdcdcd;
+  padding: 10px 10px;
+}
+
+#seat-holder {
+  padding: 10px;
+}
 
 /* Set a style for all buttons */
 
