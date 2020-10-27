@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const flixcontrollers = require("../controllers/flix");
+const flixControllers = require("../controllers/flix");
 
-router.get("/home",flixcontrollers.getHome);
+router.get("/home",flixControllers.getHome);
 
 
 

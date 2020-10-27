@@ -1,6 +1,5 @@
-
-exports.getHome = (req,res,next) =>{
-    res.render("Auth/home",{
-        pg:"home"
-    });
-}
+exports.getHome = (req, res) => {
+  res.render('Auth/home', {
+    pg: 'home',
+  });
+};
