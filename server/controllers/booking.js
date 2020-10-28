@@ -24,22 +24,11 @@ exports.getBookFlix = async (req, res,next) => {
 	
 	
 };
-// if(err)
-// 	console.log(err);
-// 	let indx=0;
 
-// 	while(indx<result.length)
-// 	{	
-// 		let mov=[];
-// 		mov=query(`SELECT name from movies where m_id IN (select m_id from shows where t_id=${result[indx].t_id});`,(err,films,field)=>{
-// 			return films;
-// 		})
-// 		result[indx].movies=mov;
-// 		console.log(result[indx],"AAAA");
-// 		indx=indx+1;
-// 	}
+
+
 exports.getMovieFlix = async (req, res) => {
-	let lan={"Ma":"Marathi","EN":"English","Hi":'Hindi'}
+	
 	try
 	 {
 		 let movies= await query(`SELECT * FROM movies WHERE release_date < CURDATE() ORDER BY release_date DESC LIMIT 10;`);

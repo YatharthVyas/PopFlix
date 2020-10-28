@@ -33,57 +33,41 @@
 				<img height="400px" src="/public/img/home-heading.svg">
 			</div>
 
+<!-- The Modal (contains the Sign Up form) -->
+<div id="id01" class="modal">
+	<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+	
+	<form class="modal-content" action="/user/signup" method="POST">
+		<h1 style="margin-left: 3%;margin-right: 3%; color:white;">Sign Up</h1>
+		<hr style="margin-left: 3%;margin-right: 3%;">
+		<div style="flex-direction: row;display: flex;">
+	  <div class="container" style="flex:3" >
+		<label for="name" class="hh"><b>Name</b></label><br/>
+		<input type="text"  class="s_inp"  placeholder="Enter Name" name="name" required>
+		<br/>
+		<label for="email"  class="hh"><b>Email</b></label><br/>
+		<input type="text"  class="s_inp" style="margin-top: 8px ;" placeholder="Enter Email" name="email" required>
+		<br/>
+		<label for="psw"  class="hh"><b>Password</b></label><br/>
+		<input type="password" class="s_inp" style="margin-top: 8px ;" placeholder="Enter Password" name="psw" required>
+		<br/>
+		<label for="psw-repeat"  class="hh"><b>Repeat Password</b></label><br/>
+		<input type="password" class="s_inp" style="margin-top: 8px ;" placeholder="Repeat Password" name="psw-repeat" required>
+		<label for="psw-repeat"  class="hh"><b>Phone Number</b></label><br/>
+		<input type="text" class="s_inp" style="margin-top: 8px ;" placeholder="Phone Number" name="phone" required>
+		<label for="psw-repeat"  class="hh"><b>Gender</b></label><br/>
+		<input type="radio" id="male" name="gender" value="M">
+			<label for="male">Male</label>
+			<input type="radio" id="female" name="gender" value="F">
+			<label for="female">Female</label>
+			<input type="radio" id="other" name="gender" value="O">
+			<label for="other">Other</label>
+		<p class="hh">By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+  
+		<div class="clearfix">
+		  <button type="button" style="background-color: gray;" onclick="document.getElementById('id01').style.display='none'" class="btn-curved bg-red signup">Cancel</button>
+		  <button type="submit" class="btn-curved bg-red signup">Sign Up</button>
 
-			<!-- The Modal (contains the Sign Up form) -->
-			<div id="id01" class="modal">
-				<span onclick="document.getElementById('id01').style.display='none'" class="close"
-					title="Close Modal">&times;</span>
-
-				<form class="modal-content" action="/user/signup" method="POST">
-					<h1 style="margin-left: 3%;margin-right: 3%; color:white;">Sign Up</h1>
-					<hr style="margin-left: 3%;margin-right: 3%;">
-					<div style="flex-direction: row;display: flex;">
-						<div class="container" style="flex:3">
-							<label for="name" class="hh"><b>Name</b></label><br />
-							<input type="text" class="s_inp" placeholder="Enter Name" name="name" required>
-							<br />
-							<label for="email" class="hh"><b>Email</b></label><br />
-							<input type="text" class="s_inp" style="margin-top: 8px ;" placeholder="Enter Email"
-								name="email" required>
-							<br />
-							<label for="psw" class="hh"><b>Password</b></label><br />
-							<input type="password" class="s_inp" style="margin-top: 8px ;" placeholder="Enter Password"
-								name="psw" required>
-							<br />
-							<label for="psw-repeat" class="hh"><b>Repeat Password</b></label><br />
-							<input type="password" class="s_inp" style="margin-top: 8px ;" placeholder="Repeat Password"
-								name="psw-repeat" required>
-							<label for="psw-repeat" class="hh"><b>Phone Number</b></label><br />
-							<input type="number" class="s_inp" style="margin-top: 8px ;" placeholder="Phone Number"
-								name="phone" required>
-							<label for="psw-repeat" class="hh"><b>Gender</b></label><br />
-							<input type="radio" id="male" name="gender" value="M">
-							<label for="male">Male</label>
-							<input type="radio" id="female" name="gender" value="F">
-							<label for="female">Female</label>
-							<input type="radio" id="other" name="gender" value="O">
-							<label for="other">Other</label>
-							<p class="hh">By creating an account you agree to our <a href="#"
-									style="color:dodgerblue">Terms & Privacy</a>.</p>
-
-							<div class="clearfix">
-								<button type="button" style="background-color: gray;"
-									onclick="document.getElementById('id01').style.display='none'"
-									class="btn-curved bg-red signup">Cancel</button>
-								<button type="submit" class="btn-curved bg-red signup">Sign Up</button>
-							</div>
-						</div>
-						<div style="flex: 2;margin-top: 2%;">
-							<img height="400px" style="transform:rotate(340deg);" src="/public/img/signup.png">
-						</div>
-					</div>
-				</form>
-			</div>
 		</div>
 	</div>
 	</div>
