@@ -59,7 +59,7 @@ CREATE TABLE seats(
     );
 
 CREATE TABLE person( 
-    p_id int, 
+    p_id int NOT NULL,auto_increment, 
     name varchar(50), 
     gender ENUM('M','F','O'), 
     constraint primary key(p_id) 
