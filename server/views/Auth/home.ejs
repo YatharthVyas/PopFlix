@@ -1,6 +1,7 @@
-<%- include('../Includes/header.ejs') %> 
+<%- include('../Includes/header.ejs') %>
+
 <body>
-<%- include('../Includes/nav.ejs') %> 
+	<%- include('../Includes/nav.ejs') %>
 	<div class="site-heading">
 		<div class="row-fluid">
 			<div class="column-6" align="left">
@@ -11,22 +12,26 @@
 					<font color="#f00">Any Show</font>
 					<font color="white">, Any Time</font>
 				</h4>
-				<form action="/user/login" method="POST" style="display: none;" id="login-form" class="login-form sub-heading-home">
-					<label for="email" style="font-size:medium; color:#b3b3b3;">Email</label><br/>
-					<input class="inp" type="email"  name="username"><br><br>
-					<label for="password"  style="font-size:medium ;color:#b3b3b3;" >Password</label><br/>
-					<input class="inp" type="password"  name="password"><br><br>
+				<form action="/user/login" method="POST" style="display: none;" id="login-form"
+					class="login-form sub-heading-home">
+					<label for="email" style="font-size:medium; color:#b3b3b3;">Email</label><br />
+					<input class="inp" type="email" name="username" required><br><br>
+					<label for="password" style="font-size:medium ;color:#b3b3b3;">Password</label><br />
+					<input class="inp" type="password" name="password" required><br><br>
 					<button class="btn-curved red-text login">Login</button>
-					<p style="font-size: small;">Not yet Registered??<a href="/flix/home" style="color: #ff0000; margin-left: 10px;">Go Back!</a></p>
-				  </form>
-				  <div id="btns">
-				<h3 class="heading-btns-home"><button class="btn-curved red-text login" onclick="showLogin()">Login</button> <button onclick="document.getElementById('id01').style.display='block'" class="btn-curved bg-red signup">Signup</button></h3>
-			</div>
+					<p style="font-size: small;">Not yet Registered??<a href="/flix/home"
+							style="color: #ff0000; margin-left: 10px;">Go Back!</a></p>
+				</form>
+				<div id="btns">
+					<h3 class="heading-btns-home"><button class="btn-curved red-text login"
+							onclick="showLogin()">Login</button> <button
+							onclick="document.getElementById('id01').style.display='block'"
+							class="btn-curved bg-red signup">Signup</button></h3>
+				</div>
 			</div>
 			<div class="column-6" align="center">
 				<img height="400px" src="/public/img/home-heading.svg">
 			</div>
-			
 
 <!-- The Modal (contains the Sign Up form) -->
 <div id="id01" class="modal">
@@ -62,61 +67,63 @@
 		<div class="clearfix">
 		  <button type="button" style="background-color: gray;" onclick="document.getElementById('id01').style.display='none'" class="btn-curved bg-red signup">Cancel</button>
 		  <button type="submit" class="btn-curved bg-red signup">Sign Up</button>
+
 		</div>
-	  </div>
-	  <div style="flex: 2;margin-top: 2%;">
-		<img height="400px" style="transform:rotate(340deg);" src="/public/img/signup.png">
 	</div>
-</div>
-	</form>
-  </div>
-</div>
-		</div>
 	</div>
 	<div class="row">
-		<div class="column-4" align="center">Col 4<br />This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4.</div>
-		<div class="column-2" align="center">Col 2<br />This is a column of size 2. This is a column of size 2. This is a column of size 2. This is a column of size 2. </div>
-		<div class="column-6" align="center">Col 6<br />This is a column of size 6. This is a column of size 6. This is a column of size 6. This is a column of size 6. This is a column of size 6. </div>
+		<div class="column-4" align="center">Col 4<br />This is a column of size 4. This is a column of size 4. This is
+			a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This
+			is a column of size 4. This is a column of size 4.</div>
+		<div class="column-2" align="center">Col 2<br />This is a column of size 2. This is a column of size 2. This is
+			a column of size 2. This is a column of size 2. </div>
+		<div class="column-6" align="center">Col 6<br />This is a column of size 6. This is a column of size 6. This is
+			a column of size 6. This is a column of size 6. This is a column of size 6. </div>
 	</div>
 	<div class="row-sm">
-		<div class="column-sm-4" align="center">Col sm 4<br />This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size 4.</div>
-		<div class="column-sm-2" align="center">Col sm 2<br />This is a column of size 2. This is a column of size 2. This is a column of size 2. This is a column of size 2. </div>
-		<div class="column-sm-6" align="center">Col sm 6<br />This is a column of size 6. This is a column of size 6. This is a column of size 6. This is a column of size 6. This is a column of size 6. </div>
+		<div class="column-sm-4" align="center">Col sm 4<br />This is a column of size 4. This is a column of size 4.
+			This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size
+			4. This is a column of size 4. This is a column of size 4.</div>
+		<div class="column-sm-2" align="center">Col sm 2<br />This is a column of size 2. This is a column of size 2.
+			This is a column of size 2. This is a column of size 2. </div>
+		<div class="column-sm-6" align="center">Col sm 6<br />This is a column of size 6. This is a column of size 6.
+			This is a column of size 6. This is a column of size 6. This is a column of size 6. </div>
 	</div>
 	<div align="center" id="subscribe-news">
 		<form>
 			<b><label htmlfor="#email-sub"> Get the latest updates</label></b>
-			<input type="email" minlength="5" maxlength="30" placeholder="Enter your Email" id="email-sub" class="input-text" name="email" required />
+			<input type="email" minlength="5" maxlength="30" placeholder="Enter your Email" id="email-sub"
+				class="input-text" name="email" required />
 			<button type="submit" class="red-btn">Subscribe</button>
 		</form>
 	</div>
-<%- include('../Includes/footer.ejs') %> 
-<script type="text/javascript">
-	window.onload = function animateTitle() {
-		document.getElementById('head-1').innerHTML = "P"
-		document.getElementById('head-2').innerHTML = " "
-		setTimeout(function() {
-			document.getElementById('head-1').innerHTML = "Po"
-		}, 150);
-		setTimeout(function() {
-			document.getElementById('head-1').innerHTML = "Pop"
-		}, 300);
-		setTimeout(function() {
-			document.getElementById('head-2').innerHTML = "F"
-		}, 450);
-		setTimeout(function() {
-			document.getElementById('head-2').innerHTML = "Fl"
-		}, 600);
-	
-		setTimeout(function() {
-			document.getElementById('head-2').innerHTML = "Fli"
-		}, 750);
-	
-		setTimeout(function() {
-			document.getElementById('head-2').innerHTML = "Flix"
-		}, 900);
-	}
-</script>
+	<%- include('../Includes/footer.ejs') %>
+	<script type="text/javascript">
+		window.onload = function animateTitle() {
+			document.getElementById('head-1').innerHTML = "P"
+			document.getElementById('head-2').innerHTML = " "
+			setTimeout(function () {
+				document.getElementById('head-1').innerHTML = "Po"
+			}, 150);
+			setTimeout(function () {
+				document.getElementById('head-1').innerHTML = "Pop"
+			}, 300);
+			setTimeout(function () {
+				document.getElementById('head-2').innerHTML = "F"
+			}, 450);
+			setTimeout(function () {
+				document.getElementById('head-2').innerHTML = "Fl"
+			}, 600);
+
+			setTimeout(function () {
+				document.getElementById('head-2').innerHTML = "Fli"
+			}, 750);
+
+			setTimeout(function () {
+				document.getElementById('head-2').innerHTML = "Flix"
+			}, 900);
+		}
+	</script>
 </body>
 
 </html>
