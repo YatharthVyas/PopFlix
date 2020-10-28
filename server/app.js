@@ -5,14 +5,14 @@ const flixroutes = require("./routes/flix");
 const userroutes = require("./routes/user");
 
 const connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'Tejas@18',
-  database : 'popflix'
+	host: 'localhost',
+	user: 'root',
+	password: 'Tejas@18',
+	database: 'popflix'
 });
 
 const app = express();
-connection.connect();
+// connection.connect();
 
 
 // connection.query('SELECT * FROM theater', function (error, results, fields) {
@@ -30,5 +30,5 @@ app.use("/flix", flixroutes);
 app.use("/user", userroutes);
 
 app.listen(3000, () => {
-  console.log("Hello");
+	console.log("Hello");
 });
