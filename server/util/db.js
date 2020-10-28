@@ -4,8 +4,8 @@ const util = require("util");
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Vatsal13@13",
-  database: "pop_flix",
+  password: "Tejas@18",
+  database: "popflix",
 });
 
 exports.connect = () => {

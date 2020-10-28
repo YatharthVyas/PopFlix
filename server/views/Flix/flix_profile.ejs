@@ -1,0 +1,183 @@
+<%- include('../Includes/header.ejs') %> 
+<body>
+<%- include('../Includes/nav.ejs') %> 
+<style type="text/css">
+	.movie-card{
+		margin-left:15px;
+		margin-left: 15px;
+		padding: 10px;
+		max-height: 450px;
+		transition: 1s;
+		overflow-y: hidden;
+		border-radius: 25px;
+		background-color: #fff;
+		position: relative;
+	}
+	.movie-card:hover{
+		max-height: 1000px;
+	}
+	body{
+		background: #f12711;  /* fallback for old browsers */
+		background: -webkit-linear-gradient(to right, #883333, #f12711);  /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right, #883333, #f12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari */
+	}
+	.topright {
+	  position: absolute;
+	  top: 8px;
+	  right: 16px;
+	  font-size: 18px;
+	  z-index: 20;
+	}
+	.delete-btn{
+		background-color: #f00;
+		color:white;
+		font-weight: 900;
+		font-size: 10px;
+		padding: 5px;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		border: 0px;
+		outline: 0px;
+		transition: 1s;
+	}
+	.delete-btn:hover{
+		transform: rotate(360deg);
+	}
+	.movie-card-content{
+		padding: 10px 30px 0px 30px;
+	}
+	.edit-btn{
+		background-color: #2a3eb1;
+		color:white;
+		font-weight: 900;
+		font-size: 10px;
+		padding: 5px;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		border: 0px;
+		outline: 0px;
+		margin-right: 10px;
+		transition: 1s;
+	}
+	.edit-btn:hover{
+		transform: rotate(360deg);
+	}
+	.btn-success{
+		background-color: #3f51b5;
+		color: white;
+	}
+</style>
+	<div class="content row">
+		<div class="content" style="padding-top: 0px">
+			<div style="position: relative;margin: 30px">
+				<div class="card-header" style="color: white">Now Showing:</div>
+				<div class="topright"> <button class="btn-curved btn-success"> Add Movie </button> </div>
+			</div>
+			<div class="row">
+				<div class="card movie-card column-4">
+					<div class="topright"><button class="edit-btn">&#9998;</button><button class="delete-btn">X</button></div>
+					<div class="movie-card-content">
+						<h2 class="card-header"> Movie Name</h2>
+						<img src="/public/img/seat.png" width="220px" height="220px">
+					</div>
+					<div class="movie-card-content" style="border-top: 1px solid #ccc">
+						Directed by: <a href="https://www.imdb.com/search/name/?name="> Director Name </a> <br />
+						Actors: <a href="https://www.imdb.com/search/name/?name="> Actor Name #1 </a> , <a href="https://www.imdb.com/search/name/?name="> Actor Name #2 </a>
+						<p> Description. Lorem ipsum cillum nostrud ullamco dolor est magna magna ut commodo fugiat enim ad ut. Magna sunt elit cupidatat esse duis ut sed est magna laboris est.</p>
+						<div align="center">
+							<a href="#"><button class="btn-curved bg-red btn-book-now"> Shows </button></a>
+							<a href="#"><button class="btn-curved bg-red btn-book-now"> Analytics </button></a>
+						</div>
+					</div>
+				</div>
+				<div class="card movie-card column-4">
+					<div class="movie-card-content">
+						<div class="topright"><button class="edit-btn">&#9998;</button><button class="delete-btn">X</button></div>
+						<h2 class="card-header"> Rocky </h2>
+						<img src="https://upload.wikimedia.org/wikipedia/en/8/84/Rocky_anthology_dvd_cover.jpg" width="220px"  height="220px">
+					</div>
+					<div class="movie-card-content">
+						Directed by: <a href="https://www.imdb.com/search/name/?name="> Director Name </a> <br />
+						Actors: <a href="https://www.imdb.com/search/name/?name=Sylvester+Stallone"> Sylvester Stallone </a> , <a href="https://www.imdb.com/search/name/?name=Talia+Shire"> Talia Shire </a>
+						<p> Rocky is a series of American boxing drama films. The first film, Rocky, and its five sequels centered on the boxing career of the eponymous fictional character, Rocky Balboa.</p>
+						<div align="center">
+							<a href="#"><button class="btn-curved bg-red btn-book-now"> Shows </button></a>
+							<a href="#"><button class="btn-curved bg-red btn-book-now"> Analytics </button></a>
+						</div>
+					</div>
+				</div>
+				<div class="card movie-card column-4">
+					<div class="movie-card-content">
+						<div class="topright"><button class="edit-btn">&#9998;</button><button class="delete-btn">X</button></div>
+						<h2 class="card-header"> Rocky </h2>
+						<img src="https://upload.wikimedia.org/wikipedia/en/8/84/Rocky_anthology_dvd_cover.jpg" width="220px"  height="220px">
+					</div>
+					<div class="movie-card-content">
+						Directed by: <a href="https://www.imdb.com/search/name/?name="> Director Name </a> <br />
+						Actors: <a href="https://www.imdb.com/search/name/?name=Sylvester+Stallone"> Sylvester Stallone </a> , <a href="https://www.imdb.com/search/name/?name=Talia+Shire"> Talia Shire </a>
+						<p> Rocky is a series of American boxing drama films. The first film, Rocky, and its five sequels centered on the boxing career of the eponymous fictional character, Rocky Balboa.</p>
+						<div align="center">
+							<a href="#"><button class="btn-curved bg-red btn-book-now"> Shows </button></a>
+							<a href="#"><button class="btn-curved bg-red btn-book-now"> Analytics </button></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="card movie-card column-4">
+					<div class="topright"><button class="edit-btn">&#9998;</button><button class="delete-btn">X</button></div>
+					<div class="movie-card-content">
+						<h2 class="card-header"> Movie Name</h2>
+						<img src="/public/img/seat.png" width="220px" height="220px">
+					</div>
+					<div class="movie-card-content" style="border-top: 1px solid #ccc">
+						Directed by: <a href="https://www.imdb.com/search/name/?name="> Director Name </a> <br />
+						Actors: <a href="https://www.imdb.com/search/name/?name="> Actor Name #1 </a> , <a href="https://www.imdb.com/search/name/?name="> Actor Name #2 </a>
+						<p> Description. Lorem ipsum cillum nostrud ullamco dolor est magna magna ut commodo fugiat enim ad ut. Magna sunt elit cupidatat esse duis ut sed est magna laboris est.</p>
+						<div align="center">
+							<a href="#"><button class="btn-curved bg-red btn-book-now"> Shows </button></a>
+							<a href="#"><button class="btn-curved bg-red btn-book-now"> Analytics </button></a>
+						</div>
+					</div>
+				</div>
+				<div class="card movie-card column-4">
+					<div class="movie-card-content">
+						<div class="topright"><button class="edit-btn">&#9998;</button><button class="delete-btn">X</button></div>
+						<h2 class="card-header"> Rocky </h2>
+						<img src="https://upload.wikimedia.org/wikipedia/en/8/84/Rocky_anthology_dvd_cover.jpg" width="220px"  height="220px">
+					</div>
+					<div class="movie-card-content">
+						Directed by: <a href="https://www.imdb.com/search/name/?name="> Director Name </a> <br />
+						Actors: <a href="https://www.imdb.com/search/name/?name=Sylvester+Stallone"> Sylvester Stallone </a> , <a href="https://www.imdb.com/search/name/?name=Talia+Shire"> Talia Shire </a>
+						<p> Rocky is a series of American boxing drama films. The first film, Rocky, and its five sequels centered on the boxing career of the eponymous fictional character, Rocky Balboa.</p>
+						<div align="center">
+							<a href="#"><button class="btn-curved bg-red btn-book-now"> Shows </button></a>
+							<a href="#"><button class="btn-curved bg-red btn-book-now"> Analytics </button></a>
+						</div>
+					</div>
+				</div>
+				<div class="card movie-card column-4">
+					<div class="movie-card-content">
+						<div class="topright"><button class="edit-btn">&#9998;</button><button class="delete-btn">X</button></div>
+						<h2 class="card-header"> Rocky </h2>
+						<img src="https://upload.wikimedia.org/wikipedia/en/8/84/Rocky_anthology_dvd_cover.jpg" width="220px"  height="220px">
+					</div>
+					<div class="movie-card-content">
+						Directed by: <a href="https://www.imdb.com/search/name/?name="> Director Name </a> <br />
+						Actors: <a href="https://www.imdb.com/search/name/?name=Sylvester+Stallone"> Sylvester Stallone </a> , <a href="https://www.imdb.com/search/name/?name=Talia+Shire"> Talia Shire </a>
+						<p> Rocky is a series of American boxing drama films. The first film, Rocky, and its five sequels centered on the boxing career of the eponymous fictional character, Rocky Balboa.</p>
+						<div align="center">
+							<a href="#"><button class="btn-curved bg-red btn-book-now"> Shows </button></a>
+							<a href="#"><button class="btn-curved bg-red btn-book-now"> Analytics </button></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%- include('../Includes/footer.ejs') %> 
+</body>
+
+</html>
