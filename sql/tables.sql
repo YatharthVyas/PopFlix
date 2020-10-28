@@ -1,3 +1,7 @@
+DROP DATABASE popflix;
+CREATE DATABASE popflix;
+
+USE popflix;
 CREATE TABLE theatre( 
     `theatre_id` INT NOT NULL , 
     `name` INT NOT NULL , 
@@ -14,7 +18,7 @@ CREATE TABLE theater_user(
 CREATE TABLE movies( 
     m_id int, name varchar(30), 
     release_date Date, 
-    language ENUM('EN','Hi','Ma') 
+    language ENUM('EN','Hi','Ma') ,
     constraint PRIMARY KEY (m_id) 
     ); 
 -- Alter TABLE movies add constraint primary key(m_id);
@@ -89,7 +93,7 @@ CREATE TABLE actor(
     );
 
 CREATE TABLE customer( 
-    p_id int, 
+    p_id int NOT NULL auto_increment, 
     Email varchar(30) UNIQUE, 
     Phone varchar(10) UNIQUE, 
     constraint primary key(p_id), 
@@ -97,7 +101,7 @@ CREATE TABLE customer(
     ON UPDATE CASCADE
     ON DELETE CASCADE 
     );
-
+Alter table customer add column password varchar(61);
 CREATE TABLE acted_in( 
     p_id int, 
     m_id int, 
@@ -127,6 +131,9 @@ CREATE TABLE payment(
     payment_id int UNIQUE,
     timeAndDateOfPurchase datetime,
     amount int,
-    constraint fk_t_id_payment foreign key(t_id) references ticket(t_id)
-    constraint fk_c_id_payment foreign key(c_id) references customer(c_id)
+    t_id int,
+    c_id int,
+    constraint fk_t_id_payment foreign key(t_id) references ticket(ticket_id),
+    constraint fk_c_id_payment foreign key(c_id) references customer(p_id)
     );
+
