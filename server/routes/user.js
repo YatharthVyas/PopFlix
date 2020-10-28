@@ -1,18 +1,19 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const bookingcontrollers = require("../controllers/booking");
-const usercontrollers = require("../controllers/user");
+const bookingControllers = require('../controllers/booking');
+const userControllers = require('../controllers/user');
 
+router.get('/book-flix', bookingControllers.getBookFlix);
+router.get('/book-movie', bookingControllers.getMovieFlix);
+router.get('/select-movie', bookingControllers.getSelectMovie);
+router.get('/select-flix', bookingControllers.getSelectFlix);
+router.get('/select-time', bookingControllers.getSelectTime);
+router.get('/select-seat', bookingControllers.getSelectSeat);
+router.get('/confirm-payment', bookingControllers.getConfirmPayment);
+router.get('/profile', userControllers.getProfile);
 
-router.get("/book-flix", bookingcontrollers.getBookFlix);
-router.get("/book-movie", bookingcontrollers.getMovieFlix);
-router.get("/select-movie", bookingcontrollers.getSelectMovie);
-router.get("/select-flix", bookingcontrollers.getSelectFlix);
-router.get("/select-time", bookingcontrollers.getSelectTime);
-router.get("/select-seat", bookingcontrollers.getSelectSeat);
-router.get("/confirm-payment", bookingcontrollers.getConfirmPayment);
-router.get("/profile", usercontrollers.getProfile);
-
-
+// Auth Routes
+router.post('/signup', userControllers.signup);
+router.post('/login', userControllers.login);
 
 module.exports = router;
