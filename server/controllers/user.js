@@ -19,11 +19,11 @@ exports.signup = async (req, res) => {
     let hash = bcrypt.hashSync(psw, salt);
 
     let res = await query(
-      `INSERT INTO person (name) values ("${name}","${gender}");`
+      `INSERT INTO person (name,gender) values ("${name}","${gender}");`
     );
     const id = res.insertId;
     res = await query(
-      `INSERT INTO customer (p_id,Email,password) values (${id},"${email}","${phone}","${hash}");`
+      `INSERT INTO customer (p_id,Email,Phone,password) values (${id},"${email}","${phone}","${hash}");`
     );
     let user = {
       email: email,

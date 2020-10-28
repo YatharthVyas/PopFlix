@@ -68,13 +68,65 @@
 		background-color: #3f51b5;
 		color: white;
 	}
+
+
+/* The Modal (background) */
+.modal-1 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index:25 ; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content-1 {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close-1 {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-1:hover,
+.close-1:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 </style>
 	<div class="content row">
 		<div class="content" style="padding-top: 0px">
 			<div style="position: relative;margin: 30px">
 				<div class="card-header" style="color: white">Now Showing:</div>
-				<div class="topright"> <button class="btn-curved btn-success"> Add Movie </button> </div>
+				<div class="topright"> <button class="btn-curved btn-success" id="myBtn-1"> Add Movie </button> </div>
 			</div>
+			 <!-- ADD Movie Modal HERE -->
+			 <div id="myModal-1" class="modal-1">
+
+			
+				<div class="modal-content-1">
+				  <span class="close-1">&times;</span>
+				  <p>TODO</p>
+				</div>
+			  
+			  </div>
+			  <!-- ADD Movie modal End -->
 			<div class="row">
 				<div class="card movie-card column-4">
 					<div class="topright"><button class="edit-btn">&#9998;</button><button class="delete-btn">X</button></div>
@@ -179,5 +231,30 @@
 	</div>
 	<%- include('../Includes/footer.ejs') %> 
 </body>
-
+<script>
+	// Get the modal
+	var modal = document.getElementById("myModal-1");
+	
+	// Get the button that opens the modal
+	var btn = document.getElementById("myBtn-1");
+	
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close-1")[0];
+	
+	// When the user clicks the button, open the modal 
+	btn.onclick = function() {
+	  modal.style.display = "block";
+	}
+	
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+		modal.style.display = "none";
+	  }
+	}
+	</script>
 </html>

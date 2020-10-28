@@ -47,3 +47,4 @@ function showProf() {
 document.onload = window.scrollTo({
 	x: 0,
 })
+
