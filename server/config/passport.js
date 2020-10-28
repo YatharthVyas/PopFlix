@@ -5,26 +5,25 @@ const bcrypt = require('bcryptjs');
 module.exports = function (passport) {
   passport.use(
     new LocalStrategy(async function (username, password, done) {
-      let user = await mysql.query()(
-        `SELECT * FROM customer WHERE email = "${username}";`
-      );
-      if (user.length == 0) {
-        return done(null, false, {
-          message: 'No User with given Username is Found',
-        });
-      }
-
-      // Match Password
-      bcrypt.compare(password, user[0].password, function (err, isMatch) {
-        if (err) throw err;
-        if (isMatch) {
+      try {
+        let user = await mysql.query()(
+          `SELECT * FROM customer WHERE email = "${username}";`
+        );
+        if (user.length == 0) {
+          return done(null, false, {
+            message: 'No User with given email is Found',
+          });
+        }
+        if (bcrypt.compareSync(password, user[0].password)) {
           return done(null, user);
         } else {
           return done(null, false, {
             message: 'Incorrect Password',
           });
         }
-      });
+      } catch (e) {
+        throw e;
+      }
     })
   );
 
@@ -32,10 +31,12 @@ module.exports = function (passport) {
     done(null, user);
   });
 
-  passport.deserializeUser(async function (id, done) {
+  passport.deserializeUser(async function (user, done) {
     try {
-      let u = mysql.query()(`SELECT * FROM customer WHERE p_id = ${id};`);
-      done(null, user);
+      let u = mysql.query()(
+        `SELECT * FROM customer WHERE p_id = ${user[0].p_id};`
+      );
+      done(null, u);
     } catch (e) {
       done(e, null);
     }

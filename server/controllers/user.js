@@ -9,7 +9,7 @@ exports.getProfile = (req, res) => {
 };
 
 exports.signup = async (req, res) => {
-  let { name, email, psw,phone,gender } = req.body;
+  let { name, email, psw, phone, gender } = req.body;
   let pass2 = req.body['psw-repeat'];
   if (psw !== pass2) {
     //! TODO Error page
@@ -18,7 +18,9 @@ exports.signup = async (req, res) => {
     let salt = bcrypt.genSaltSync(15);
     let hash = bcrypt.hashSync(psw, salt);
 
-    let res = await query(`INSERT INTO person (name) values ("${name}","${gender}");`);
+    let res = await query(
+      `INSERT INTO person (name) values ("${name}","${gender}");`
+    );
     const id = res.insertId;
     res = await query(
       `INSERT INTO customer (p_id,Email,password) values (${id},"${email}","${phone}","${hash}");`
@@ -47,14 +49,14 @@ exports.login = async (req, res, next) => {
       return next(err);
     }
     if (!user) {
-      // TODO Handle error
+      res.render('Error/error', { pg: 'error', error: info.message });
       return;
     }
     req.logIn(user, function (err) {
       if (err) {
         return next(err);
       }
-      // TODO Retrive other data render profile with correct data
+      res.redirect('/user/profile');
       return;
     });
   })(req, res, next);

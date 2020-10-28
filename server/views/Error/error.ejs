@@ -1,0 +1,21 @@
+<%- include('../Includes/header.ejs') %>
+<body>
+  <div class="content">
+    <div align="center">
+      <img src="/public/img/tickets.png" width="100%" style="opacity: 0.2" />
+      <div
+        style="
+          font-size: 5rem;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        "
+      >
+        Sorry! <%- error %>
+      </div>
+    </div>
+  </div>
+
+  <%- include('../Includes/nav.ejs') %> <%- include('../Includes/footer.ejs') %>
+</body>
