@@ -2,26 +2,26 @@ DROP DATABASE popflix;
 CREATE DATABASE popflix;
 
 USE popflix;
-CREATE TABLE theatre( 
-    `theatre_id` INT NOT NULL , 
-    `name` INT NOT NULL , 
-    `location` INT NOT NULL , 
+CREATE TABLE theater( 
+    `t_id` INT NOT NULL auto_increment , 
+    `name` varchar(30) NOT NULL , 
+    `location` varchar(30) NOT NULL , 
     `rating` FLOAT(1) check(rating BETWEEN 0.0 AND 5.0) , 
-    constraint PRIMARY KEY (theatre_id) 
+    constraint PRIMARY KEY (t_id) 
     );
 
 CREATE TABLE theater_user(
-    `theatre_id` INT NOT NULL , 
-    `password` varchar(30)
+    `theater_id` INT NOT NULL , 
+    `password` varchar(61)
 );
 
 CREATE TABLE movies( 
-    m_id int, name varchar(30), 
+    m_id int auto_increment, 
+    name varchar(30) , 
     release_date Date, 
     language ENUM('EN','Hi','Ma') ,
     constraint PRIMARY KEY (m_id) 
     ); 
--- Alter TABLE movies add constraint primary key(m_id);
 
 CREATE TABLE genre( 
     m_id int, 
@@ -39,7 +39,7 @@ CREATE TABLE shows(
     weekend_price int check(weekend_price>=0),
     m_id int, 
     constraint primary key(show_id), 
-    constraint fk_tid_show foreign key(t_id) references theatre(theatre_id)
+    constraint fk_tid_show foreign key(t_id) references theater(t_id)
     ON UPDATE CASCADE
     ON DELETE CASCADE, 
     constraint fk_mid_show foreign key(m_id) references movies(m_id)
@@ -59,21 +59,21 @@ CREATE TABLE seats(
     );
 
 CREATE TABLE person( 
-    p_id int NOT NULL,auto_increment, 
+    p_id int, 
     name varchar(50), 
     gender ENUM('M','F','O'), 
     constraint primary key(p_id) 
     );
 
 CREATE TABLE ticket( 
-    ticket_id int, 
+    t_id int, 
     addon_meal boolean default 0, 
     show_id int, 
     seat_id int, 
     p_id int, 
     gs_tax float(2), 
     total_price float(2) check(total_price>0), 
-    constraint primary key(ticket_id), 
+    constraint primary key(t_id), 
     constraint fk_shid_ticket foreign key(show_id) references shows(show_id)
     ON UPDATE CASCADE
     ON DELETE CASCADE, constraint fk_sid_ticket foreign key(seat_id) references seats(s_id)
@@ -133,7 +133,7 @@ CREATE TABLE payment(
     amount int,
     t_id int,
     c_id int,
-    constraint fk_t_id_payment foreign key(t_id) references ticket(ticket_id),
+    constraint fk_t_id_payment foreign key(t_id) references ticket(t_id),
     constraint fk_c_id_payment foreign key(c_id) references customer(p_id)
     );
 

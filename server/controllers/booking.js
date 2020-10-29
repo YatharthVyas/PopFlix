@@ -14,6 +14,7 @@ exports.getBookFlix = async (req, res, next) => {
     console.log(theaters);
     return res.render("Bookings/flix", {
       pg: "book_flix",
+
       theaters: theaters,
     });
   } catch (err) {
@@ -47,6 +48,7 @@ exports.getMovieFlix = async (req, res) => {
     let mov = filterMovieData(movies);
     res.render("Bookings/movie", {
       pg: "book_movie",
+
       movies: mov,
     });
   } catch (err) {
@@ -84,14 +86,18 @@ exports.getSelectSeat = (req, res) => {
 
 exports.getSelectMovie = async (req, res) => {
   const id = req.params.theaterId;
+
   console.log(id, "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
+
   try {
     let movies = await query(
       `SELECT * from movies where m_id IN (select m_id from shows where t_id=${id});`
     );
     let mov = filterMovieData(movies);
+
     res.render("Bookings/select_movie", {
       pg: "select_movie",
+
       movies: mov,
     });
   } catch (err) {
