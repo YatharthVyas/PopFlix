@@ -46,12 +46,16 @@
 			</div>
 			<div class="column-8 content-card">
 				<h2 class="card-header"> <%= theater[x].name%></h2>
-				Rating: <span> </span>&#9733; <br />
-				Now Showing: <a href="#"> Movie Name #1 </a> , <a href="#"> Movie Name #2 </a>
-				<p> Address. Lorem ipsum cillum nostrud ullamco dolor est magna magna ut commodo fugiat enim ad ut.
-					Magna sunt elit cupidatat esse duis ut sed est magna laboris est.</p>
+				Rating: <span><%= theater[x].rating%> </span>&#9733; <br />
+				<p class="border">Now Showing: <% for (y in theater[x].movies) { %><a
+						href="#"><br /><%=theater[x].movies[y].name%>
+					</a>
+					<%}%></p>
+
+				<p class="border"><i class="fa fa-home" style="font-size:30px;color:red"></i> Address: <%= theater[x].location%>
+				</p>
 				<div align="right">
-					<a href="select_time"><button class="btn-curved btn-book-now"> Proceed </button></a>
+					<a href="/user/select_time"><button class="btn-curved btn-book-now"> Proceed </button></a>
 				</div>
 			</div>
 		</div>

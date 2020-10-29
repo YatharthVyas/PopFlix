@@ -59,17 +59,27 @@ exports.getMovieFlix = async (req, res) => {
 
 exports.getSelectFlix = async (req, res) => {
   const id = req.params.movieId;
-  console.log("MovieId", id);
+  // console.log("MovieId", id);
+
   try {
-    let theater = await query(`SELECT * FROM theater WHERE t_id IN (select t_id from shows where m_id=${id})
-	  ;`);
-    // let theater = await query(`SELECT * FROM
-    //   movies m INNER JOIN shows s
-    // 	  ON m.m_id = s.m_id
-    //   INNER JOIN theater t
-    // 	  ON t.t_id=s.t_id
-    //   WHERE m.m_id = ${id}
-    //   ;`);
+    // let theater = await query(`SELECT * FROM theater WHERE t_id IN (select t_id from shows where m_id=${id})
+    // ;`);
+    let theater = await query(`SELECT * FROM
+      movies m INNER JOIN shows s
+    	  ON m.m_id = s.m_id
+      INNER JOIN theater t
+    	  ON t.t_id=s.t_id
+      WHERE m.m_id = ${id}
+      ;`);
+    console.log(theater);
+    let indx = 0;
+    while (indx < theater.length) {
+      let movies = await query(
+        `SELECT name from movies where m_id IN (select m_id from shows where t_id=${theater[indx].t_id});`
+      );
+      theater[indx].movies = movies;
+      indx = indx + 1;
+    }
     res.render("Bookings/select_flix", {
       pg: "select_flix",
       theater: theater,
