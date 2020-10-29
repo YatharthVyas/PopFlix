@@ -1,3 +1,4 @@
+use popflix;
 /*Theater 10*/
 insert into theater (t_id, name, location, rating) values (1, 'Munmro', 'Cambridge', 3.41);
 insert into theater (t_id, name, location, rating) values (2, 'Alana', 'Londonderry', 2.27);
