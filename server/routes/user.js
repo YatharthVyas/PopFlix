@@ -5,7 +5,7 @@ const userControllers = require('../controllers/user');
 
 router.get('/book_flix', bookingControllers.getBookFlix);
 router.get('/book_movie', bookingControllers.getMovieFlix);
-router.get('/select_movie', bookingControllers.getSelectMovie);
+router.get('/select_movie/:theaterId', bookingControllers.getSelectMovie);
 router.get('/select_flix', bookingControllers.getSelectFlix);
 router.get('/select_time', bookingControllers.getSelectTime);
 router.get('/select_seat', bookingControllers.getSelectSeat);
