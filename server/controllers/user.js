@@ -1,23 +1,24 @@
-const bcrypt = require("bcryptjs");
-const passport = require("passport");
-const query = require("../util/db").query();
+const bcrypt = require('bcryptjs');
+const { json } = require('express');
+const passport = require('passport');
+const query = require('../util/db').query();
 
-exports.getProfile = (req, res) => {
-  res.render("User/Profile", {
-    pg: "profile",
+exports.getProfile = async (req, res) => {
+  res.render('User/Profile', {
+    pg: 'profile',
   });
 };
 
 exports.signup = async (req, res) => {
   let { name, email, psw, phone, gender } = req.body;
-  let pass2 = req.body["psw-repeat"];
+  let pass2 = req.body['psw-repeat'];
   if (psw !== pass2) {
-    //! TODO Error page
+    res.render('Error/error', { pg: 'error', error: 'Passwords do not match' });
+    return;
   }
   try {
     let salt = bcrypt.genSaltSync(15);
     let hash = bcrypt.hashSync(psw, salt);
-
     let res = await query(
       `INSERT INTO person (name,gender) values ("${name}","${gender}");`
     );
@@ -35,28 +36,37 @@ exports.signup = async (req, res) => {
       if (err) {
         return next(err);
       }
-      // TODO render user profile with correct data
     });
+    res.redirect('/user/profile');
   } catch (e) {
-    //! TODO Error handling
     console.log(e);
+    res.render('Error/error', {
+      pg: 'error',
+      error: 'Email already registered',
+    });
   }
 };
 
 exports.login = async (req, res, next) => {
-  passport.authenticate("local", function (err, user, info) {
+  passport.authenticate('local', function (err, user, info) {
     if (err) {
       return next(err);
     }
     if (!user) {
-      res.render("Error/error", { pg: "error", error: info.message });
+      res.render('Error/error', { pg: 'error', error: info.message });
       return;
     }
+
     req.logIn(user, function (err) {
       if (err) {
         return next(err);
       }
-      res.redirect("/user/profile");
+      if (user.type === 'Customer') {
+        res.redirect('/user/profile');
+      }
+      if (user.type === 'Theater') {
+        res.redirect('/flix/profile');
+      }
       return;
     });
   })(req, res, next);

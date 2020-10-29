@@ -1,21 +1,31 @@
 const LocalStrategy = require('passport-local').Strategy;
-const mysql = require('../util/db.js');
+const mysql = require('../util/db.js').query();
 const bcrypt = require('bcryptjs');
 
 module.exports = function (passport) {
   passport.use(
     new LocalStrategy(async function (username, password, done) {
       try {
-        let user = await mysql.query()(
+        let user = await mysql(
           `SELECT * FROM customer WHERE email = "${username}";`
         );
         if (user.length == 0) {
-          return done(null, false, {
-            message: 'No User with given email is Found',
-          });
+          let theater = await mysql(
+            `SELECT * FROM theater_user WHERE theater_id = ${username}`
+          );
+          if (theater.length == 0) {
+            return done(null, false, {
+              message: 'No User with given credential is Found',
+            });
+          } else {
+            user = theater;
+            user[0].type = 'Theater';
+          }
+        } else {
+          user[0].type = 'Customer';
         }
         if (bcrypt.compareSync(password, user[0].password)) {
-          return done(null, user);
+          return done(null, user[0]);
         } else {
           return done(null, false, {
             message: 'Incorrect Password',
@@ -33,10 +43,18 @@ module.exports = function (passport) {
 
   passport.deserializeUser(async function (user, done) {
     try {
-      let u = mysql.query()(
-        `SELECT * FROM customer WHERE p_id = ${user[0].p_id};`
-      );
-      done(null, u);
+      let u;
+      if (user.type === 'Customer') {
+        u = await mysql(`SELECT * FROM customer WHERE p_id = ${user.p_id};`);
+        u[0].type = 'Customer';
+      } else {
+        u = await mysql(
+          `SELECT * FROM theater_user WHERE theater_id = ${user.theater_id};`
+        );
+        u[0].type = 'Theater';
+      }
+
+      done(null, u[0]);
     } catch (e) {
       done(e, null);
     }
