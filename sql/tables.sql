@@ -11,8 +11,8 @@ CREATE TABLE theater(
     );
 
 CREATE TABLE theater_user(
-    `theatre_id` INT NOT NULL , 
-    `password` varchar(30)
+    `theater_id` INT NOT NULL , 
+    `password` varchar(61)
 );
 
 CREATE TABLE movies( 
