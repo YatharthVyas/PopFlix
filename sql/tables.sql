@@ -59,14 +59,14 @@ CREATE TABLE seats(
     );
 
 CREATE TABLE person( 
-    p_id int, 
+    p_id int NOT NULL auto_increment, 
     name varchar(50), 
     gender ENUM('M','F','O'), 
     constraint primary key(p_id) 
     );
 
 CREATE TABLE ticket( 
-    t_id int, 
+    ticket_id int, 
     addon_meal boolean default 0, 
     show_id int, 
     seat_id int, 

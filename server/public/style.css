@@ -22,7 +22,6 @@ body {
   border-radius: 3%;
 }
 
-
 input[type="file"] {
   display: none;
 }
@@ -88,7 +87,6 @@ input[type="file"] {
   color: white;
   clip-path: polygon(0 0, 100% 0, 100% 81%, 0 100%);
 }
-
 
 #heading span:first-child {
   color: #ff0000;
@@ -306,20 +304,12 @@ a.custom-white:hover {
   background-color: #262626;
   /* outline: none; */
 }
-
 nav ul {
-  height: 415px
+  height: 415px;
 }
-
 nav ul {
   overflow: hidden;
   overflow-y: scroll;
-}
-
-ul,
-li {
-  margin-left: 0;
-  padding-left: 0;
 }
 
 .btn-book-now {
@@ -334,7 +324,6 @@ li {
   background-color: #f66;
   color: white;
 }
-
 .btn-book-now-2:hover {
   border-radius: 5px;
   background-color: #f00;
@@ -409,7 +398,6 @@ li {
   color: white;
   margin: 0px 0px 0px 10px;
 }
-
 #profname {
   font-family: cursive;
   word-spacing: 3%;
@@ -760,3 +748,10 @@ table.customTable thead {
 }
 
 /* About Us Ends */
+
+/* select_flix */
+.border {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 4px;
+}

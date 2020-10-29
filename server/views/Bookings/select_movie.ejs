@@ -1,6 +1,7 @@
-<%- include('../Includes/header.ejs') %> 
+<%- include('../Includes/header.ejs') %>
+
 <body>
-<%- include('../Includes/nav.ejs') %> 
+	<%- include('../Includes/nav.ejs') %>
 	<div class="content row">
 		<div class="column-3">
 			<div class="arrow bg-red">
@@ -54,20 +55,24 @@
 				<div class="column-8 content-card">
 					<h2 class="card-header"> <%= movies[x].name%></h2>
 					<h3>Release date :<%=  movies[x].release_date%></h3>
-					
+
 					<h3>Language: <%= movies[x].language%></h3>
 					Directed by: <a href="https://www.imdb.com/search/name/?name="> Director Name </a> <br />
-					Actors: <a href="https://www.imdb.com/search/name/?name="> Actor Name #1 </a> , <a href="https://www.imdb.com/search/name/?name="> Actor Name #2 </a>
-					<p> Description. Lorem ipsum cillum nostrud ullamco dolor est magna magna ut commodo fugiat enim ad ut. Magna sunt elit cupidatat esse duis ut sed est magna laboris est.</p>
+					Actors: <a href="https://www.imdb.com/search/name/?name="> Actor Name #1 </a> , <a
+						href="https://www.imdb.com/search/name/?name="> Actor Name #2 </a>
+					<p> Description. Lorem ipsum cillum nostrud ullamco dolor est magna magna ut commodo fugiat enim ad
+						ut. Magna sunt elit cupidatat esse duis ut sed est magna laboris est.</p>
 					<div align="right">
-						<a href="/user/select_time"><button class="btn-curved btn-red btn-book-now"> Book Now! </button></a>
+						<a href="/user/select_time"><button class="btn-curved btn-red btn-book-now"> Book Now!
+							</button></a>
+
 					</div>
 				</div>
 			</div>
-		<% } %>
+			<% } %>
 		</div>
 	</div>
-	<%- include('../Includes/footer.ejs') %> 
+	<%- include('../Includes/footer.ejs') %>
 </body>
 
 </html>
