@@ -36,5 +36,8 @@ function showProf() {
   document.getElementById("p2").style.display = "none";
 }
 document.onload = window.scrollTo({
-  x: 0,
-});
+
+	x: 0,
+})
+
+

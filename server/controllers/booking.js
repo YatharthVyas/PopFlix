@@ -21,42 +21,32 @@ exports.getBookFlix = async (req, res, next) => {
     /*TODO Error pg */
   }
 };
-// if(err)
-// 	console.log(err);
-// 	let indx=0;
 
-// 	while(indx<result.length)
-// 	{
-// 		let mov=[];
-// 		mov=query(`SELECT name from movies where m_id IN (select m_id from shows where t_id=${result[indx].t_id});`,(err,films,field)=>{
-// 			return films;
-// 		})
-// 		result[indx].movies=mov;
-// 		console.log(result[indx],"AAAA");
-// 		indx=indx+1;
-// 	}
+const filterMovieData = (movies) => {
+  let indx = 0;
+  while (indx < movies.length) {
+    let ar = movies[indx].release_date.toString().split(" ");
+    let r_date = ar[0] + " " + ar[1] + " " + ar[2] + " " + ar[3];
+    movies[indx].release_date = r_date;
+    let x = movies[indx].language;
+    let y = "Marathi";
+    if (x == "EN") y = "English";
+    else if (x == "Hi") y = "Hindi";
+    movies[indx].language = y;
+    indx = indx + 1;
+  }
+  return movies;
+};
+
 exports.getMovieFlix = async (req, res) => {
-  let lan = { Ma: "Marathi", EN: "English", Hi: "Hindi" };
   try {
     let movies = await query(
       `SELECT * FROM movies WHERE release_date < CURDATE() ORDER BY release_date DESC LIMIT 10;`
     );
-    let indx = 0;
-    while (indx < movies.length) {
-      console.log(typeof movies[indx].release_date);
-      let ar = movies[indx].release_date.toString().split(" ");
-      console.log(ar[1], ar[2], ar[3]);
-      movies[indx].release_date = ar;
-      let x = movies[indx].language;
-      let y = "Marathi";
-      if (x == "EN") y = "English";
-      else if (x == "Hi") y = "Hindi";
-      movies[indx].language = y;
-      indx = indx + 1;
-    }
+    let mov = filterMovieData(movies);
     res.render("Bookings/movie", {
       pg: "book_movie",
-      movies: movies,
+      movies: mov,
     });
   } catch (err) {
     console.log(err);
@@ -74,10 +64,22 @@ exports.getSelectSeat = (req, res) => {
     pg: "select_seat",
   });
 };
-exports.getSelectMovie = (req, res) => {
-  res.render("Bookings/select_movie", {
-    pg: "select_movie",
-  });
+
+exports.getSelectMovie = async (req, res) => {
+  const id = req.params.theaterId;
+  console.log(id, "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
+  try {
+    let movies = await query(
+      `SELECT * from movies where m_id IN (select m_id from shows where t_id=${id});`
+    );
+    let mov = filterMovieData(movies);
+    res.render("Bookings/select_movie", {
+      pg: "select_movie",
+      movies: mov,
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };
 exports.getSelectTime = (req, res) => {
   res.render("Bookings/select_time", {
