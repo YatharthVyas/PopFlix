@@ -41,7 +41,8 @@ const filterMovieData = (movies) => {
 exports.getMovieFlix = async (req, res) => {
   try {
     let movies = await query(
-      `SELECT * FROM movies WHERE release_date < CURDATE() ORDER BY release_date DESC LIMIT 10;`
+      //   `SELECT * FROM movies WHERE release_date < CURDATE() ORDER BY release_date DESC LIMIT 10;`
+      `SELECT * FROM movies WHERE release_date < CURDATE() ORDER BY release_date DESC;`
     );
     let mov = filterMovieData(movies);
     res.render("Bookings/movie", {
@@ -54,10 +55,26 @@ exports.getMovieFlix = async (req, res) => {
   }
 };
 
-exports.getSelectFlix = (req, res) => {
-  res.render("Bookings/select_flix", {
-    pg: "select_flix",
-  });
+exports.getSelectFlix = async (req, res) => {
+  const id = req.params.movieId;
+  console.log("MovieId", id);
+  try {
+    let theater = await query(`SELECT * FROM theater WHERE t_id IN (select t_id from shows where m_id=${id})
+	  ;`);
+    // let theater = await query(`SELECT * FROM
+    //   movies m INNER JOIN shows s
+    // 	  ON m.m_id = s.m_id
+    //   INNER JOIN theater t
+    // 	  ON t.t_id=s.t_id
+    //   WHERE m.m_id = ${id}
+    //   ;`);
+    res.render("Bookings/select_flix", {
+      pg: "select_flix",
+      theater: theater,
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };
 exports.getSelectSeat = (req, res) => {
   res.render("Bookings/seat", {
