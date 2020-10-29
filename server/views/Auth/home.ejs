@@ -2,16 +2,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 <body>
 	<style type="text/css">
-		.parallax-home {
+		.parallax-home-1 {
 		  background-image: url("/public/img/home_parallax.jpg");
-		  min-height: 720px; 
-		  background-attachment: fixed;
-		  background-position: center;
-		  background-repeat: no-repeat;
-		  background-size: cover;
-		  margin-top: 0px;
-		  position: relative;
 		}
+		.parallax-home-2 {
+		  background-image: url("/public/img/home_parallax2.jpg");
+		}
+		.parallax-home-3 {
+		  background-image: url("/public/img/home_parallax3.jpg");
+		}
+		.heading-pre-animation{
+            animation-duration: 3s;
+		}
+		@keyframes fadeInRight {
+            0% {
+               opacity: 0;
+               transform: translateX(200px);
+            }
+            100% {
+               opacity: 1;
+               transform: translateX(0);
+            }
+         }
+         .fadeInRight {
+	         animation-name: fadeInRight;
+         } 
 	</style>
 	<%- include('../Includes/nav.ejs') %>
 	<div class="site-heading">
@@ -42,7 +57,7 @@
 				</div>
 			</div>
 			<div class="column-6" align="center">
-				<img height="400px" src="/public/img/home-heading.svg">
+				<img height="400px" src="/public/img/home-heading.svg" class="heading-pre-animation fadeInRight">
 			</div>
 
 <!-- The Modal (contains the Sign Up form) -->
@@ -87,20 +102,21 @@
 	</div>
 </div>
 </div>
-	<div class="parallax-home" id="parallax-1">
+	<div class="parallax parallax-home-1" id="parallax-1">
 		<h2 align="right" style="right: 15%; position: absolute;top: 30%;color:#f00;font-family: 'Lobster', cursive;font-size: 50px;">
 			Broadcasting in<br/> 
 			1000+ Theaters
 		</h2>
 	</div>
-	<div class="row-sm">
-		<div class="column-sm-4" align="center">Col sm 4<br />This is a column of size 4. This is a column of size 4.
-			This is a column of size 4. This is a column of size 4. This is a column of size 4. This is a column of size
-			4. This is a column of size 4. This is a column of size 4.</div>
-		<div class="column-sm-2" align="center">Col sm 2<br />This is a column of size 2. This is a column of size 2.
-			This is a column of size 2. This is a column of size 2. </div>
-		<div class="column-sm-6" align="center">Col sm 6<br />This is a column of size 6. This is a column of size 6.
-			This is a column of size 6. This is a column of size 6. This is a column of size 6. </div>
+	<div class="parallax parallax-home-2" id="parallax-2">
+		<h2 align="center" style="left: 42%; position: absolute;top: 30%;color:#fff;font-family: 'Lobster', cursive;font-size: 50px;">
+			Get Tickets for<br/> Any Movie
+		</h2>
+	</div>
+	<div class="parallax parallax-home-3" id="parallax-3">
+		<h2 align="left" style="left: 15%; position: absolute;top: 30%;color:#f00;font-family: 'Lobster', cursive;font-size: 50px;">
+			Pick a time<br/> And reserve your seats
+		</h2>
 	</div>
 	<div align="center" id="subscribe-news">
 		<form>
@@ -137,15 +153,53 @@
 				document.getElementById('head-2').innerHTML = "Flix"
 			}, 900);
 		}
-		scrolling1 = false;
+
+		scrolledTo1 = false;
+		scrolledTo2 = false;
+		scrolledTo3 = false;
+		isScrolling = false;
+		if(window.pageYOffset!==0){
+			scrolledTo1 = true;
+			scrolledTo2 = true;
+			scrolledTo3 = true;
+			scrolling1 = true;
+		}
 		window.onscroll = function animateHomeScroll(){
-			console.log(window.pageYOffset,document.getElementById('parallax-1').getBoundingClientRect().top)
-			if(!scrolling1 && window.pageYOffset<document.getElementById('parallax-1').getBoundingClientRect().top){
-				window.scrollTo({
-				    top: document.getElementById('parallax-1').getBoundingClientRect().top,
-				    behavior: "smooth",
-				});
-				scrolling1=true;
+			if(!isScrolling){
+				scroll_height = window.pageYOffset;
+				if(!scrolledTo1 && scroll_height<document.getElementById('parallax-1').offsetTop){
+					isScrolling = true;
+					window.scrollTo({
+					    top: document.getElementById('parallax-1').offsetTop,
+					    behavior: "smooth",
+					});
+					scrolledTo1 = true;
+					setTimeout(function () {
+						isScrolling = false;
+					}, 650);
+				}
+				else if (!scrolledTo2 && scroll_height<document.getElementById('parallax-2').offsetTop){
+					isScrolling = true;
+					window.scrollTo({
+					    top: document.getElementById('parallax-2').offsetTop,
+					    behavior: "smooth",
+					});
+					scrolledTo2 = true;
+					setTimeout(function () {
+						isScrolling = false;
+					}, 650);
+				}
+				else if (!scrolledTo3 && scroll_height<document.getElementById('parallax-3').offsetTop){
+					isScrolling = true;
+					window.scrollTo({
+					    top: document.getElementById('parallax-3').offsetTop,
+					    behavior: "smooth",
+					});
+					scrolledTo3 = true;
+					setTimeout(function () {
+						isScrolling = false;
+					}, 650);
+				}
 			}
 		}
 	</script>

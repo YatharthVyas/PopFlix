@@ -280,6 +280,16 @@ a.custom-white:hover {
   padding: 50px;
 }
 
+.parallax {
+  min-height: 720px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 0px;
+  position: relative;
+}
+
 /*For arrow bg*/
 
 .silver-bg {
