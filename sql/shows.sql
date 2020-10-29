@@ -18,3 +18,8 @@ SELECT s.time FROM SHOWS AS s WHERE m_id = (SELECT m_id from MOVIES WHERE NAME =
 
 /*Get shows before particular time*/
 SELECT s.time, t.name FROM SHOWS AS s,THEATRE AS t WHERE m_id = (SELECT m_id FROM MOVIES WHERE NAME ='NAME') ORDER BY s.time ASC;
+
+/* implement below query */
+
+ALTER TABLE shows
+Change date_time slot time;
