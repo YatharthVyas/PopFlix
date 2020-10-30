@@ -13,8 +13,6 @@ exports.postTheater = async (req, res, next) => {
     let resp = await query(
       `INSERT INTO theater (name,location,rating) values ("${name}","${location}","${rating}");`
     );
-
-    console.log(resp);
   } catch (err) {
     console.log(err);
   }
@@ -28,8 +26,6 @@ exports.postMovie = async (req, res, next) => {
     let resp = await query(
       `INSERT INTO movies (name,release_date,language) values ("${name}","${release_date}","${lang}");`
     );
-
-    console.log(resp);
   } catch (err) {
     console.log(err);
   }

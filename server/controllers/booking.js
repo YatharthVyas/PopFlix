@@ -11,7 +11,7 @@ exports.getBookFlix = async (req, res, next) => {
       theaters[indx].movies = movies;
       indx = indx + 1;
     }
-    console.log(theaters);
+
     return res.render('Bookings/flix', {
       pg: 'book_flix',
       user: req.user,
@@ -59,11 +59,8 @@ exports.getMovieFlix = async (req, res) => {
 
 exports.getSelectFlix = async (req, res) => {
   const id = req.params.movieId;
-  // console.log("MovieId", id);
 
   try {
-    // let theater = await query(`SELECT * FROM theater WHERE t_id IN (select t_id from shows where m_id=${id})
-    // ;`);
     let theater = await query(`SELECT * FROM
       movies m INNER JOIN shows s
     	  ON m.m_id = s.m_id
@@ -71,7 +68,7 @@ exports.getSelectFlix = async (req, res) => {
     	  ON t.t_id=s.t_id
       WHERE m.m_id = ${id}
       ;`);
-    console.log(theater);
+
     let indx = 0;
     while (indx < theater.length) {
       let movies = await query(
@@ -98,8 +95,6 @@ exports.getSelectSeat = (req, res) => {
 
 exports.getSelectMovie = async (req, res) => {
   const id = req.params.theaterId;
-
-  console.log(id, 'SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS');
 
   try {
     let movies = await query(
