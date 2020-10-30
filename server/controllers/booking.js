@@ -62,6 +62,7 @@ exports.searchFlix = async (req, res) => {
     // console.log("Regions", regions);
     return res.render("Bookings/flix", {
       pg: "book_flix",
+      user: req.user,
       theaters: theaters,
       dropRegions: dropRegions,
     });
@@ -179,6 +180,7 @@ exports.searchMovie = async (req, res) => {
 
     res.render("Bookings/movie", {
       pg: "book_movie",
+      user: req.user,
       movies: mov,
       dropLanguage: dropLanguage,
       dropGenre: dropGenre,
@@ -249,19 +251,19 @@ exports.getSelectMovie = async (req, res) => {
     console.log(err);
   }
 };
-exports.getSelectTime = (req, res) => {
-  let t_id=req.query.theater;
-  let m_id=req.query.movie;
+exports.getSelectTime = async (req, res) => {
+  let t_id = req.query.theater;
+  let m_id = req.query.movie;
 
   try {
     let shows = await query(
       `select * from shows where t_id=${t_id} and m_id=${m_id};`
     );
     console.log(shows);
-    res.render('Bookings/select_time', {
+    res.render("Bookings/select_time", {
       user: req.user,
-      pg: 'select_time',
-      shows:shows
+      pg: "select_time",
+      shows: shows,
     });
   } catch (error) {
     console.log(error);
