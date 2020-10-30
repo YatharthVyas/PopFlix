@@ -194,7 +194,6 @@ input[type="file"] {
 }
 
 @media screen and (max-width: 800px) {
-
   .row,
   .row-fluid {
     flex-direction: column;
@@ -216,13 +215,15 @@ input[type="file"] {
 }
 
 .arrow {
-  clip-path: polygon(0% 20%,
+  clip-path: polygon(
+    0% 20%,
     60% 20%,
     60% 0%,
     100% 50%,
     60% 100%,
     60% 80%,
-    0% 80%);
+    0% 80%
+  );
   justify-content: center;
   padding: 30px;
   font-family: "Roboto", sans-serif;
@@ -418,7 +419,7 @@ nav ul {
   font-size: 14px;
   margin-left: 20px;
   cursor: pointer;
-  transition: .25s;
+  transition: 0.25s;
 }
 
 .red-btn:hover {
@@ -718,7 +719,6 @@ hr {
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
-
   .cancelbtn,
   .signupbtn {
     width: 100%;
@@ -786,13 +786,32 @@ hr {
   color: white;
 }
 
-.goUp {
+/* .goUp {
   background-color: inherit;
   border: 0px;
   border-radius: 50%;
   outline: none !important;
+} */
+.goUp {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  float: right;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  /* padding: 15px; */
+  border: none;
+  outline: none !important;
+  background-color: rgb(255, 0, 0);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
 }
-
+#goUpbtn:hover {
+  background-color: #c70000;
+}
 @media screen and (max-width: 768px) {
   .footer-homepg {
     flex-direction: column;
