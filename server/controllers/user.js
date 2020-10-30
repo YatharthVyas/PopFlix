@@ -4,11 +4,38 @@ const passport = require('passport');
 const query = require('../util/db').query();
 
 exports.getProfile = async (req, res) => {
-  console.log(req.user);
+
+ 
+  let p_id=req.user.p_id;
+  try
+ {
+ let person= await query(
+    `SELECT * from person where p_id=${p_id};`
+  );
+
+  const user=req.user;
+  let ar=person[0].name.toString().split(' ');
+  user.fname=ar[0];
+  if(ar.length>1)
+  user.lname=ar[1];
+  else
+  user.lname=" ";
+  if(person.gender=="M")
+  user.gender="Male";
+  else if(person.gender=="F")
+  user.gender="Female";
+  else
+  user.gender="Other"
   res.render('User/Profile', {
     pg: 'profile',
-    user: req.user,
+    user:user
+
   });
+}
+catch(err)
+{
+  console.log(err);
+}
 };
 
 exports.signup = async (req, res) => {
@@ -54,6 +81,18 @@ exports.signup = async (req, res) => {
   }
 };
 
+exports.updateProf = async (req,res,next) => {
+
+  let p_id=req.user.p_id;
+  try {
+    let resp=await query(`UPDATE customer SET Email="${req.body.email}",Phone="${req.body.phone}" WHERE p_id=${p_id};`)
+    console.log(resp);
+    res.redirect('/user/profile');
+  } catch (error) {
+    console.log(error);
+  }
+
+}
 exports.login = async (req, res, next) => {
   passport.authenticate('local', function (err, user, info) {
     if (err) {
