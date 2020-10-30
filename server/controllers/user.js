@@ -11,7 +11,7 @@ exports.getProfile = async (req, res) => {
     const user = req.user;
     let names = person[0].name.toString().split(' ');
     user.fname = names[0];
-    if (names.length > 1) user.lname = ar[1];
+    if (names.length > 1) user.lname = names[1];
     else user.lname = ' ';
     if (person.gender == 'M') user.gender = 'Male';
     else if (person.gender == 'F') user.gender = 'Female';
@@ -52,7 +52,7 @@ exports.signup = async (req, res) => {
       p_id: id,
     };
 
-    req.logIn(user, function (err) {
+    req.logIn(user, function(err) {
       if (err) {
         return next(err);
       }
@@ -80,7 +80,7 @@ exports.updateProf = async (req, res, next) => {
   }
 };
 exports.login = async (req, res, next) => {
-  passport.authenticate('local', function (err, user, info) {
+  passport.authenticate('local', function(err, user, info) {
     if (err) {
       return next(err);
     }
@@ -93,7 +93,7 @@ exports.login = async (req, res, next) => {
       return;
     }
 
-    req.logIn(user, function (err) {
+    req.logIn(user, function(err) {
       if (err) {
         return next(err);
       }
