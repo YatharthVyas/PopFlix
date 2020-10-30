@@ -20,13 +20,21 @@ background: linear-gradient(to right, #883333, #f12711);width: 100%;">
             <input class="inp" type="text" name="name" title="Only numbers, alphabets and spaces allowed" pattern="^[A-Za-z ]+" required><br><br>
             <label for="release_date"  style="font-size:medium ;color:#b3b3b3; margin-bottom: 5%;">Release Date</label><br/>
             <input type="date" class="inp" id="release_date" name="release_date" required><br/><br>
-            <label for="release_date"  style="font-size:medium ;color:#b3b3b3; margin-bottom: 5%;">Language</label><br/>
-            <select name="language" class="inp" style="padding-left: 8%;padding-right: 8%;" required>
+            <label for="lang"  style="font-size:medium ;color:#b3b3b3; margin-bottom: 5%;">Language</label><br/>
+            <select id="lang" name="language" class="inp" style="padding-left: 8%;padding-right: 8%;" required>
                 <option value="EN">English</option>
                 <option value="Hi">Hindi</option>
                 <option value="Ma">Marathi</option>
-                <option value="Gj">Gujrati</option>
-              </select><br><br>
+            </select><br><br>
+            <label for="genre"  style="font-size:medium ;color:#b3b3b3; margin-bottom: 5%;">Genre</label><br/>
+            <select id="genre" class="inp" style="padding-left: 8%;padding-right: 8%;" required>
+                <option value="Action">Action</option>
+                <option value="Drama">Drama</option>
+                <option value="Romance">Romance</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Suspence">Suspence</option>
+            </select>
             <h3 style="margin-top: 2%;margin-bottom: 4%;"align="center"><button class="btn-curved bg-red signup" onclick="showUpdate()">ADD MOVIE</button></h3>
           </form>
         </div>

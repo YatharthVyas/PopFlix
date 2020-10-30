@@ -39,6 +39,7 @@
 					<font color="#f00">Any Show</font>
 					<font color="white">, Any Time</font>
 				</h4>
+				<%if(!user){%>
 				<form action="/user/login" method="POST" style="display: none;" id="login-form"
 					class="login-form sub-heading-home">
 					<label for="email" style="font-size:medium; color:#b3b3b3;">Email</label><br />
@@ -55,6 +56,7 @@
 							onclick="document.getElementById('id01').style.display='block'"
 							class="btn-curved bg-red signup">Signup</button></h3>
 				</div>
+				<%}%>
 			</div>
 			<div class="column-6" align="center">
 				<img height="400px" src="/public/img/home-heading.svg" class="heading-pre-animation fadeInRight">
