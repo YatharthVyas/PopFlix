@@ -4,7 +4,9 @@ const bookingControllers = require("../controllers/booking");
 const userControllers = require("../controllers/user");
 
 router.get("/book_flix", bookingControllers.getBookFlix);
+router.post("/book_flix/search", bookingControllers.searchFlix);
 router.get("/book_movie", bookingControllers.getMovieFlix);
+router.post("/book_movie/search", bookingControllers.searchMovie);
 router.get("/select_movie/:theaterId", bookingControllers.getSelectMovie);
 router.get("/select_flix/:movieId", bookingControllers.getSelectFlix);
 router.get("/select_time", bookingControllers.getSelectTime);

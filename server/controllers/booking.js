@@ -12,14 +12,60 @@ exports.getBookFlix = async (req, res, next) => {
       indx = indx + 1;
     }
     console.log(theaters);
+    let dropRegions = await query(`SELECT Location FROM THEATER;`);
+    console.log(dropRegions);
+    // console.log("Regions", regions);
     return res.render("Bookings/flix", {
       pg: "book_flix",
-
       theaters: theaters,
+      dropRegions: dropRegions,
+    });
+  } catch (err) {
+    console.log("Error", err);
+    /*TODO Error pg */
+  }
+};
+
+exports.searchFlix = async (req, res) => {
+  try {
+    console.log(req.body);
+    const theaterName = req.body.searchmovie;
+    const theaterLocation = req.body.region;
+    let dropRegions = await query(`SELECT Location FROM THEATER;`);
+    console.log("Drop", dropRegions);
+    let theaters = {};
+    if (req.body.region == "Region") {
+      theaters = await query(
+        `SELECT * FROM THEATER WHERE name LIKE '%${theaterName}%';`
+      );
+    } else if (req.body.searchmovie == "") {
+      theaters = await query(
+        `SELECT * FROM THEATER AS t WHERE LOCATION='${theaterLocation}' GROUP BY t.LOCATION ORDER BY t.rating;`
+      );
+      // console.log("Location", theaters);
+    } else {
+      theaters = await query(
+        `SELECT * FROM THEATER AS t WHERE name LIKE '%${theaterName}%' AND t.LOCATION='${theaterLocation}' GROUP BY t.LOCATION ORDER BY t.rating;`
+      );
+      // console.log("Both", theaters);
+    }
+    let indx = 0;
+    while (indx < theaters.length) {
+      let movies = await query(
+        `SELECT name from movies where m_id IN (select m_id from shows where t_id=${theaters[indx].t_id});`
+      );
+      theaters[indx].movies = movies;
+      indx = indx + 1;
+    }
+    // let regions = await query(`SELECT * FROM THEATER;`);
+    // console.log("Regions", regions);
+    return res.render("Bookings/flix", {
+      pg: "book_flix",
+      theaters: theaters,
+      dropRegions: dropRegions,
     });
   } catch (err) {
     console.log(err);
-    /*TODO Error pg */
   }
 };
 
@@ -46,14 +92,97 @@ exports.getMovieFlix = async (req, res) => {
       `SELECT * FROM movies WHERE release_date < CURDATE() ORDER BY release_date DESC;`
     );
     let mov = filterMovieData(movies);
+    let dropLanguage = await query(`SELECT DISTINCT LANGUAGE FROM MOVIES;`);
+    let dropGenre = await query(`SELECT DISTINCT Genre FROM Genre;`);
+    let indx = 0;
+    while (indx < dropLanguage.length) {
+      let x = dropLanguage[indx].LANGUAGE;
+      if (x == "EN") dropLanguage[indx].LANGUAGE = "English";
+      else if (x == "Hi") dropLanguage[indx].LANGUAGE = "Hindi";
+      else dropLanguage[indx].LANGUAGE = "Marathi";
+      indx = indx + 1;
+    }
+    console.log(dropGenre[0].Genre);
     res.render("Bookings/movie", {
       pg: "book_movie",
-
       movies: mov,
+      dropLanguage: dropLanguage,
+      dropGenre: dropGenre,
     });
   } catch (err) {
     console.log(err);
     /*TODO Error pg */
+  }
+};
+
+exports.searchMovie = async (req, res) => {
+  try {
+    console.log("MOV", req.body);
+    let movieName = req.body.searchMovie;
+    let language = req.body.lang;
+    let genre = req.body.genre;
+    let dropLanguage = await query(`SELECT DISTINCT LANGUAGE FROM MOVIES;`);
+    let dropGenre = await query(`SELECT DISTINCT Genre FROM Genre;`);
+    let indx = 0;
+    while (indx < dropLanguage.length) {
+      let x = dropLanguage[indx].LANGUAGE;
+      if (x == "EN") dropLanguage[indx].LANGUAGE = "English";
+      else if (x == "Hi") dropLanguage[indx].LANGUAGE = "Hindi";
+      else dropLanguage[indx].LANGUAGE = "Marathi";
+      indx = indx + 1;
+    }
+    // console.log(dropLanguage);
+    let mov = {};
+    if (language == "Language" && genre == "Genre") {
+      mov = await query(
+        `SELECT * FROM MOVIES WHERE name LIKE '%${movieName}%';`
+      );
+    } else if (movieName == "" && genre == "Genre") {
+      if (language == "English") language = "EN";
+      else if (language == "Hindi") language = "Hi";
+      else language = "Ma";
+      mov = await query(`SELECT * FROM MOVIES WHERE language='${language}';`);
+    } else if (movieName == "" && language == "Language") {
+      mov = await query(
+        `SELECT * FROM MOVIES AS m WHERE m.m_id IN (SELECT m_id from genre where GENRE='${genre}');`
+      );
+    } else if (genre == "Genre") {
+      if (language == "English") language = "EN";
+      else if (language == "Hindi") language = "Hi";
+      else language = "Ma";
+      mov = await query(
+        `SELECT * FROM MOVIES WHERE name LIKE '%${movieName}%' AND language='${language}';`
+      );
+    } else if (movieName == "") {
+      if (language == "English") language = "EN";
+      else if (language == "Hindi") language = "Hi";
+      else language = "Ma";
+      mov = await query(
+        `SELECT * FROM MOVIES AS m WHERE m.language='${language}' AND m.m_id IN (SELECT m_id from genre where GENRE='${genre}');`
+      );
+    } else if (language == "Language") {
+      mov = await query(
+        `SELECT * FROM MOVIES AS m WHERE m.name LIKE '%${movieName}%' AND m.m_id IN (SELECT m_id from genre where GENRE='${genre}');`
+      );
+    } else {
+      if (language == "English") language = "EN";
+      else if (language == "Hindi") language = "Hi";
+      else language = "Ma";
+      mov = await query(
+        `SELECT * FROM MOVIES AS m WHERE m.name LIKE '%${movieName}%' AND m.language='${language}' AND m.m_id IN (SELECT m_id from genre where GENRE='${genre}');`
+      );
+    }
+    console.log(mov);
+    mov = filterMovieData(mov);
+
+    res.render("Bookings/movie", {
+      pg: "book_movie",
+      movies: mov,
+      dropLanguage: dropLanguage,
+      dropGenre: dropGenre,
+    });
+  } catch (err) {
+    console.log(err);
   }
 };
 
