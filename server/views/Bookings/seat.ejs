@@ -1,4 +1,10 @@
 <%- include('../Includes/header.ejs') %> 
+<style>
+	.overlay{
+		background-color: rgba(255,223,0,1);
+  		background-blend-mode: multiply;
+	}
+</style>
 <body>
 <%- include('../Includes/nav.ejs') %> 
 	<div class="content row">
@@ -36,83 +42,32 @@
 		<a href="confirm_payment"><button class="btn-curved bg-red btn-book-now">Proceed to pay</button></a>
 	</div>
 	<script type="text/javascript">
-	var res = [{
-			id: 0,
-			allocated: true
-		},
-		{
-			id: 1,
-			allocated: true
-		},
-		{
-			id: 2,
-			allocated: false
-		},
-		{
-			id: 3,
-			allocated: false
-		},
-		{
-			id: 4,
-			allocated: false
-		},
-		{
-			id: 5,
-			allocated: false
-		},
-		{
-			id: 6,
-			allocated: false
-		},
-		{
-			id: 7,
-			allocated: false
-		},
-		{
-			id: 8,
-			allocated: true
-		},
-		{
-			id: 9,
-			allocated: true
-		},
-		{
-			id: 10,
-			allocated: false
-		},
-		{
-			id: 11,
-			allocated: false
-		},
-		{
-			id: 12,
-			allocated: true
-		},
-		{
-			id: 13,
-			allocated: true
-		},
-		{
-			id: 14,
-			allocated: true
-		},
-		{
-			id: 15,
-			allocated: true
-		},
-	]
-	var cost = 100;
+	var res = <%- seats%>;
+	const booked = <%- booked %>;
+	var base_cost = <%- base_cost%>;
 	ctr = Math.sqrt(res.length)
 	seat_table = document.getElementById("Seats");
 	var seat_content = "";
 	for (var x = 0; x < ctr; x++) {
 		seat_content += "<tr>";
 		for (var y = 0; y < ctr; y++) {
-			if (res[x * 4 + y].allocated) {
-				seat_content += "<td class='occupied'>" + res[x * 4 + y].id + "</td>";
-			} else {
-				seat_content += "<td class='available' onclick='selectSeat(event," + res[x * 4 + y].id + ")'>" + res[x * 4 + y].id + "</td>"
+
+			seat_content += "<td class = '"; // start of td
+			 
+			// Check if extra price
+			if(res[x*ctr+y].seat_price != 0){
+				seat_content += "overlay ";
 			}
+
+			// Check if booked
+			if (booked.includes(res[x * ctr + y].s_id)) {
+				seat_content += "occupied'>" ;
+			} else {
+				seat_content += "available' onclick='selectSeat(event," + (x * ctr + y)+ ")'>" ;
+			}
+
+			// End of td
+			seat_content += res[x * ctr + y].s_id + "</td>";
 
 		}
 		seat_content += "</tr>";
@@ -122,15 +77,24 @@
 	var seats_selection = [];
 
 	function selectSeat(evt, id) {
+		
 		if (seats_selection.includes(id)) {
 			evt.srcElement.style.filter = "opacity(60%)";
-			seats_selection = seats_selection.filter(function(value) { return value !== id; }); //Dekete Seat
+			seats_selection = seats_selection.filter(function(value) { return value !== id; }); //Delete Seat
 		} else {
 			evt.srcElement.style.filter = "opacity(100%)";
 			seats_selection.push(id);
 		}
+
 		document.getElementById('seats_picked').innerHTML = seats_selection.length;
-		document.getElementById('total_cost').innerHTML = seats_selection.length*cost;
+
+		// Reduce doesn't work on empty array so extra check
+		if(seats_selection.length == 0){
+			document.getElementById('total_cost').innerHTML = "0";
+		}else{
+			document.getElementById('total_cost').innerHTML = seats_selection.map((_id)=>{return res[_id].seat_price+base_cost;}).reduce((a,b)=>{return a+b;});
+		}
+		
 	}
 	</script>
 	<%- include('../Includes/footer.ejs') %> 
