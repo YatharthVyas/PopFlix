@@ -16,7 +16,11 @@ function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   } else {
-    res.render('Error/error', { pg: 'error', error: 'Please Log in' });
+    res.render('Error/error', {
+      pg: 'error',
+      user: req.user,
+      error: 'Please Log in',
+    });
   }
 }
 
@@ -26,6 +30,7 @@ function ensureTheater(req, res, next) {
   } else {
     res.render('Error/error', {
       pg: 'error',
+      user: req.user,
       error: 'Only Theaters can access this page',
     });
   }
