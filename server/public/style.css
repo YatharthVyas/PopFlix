@@ -5,6 +5,11 @@ body {
   margin-top: 50px;
   width: 100vw;
   overflow-x: hidden;
+  background: #FFFFFF;
+  background: -webkit-radial-gradient(center, #FFFFFF, #F0D1D1);
+  background: -moz-radial-gradient(center, #FFFFFF, #F0D1D1);
+  background: radial-gradient(ellipse at center, #FFFFFF, #F0D1D1);
+
 }
 
 /* Profile  */
@@ -96,6 +101,18 @@ input[type="file"] {
   margin-left: 23%;
   margin-top: 50px;
   font-size: large;
+}
+
+@media screen and (max-width: 768px) {
+  .sub-heading-home {
+    margin-left: 10%;
+    font-size: larger;
+  }
+
+  #heading {
+    margin-left: 10%;
+    font-size: 60px;
+  }
 }
 
 .heading-btns-home {
@@ -204,6 +221,7 @@ input[type="file"] {
 .card {
   border: 1px solid #aaa;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
 }
 
 .card-header {
