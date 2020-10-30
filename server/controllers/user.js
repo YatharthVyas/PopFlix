@@ -4,6 +4,7 @@ const passport = require('passport');
 const query = require('../util/db').query();
 
 exports.getProfile = async (req, res) => {
+
  
   let p_id=req.user.p_id;
   try
@@ -28,6 +29,7 @@ exports.getProfile = async (req, res) => {
   res.render('User/Profile', {
     pg: 'profile',
     user:user
+
   });
 }
 catch(err)
@@ -40,7 +42,11 @@ exports.signup = async (req, res) => {
   let { name, email, psw, phone, gender } = req.body;
   let pass2 = req.body['psw-repeat'];
   if (psw !== pass2) {
-    res.render('Error/error', { pg: 'error', error: 'Passwords do not match' });
+    res.render('Error/error', {
+      pg: 'error',
+      user: req.user,
+      error: 'Passwords do not match',
+    });
     return;
   }
   try {
@@ -70,6 +76,7 @@ exports.signup = async (req, res) => {
     res.render('Error/error', {
       pg: 'error',
       error: 'Email already registered',
+      user: req.user,
     });
   }
 };
@@ -92,7 +99,11 @@ exports.login = async (req, res, next) => {
       return next(err);
     }
     if (!user) {
-      res.render('Error/error', { pg: 'error', error: info.message });
+      res.render('Error/error', {
+        pg: 'error',
+        user: req.user,
+        error: info.message,
+      });
       return;
     }
 
@@ -102,6 +113,9 @@ exports.login = async (req, res, next) => {
       }
       if (user.type === 'Customer') {
         res.redirect('/user/profile');
+      }
+      if (user.type == 'Admin') {
+        res.redirect('/admin/home');
       }
       if (user.type === 'Theater') {
         res.redirect('/flix/profile');

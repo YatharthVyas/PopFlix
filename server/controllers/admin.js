@@ -2,6 +2,7 @@ const query = require('../util/db').query();
 exports.getAdmin = (req, res, next) => {
   res.render('Auth/admin', {
     pg: 'admin',
+    user: req.user,
   });
 };
 exports.postTheater = async (req, res, next) => {

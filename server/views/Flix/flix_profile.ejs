@@ -181,6 +181,15 @@
 						</div>
 					</div>
 				</div>
+				<%if((x+1) % 3 == 0){%>
+					</div>
+					<div class="row">
+				<%}%>
+				<%if (x == theater_movies.length -1){%>
+					<%for (let i = 0;i < 3-((x+1)%3); ++i){%>
+						<div class="column-4"></div>
+					<%}%>
+				<%}%>
 			<% } %> 
 			</div>
 			
