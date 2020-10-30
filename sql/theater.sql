@@ -1,5 +1,5 @@
 /*Get theater by name*/
-SELECT * FROM THEATRE WHERE name LIKE %THEATER%;
+SELECT * FROM THEATRE WHERE name LIKE '%THEATER%';
 
 /*Get theater by rating*/
 SELECT * FROM THEATRE WHERE rating > 'RATING' ORDER BY rating DESC;

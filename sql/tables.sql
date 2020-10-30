@@ -93,7 +93,7 @@ CREATE TABLE actor(
     );
 
 CREATE TABLE customer( 
-    p_id int NOT NULL auto_increment, 
+    p_id int NOT NULL, 
     Email varchar(30) UNIQUE, 
     Phone varchar(10) UNIQUE, 
     password varchar(61),

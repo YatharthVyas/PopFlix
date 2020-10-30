@@ -203,11 +203,12 @@ input[type="file"] {
 
 .card {
   border: 1px solid #aaa;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card-header {
   font-size: 2.5em;
-  font-family: fantasy;
+  font-family: 'Anton', sans-serif;
   border-bottom: 1px solid #ccc;
 }
 
@@ -304,9 +305,11 @@ a.custom-white:hover {
   background-color: #262626;
   /* outline: none; */
 }
+
 nav ul {
   height: 415px;
 }
+
 nav ul {
   overflow: hidden;
   overflow-y: scroll;
@@ -324,6 +327,7 @@ nav ul {
   background-color: #f66;
   color: white;
 }
+
 .btn-book-now-2:hover {
   border-radius: 5px;
   background-color: #f00;
@@ -367,10 +371,12 @@ nav ul {
   font-size: 14px;
   margin-left: 20px;
   cursor: pointer;
+  transition: .25s;
 }
 
 .red-btn:hover {
   background-color: #ff0000;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* Navbar */
@@ -398,6 +404,7 @@ nav ul {
   color: white;
   margin: 0px 0px 0px 10px;
 }
+
 #profname {
   font-family: cursive;
   word-spacing: 3%;
@@ -526,11 +533,24 @@ nav ul {
   margin-top: 8px;
   width: 100%;
   padding: 15px;
-  margin: 5px 0 22px 0;
+  margin-top: 5px;
+  margin-bottom: 20px;
   display: inline-block;
   border: none;
   background: #f1f1f1;
   border-radius: 6px;
+}
+
+#signup-form label {
+  font-weight: 600;
+}
+
+.muted {
+  font-weight: 300;
+  color: #ddd;
+  font-size: 13px;
+  margin-top: -15px;
+  margin-bottom: 10px;
 }
 
 button:hover {

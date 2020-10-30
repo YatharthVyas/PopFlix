@@ -1,5 +1,4 @@
 <%- include('../Includes/header.ejs') %>
-
 <body>
 <%- include('../Includes/nav.ejs') %>
 <div style="background: #f12711; 
@@ -14,22 +13,29 @@ background: linear-gradient(to right, #883333, #f12711);width: 100%;">
             </h1>
         <form action="/admin/movie" method="POST" >
             <label for="fname" style="font-size:medium; color:#b3b3b3;margin-bottom: 5%;" >Movie Name</label><br/>
-            <input class="inp" type="text"  name="name"><br><br>
-            <label for="release_date"  style="font-size:medium ;color:#b3b3b3; margin-bottom: 5%;" >Release Date</label><br/>
-            <input type="date" class="inp" id="release_date" name="release_date"><br/><br>
-            <label for="release_date"  style="font-size:medium ;color:#b3b3b3; margin-bottom: 5%;" >Language</label><br/>
-            <select name="language" class="inp" style="padding-left: 8%;padding-right: 8%;">
+            <input class="inp" type="text" required name="name"><br><br>
+            <label for="fname" style="font-size:medium; color:#b3b3b3;margin-bottom: 5%;" >Actor Name </label><br/>
+            <input class="inp" type="text" pattern="^[A-Za-z ,]+" name="name" required><br><br><div class="muted" style="margin-right: 50px; color: #aaa">Seperate by comma</div><br/>
+            <label for="fname" style="font-size:medium; color:#b3b3b3;margin-bottom: 5%;">Director Name</label><br/>
+            <input class="inp" type="text" name="name" title="Only numbers, alphabets and spaces allowed" pattern="^[A-Za-z ]+" required><br><br>
+            <label for="release_date"  style="font-size:medium ;color:#b3b3b3; margin-bottom: 5%;">Release Date</label><br/>
+            <input type="date" class="inp" id="release_date" name="release_date" required><br/><br>
+            <label for="lang"  style="font-size:medium ;color:#b3b3b3; margin-bottom: 5%;">Language</label><br/>
+            <select id="lang" name="language" class="inp" style="padding-left: 8%;padding-right: 8%;" required>
                 <option value="EN">English</option>
                 <option value="Hi">Hindi</option>
                 <option value="Ma">Marathi</option>
-                <option value="Gj">Gujrati</option>
-              </select><br><br>
-            <label for="lname"  style="font-size:medium ;color:#b3b3b3;margin-bottom: 5%;" >Image</label><br/><br/>
-            <label for="file-upload" class="custom-file-upload">
-                <i class="fa fa-cloud-upload"></i> &#x1F4C1; Movie Poster Upload
-            </label><br/>
-            <input id="file-upload" type="file" />
-            <h3  style="margin-top: 8%;margin-bottom: 4%;"align="center"><button class="btn-curved bg-red signup" onclick="showUpdate()">ADD MOVIE</button></h3>
+            </select><br><br>
+            <label for="genre"  style="font-size:medium ;color:#b3b3b3; margin-bottom: 5%;">Genre</label><br/>
+            <select id="genre" class="inp" style="padding-left: 8%;padding-right: 8%;" required>
+                <option value="Action">Action</option>
+                <option value="Drama">Drama</option>
+                <option value="Romance">Romance</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Suspence">Suspence</option>
+            </select>
+            <h3 style="margin-top: 2%;margin-bottom: 4%;"align="center"><button class="btn-curved bg-red signup" onclick="showUpdate()">ADD MOVIE</button></h3>
           </form>
         </div>
        
@@ -38,23 +44,33 @@ background: linear-gradient(to right, #883333, #f12711);width: 100%;">
                    ADD FLIX
                 </h1>
             <form action="/admin/theater" method="POST" >
-                <label for="fname" style="font-size:medium; color:#b3b3b3;margin-bottom: 5%;" >Theater Name</label><br/>
-                <input class="inp" type="text"  name="name"><br><br>
-                <label for="release_date"  style="font-size:medium ;color:#b3b3b3; margin-bottom: 5%;" >Location</label><br/>
-                <input type="text" class="inp" id="location" name="location"><br/><br>
-                <label for="release_date"  style="font-size:medium ;color:#b3b3b3; margin-bottom: 5%;" >Rating</label><br/>
-                <input type="number" step="0.1" class="inp" id="location" name="rating" ><br/><br>
-                <label for="lname"  style="font-size:medium ;color:#b3b3b3;margin-bottom: 5%;" >Image</label><br/><br/>
-                <label for="file-upload" class="custom-file-upload">
-                    <i class="fa fa-cloud-upload"></i> &#x1F4C1; Flix Image Upload
-                </label><br/>
-                <input id="file-upload" type="file" />
-                <h3  style="margin-top: 8%;margin-bottom: 4%;"align="center"><button class="btn-curved bg-red signup" onclick="showUpdate()">ADD FLIX</button></h3>
+                <label for="fname" style="font-size:medium; color:#b3b3b3;margin-bottom: 5%;">Theater Name</label><br/>
+                <input class="inp" type="text"  name="name" pattern="^[A-Za-z ]+" minlength="2" required="true"><br><br>
+                <label for="release_date"  style="font-size:medium ;color:#b3b3b3; margin-bottom: 5%;">Location</label><br/>
+                <input type="text" class="inp" id="location" name="location" pattern="^[0-9A-Za-z ,]+" title="Only numbers, alphabets and comma allowed" minlength="2" required><br/><br>
+
+                <label for="release_date"  style="font-size:medium ;color:#b3b3b3; margin-bottom: 5%;">Rating</label><br/>
+                <input type="number" class="inp" min="0" max="5" step="0.1" id="rating" name="rating" required><br/><br>
+                <label for="release_date"  style="font-size:medium ;color:#b3b3b3; margin-bottom: 1%;">Password</label><br/>
+                <input type="text" id="password" name="password" minlength="8" class="inp" required><br/><br>
+
+
+                <input type="checkbox" onclick="showPassword()" checked><span class="muted">Show Password</span>
+                <h3  style="margin-top: 3%;margin-bottom: 4%;"align="center"><button class="btn-curved bg-red signup" onclick="showUpdate()">ADD FLIX</button></h3>
               </form>
             </div>
         </div>
 </div>
-     
+<script type="text/javascript">
+    function showPassword(){
+        var x = document.getElementById("password");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+    }
+</script>
 
 <%- include('../Includes/footer.ejs') %> 
 </body>    
