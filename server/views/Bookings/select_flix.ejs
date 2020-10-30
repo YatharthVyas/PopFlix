@@ -55,7 +55,7 @@
 				<p class="border"><i class="fa fa-home" style="font-size:30px;color:red"></i> Address: <%= theater[x].location%>
 				</p>
 				<div align="right">
-					<a href="/user/select_time"><button class="btn-curved btn-book-now"> Proceed </button></a>
+					<a href="/user/select_time?theater=<%=theater[x].t_id%>&movie=<%= movieId %>"><button class="btn-curved btn-book-now"> Proceed </button></a>
 				</div>
 			</div>
 		</div>
