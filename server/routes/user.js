@@ -20,7 +20,7 @@ router.get(
 // Auth Routes
 router.post("/signup", userControllers.signup);
 router.post("/login", userControllers.login);
-
+router.post("/update",userControllers.updateProf);
 async function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
