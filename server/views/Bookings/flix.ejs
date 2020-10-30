@@ -24,6 +24,7 @@
 		</div>
 	</form>
 		<% for (x in theaters) { %>
+
 					<div class="row card">
 						<div class="column-4 border-right content-card">
 							<img src="/public/img/seat.png" width="80%">
@@ -35,7 +36,7 @@
 								href="#"><%=theaters[x].movies[y].name%>
 							</a>
 							<br /><%}%>
-				<p> Location  : <%= theaters[x].location %></p>
+				<p> &#127968;Location  : <%= theaters[x].location %></p>
 							<div align="right">
 								<a href="/user/select_movie/<%=theaters[x].t_id %>"><button
 										class="btn-curved btn-book-now">
@@ -46,6 +47,7 @@
 						</div>
 					</div>
 					<% } %>
+
 			</div>
 			<!-- F<ooter -->
 			<div align="center" id="subscribe-news">

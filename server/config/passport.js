@@ -23,6 +23,10 @@ module.exports = function (passport) {
           }
         } else {
           user[0].type = 'Customer';
+
+          if (user[0].Email === 'admin') {
+            user[0].type = 'Admin';
+          }
         }
         if (bcrypt.compareSync(password, user[0].password)) {
           return done(null, user[0]);
@@ -44,16 +48,14 @@ module.exports = function (passport) {
   passport.deserializeUser(async function (user, done) {
     try {
       let u;
-      if (user.type === 'Customer') {
+      if (user.type === 'Customer' || user.type === 'Admin') {
         u = await mysql(`SELECT * FROM customer WHERE p_id = ${user.p_id};`);
-        u[0].type = 'Customer';
       } else {
         u = await mysql(
           `SELECT * FROM theater_user WHERE theater_id = ${user.theater_id};`
         );
-        u[0].type = 'Theater';
       }
-
+      u[0].type = user.type;
       done(null, u[0]);
     } catch (e) {
       done(e, null);

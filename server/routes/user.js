@@ -12,6 +12,7 @@ router.get("/select_flix/:movieId", bookingControllers.getSelectFlix);
 router.get("/select_time", bookingControllers.getSelectTime);
 router.get("/select_seat", bookingControllers.getSelectSeat);
 router.get("/confirm_payment", bookingControllers.getConfirmPayment);
+
 router.get(
   "/profile",
   ensureAuthenticated,
@@ -20,14 +21,20 @@ router.get(
 );
 
 // Auth Routes
+
 router.post("/signup", userControllers.signup);
 router.post("/login", userControllers.login);
+router.post("/update", userControllers.updateProf);
 
 async function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   } else {
-    res.render("Error/error", { pg: "error", error: "Please Log in" });
+    res.render("Error/error", {
+      pg: "error",
+      user: req.user,
+      error: "Please Log in",
+    });
     return;
   }
 }
@@ -38,6 +45,7 @@ async function ensureCustomer(req, res, next) {
   } else {
     res.render("Error/error", {
       pg: "error",
+      user: req.user,
       error: "Only Customers can access this page",
     });
   }

@@ -2,11 +2,13 @@ const query = require("../util/db").query();
 exports.getHome = (req, res, next) => {
   res.render("Auth/home", {
     pg: "home",
+    user: req.user,
   });
 };
 exports.getAboutUs = (req, res, next) => {
   res.render("Auth/aboutus", {
     pg: "aboutus",
+    user: req.user,
   });
 };
 exports.postAddShow = async (req, res, next) => {
@@ -16,7 +18,9 @@ exports.postAddShow = async (req, res, next) => {
   const w_price = req.body.w_price;
   const t_id = req.body.t_id;
   let response = await query(
-    `INSERT INTO shows (slot,price,weekend_price,m_id,t_id) values ("${time}","${price}","${w_price}",${m_id},${t_id})`
+    `INSERT INTO shows (slot,price,weekend_price,m_id,t_id) values ("${time}","${price}","${
+      w_price - price
+    }",${m_id},1)`
   );
   res.redirect("/flix/profile");
 };
@@ -40,18 +44,26 @@ exports.getFlixProfile = async (req, res, next) => {
     let movies = await query(
       `SELECT name,m_id FROM movies WHERE release_date < CURDATE() ORDER BY release_date DESC LIMIT 15;`
     );
+    console.log(req.user);
     let mov = await query(
-      `SELECT * from movies where m_id IN (select m_id from shows where t_id=3);`
+      `SELECT * from movies where m_id IN (select m_id from shows where t_id=${req.user.theater_id});`
     );
     let theater_movies = filterMovieData(mov);
+
     res.render("Flix/flix_profile", {
       pg: "profile",
+      user: req.user,
       movies: movies,
       theater_movies: theater_movies,
     });
   } catch (err) {
     console.log(err);
-    res.render("Error/error", { pg: "error", error: "Some Error Occurred" });
+
+    res.render("Error/error", {
+      pg: "error",
+      user: req.user,
+      error: "Some Error Occurred",
+    });
     /*TODO Error pg */
   }
 };

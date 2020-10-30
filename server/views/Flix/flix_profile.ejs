@@ -167,7 +167,7 @@
 					<div class="topright"><button class="edit-btn">&#9998;</button><button class="delete-btn">X</button></div>
 					<div class="movie-card-content">
 						<h2 class="card-header"> <%= theater_movies[x].name %> </h2>
-						<img src="/public/img/seat.png" width="220px" height="220px">
+						<img src="https://picsum.photos/220?random=<%= theater_movies[x].name%>" width="220px" height="220px">
 					</div>
 					<div class="movie-card-content" style="border-top: 1px solid #ccc">
 						Directed by: <a href="https://www.imdb.com/search/name/?name="> Director Name </a> <br />
@@ -181,6 +181,15 @@
 						</div>
 					</div>
 				</div>
+				<%if((x+1) % 3 == 0){%>
+					</div>
+					<div class="row">
+				<%}%>
+				<%if (x == theater_movies.length -1){%>
+					<%for (let i = 0;i < 3-((x+1)%3); ++i){%>
+						<div class="column-4"></div>
+					<%}%>
+				<%}%>
 			<% } %> 
 			</div>
 			
