@@ -33,7 +33,7 @@ CREATE TABLE genre(
 
 CREATE TABLE shows( 
     show_id int auto_increment, 
-    date_time datetime, 
+    slot time, 
     price int check(price>0), 
     t_id int, 
     weekend_price int check(weekend_price>=0),
@@ -49,11 +49,10 @@ CREATE TABLE shows(
 
 CREATE TABLE seats( 
     s_id int, 
-    allocated boolean, 
     seat_price int check(seat_price>=0), 
-    show_id int, 
+    theater_id int, 
     constraint primary key(s_id), 
-    constraint fk_sid_seats foreign key(show_id) references shows(show_id)
+    constraint fk_sid_seats foreign key(theater_id) references theater(t_id)
     ON UPDATE CASCADE
     ON DELETE CASCADE 
     );
@@ -67,13 +66,14 @@ CREATE TABLE person(
 
 CREATE TABLE ticket( 
     ticket_id int, 
+    dt date,
     addon_meal boolean default 0, 
     show_id int, 
     seat_id int, 
     p_id int, 
     gs_tax float(2), 
     total_price float(2) check(total_price>0), 
-    constraint primary key(t_id), 
+    constraint primary key(ticket_id), 
     constraint fk_shid_ticket foreign key(show_id) references shows(show_id)
     ON UPDATE CASCADE
     ON DELETE CASCADE, constraint fk_sid_ticket foreign key(seat_id) references seats(s_id)
@@ -96,12 +96,12 @@ CREATE TABLE customer(
     p_id int NOT NULL auto_increment, 
     Email varchar(30) UNIQUE, 
     Phone varchar(10) UNIQUE, 
+    password varchar(61),
     constraint primary key(p_id), 
     constraint fk_pid_customer foreign key(p_id) references person(p_id)
     ON UPDATE CASCADE
     ON DELETE CASCADE 
     );
-Alter table customer add column password varchar(61);
 CREATE TABLE acted_in( 
     p_id int, 
     m_id int, 
@@ -133,7 +133,7 @@ CREATE TABLE payment(
     amount int,
     t_id int,
     c_id int,
-    constraint fk_t_id_payment foreign key(t_id) references ticket(t_id),
+    constraint fk_t_id_payment foreign key(t_id) references ticket(ticket_id),
     constraint fk_c_id_payment foreign key(c_id) references customer(p_id)
     );
 
