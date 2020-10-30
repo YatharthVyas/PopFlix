@@ -11,13 +11,14 @@ exports.getProfile = async (req, res) => {
     const user = req.user;
     let names = person[0].name.toString().split(" ");
     user.fname = names[0];
-    if (names.length > 1) user.lname = ar[1];
-    else user.lname = " ";
-    if (person.gender == "M") user.gender = "Male";
-    else if (person.gender == "F") user.gender = "Female";
-    else user.gender = "Other";
-    res.render("User/Profile", {
-      pg: "profile",
+
+    if (names.length > 1) user.lname = names[1];
+    else user.lname = ' ';
+    if (person.gender == 'M') user.gender = 'Male';
+    else if (person.gender == 'F') user.gender = 'Female';
+    else user.gender = 'Other';
+    res.render('User/Profile', {
+      pg: 'profile',
       user: user,
     });
   } catch (err) {
@@ -52,7 +53,7 @@ exports.signup = async (req, res) => {
       p_id: id,
     };
 
-    req.logIn(user, function (err) {
+    req.logIn(user, function(err) {
       if (err) {
         return next(err);
       }
@@ -80,7 +81,11 @@ exports.updateProf = async (req, res, next) => {
   }
 };
 exports.login = async (req, res, next) => {
+<<<<<<< HEAD
   passport.authenticate("local", function (err, user, info) {
+=======
+  passport.authenticate('local', function(err, user, info) {
+>>>>>>> upstream/main
     if (err) {
       return next(err);
     }
@@ -93,7 +98,7 @@ exports.login = async (req, res, next) => {
       return;
     }
 
-    req.logIn(user, function (err) {
+    req.logIn(user, function(err) {
       if (err) {
         return next(err);
       }
