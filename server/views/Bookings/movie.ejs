@@ -27,7 +27,7 @@
 		<% for (x in movies) { %>
 		<div class="row card">
 			<div class="column-4 border-right content-card">
-				<img src="/public/img/seat.png" width="80%">
+				<img src="https://picsum.photos/220?random=<%= movies[x].name%>" width="80%">
 			</div>
 			<div class="column-8 content-card">
 				<h2 class="card-header"> <%= movies[x].name%></h2>
