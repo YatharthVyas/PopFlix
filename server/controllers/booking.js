@@ -1,4 +1,4 @@
-const query = require("../util/db").query();
+const query = require('../util/db').query();
 
 exports.getBookFlix = async (req, res, next) => {
   try {
@@ -12,9 +12,9 @@ exports.getBookFlix = async (req, res, next) => {
       indx = indx + 1;
     }
     console.log(theaters);
-    return res.render("Bookings/flix", {
-      pg: "book_flix",
-
+    return res.render('Bookings/flix', {
+      pg: 'book_flix',
+      user: req.user,
       theaters: theaters,
     });
   } catch (err) {
@@ -26,13 +26,13 @@ exports.getBookFlix = async (req, res, next) => {
 const filterMovieData = (movies) => {
   let indx = 0;
   while (indx < movies.length) {
-    let ar = movies[indx].release_date.toString().split(" ");
-    let r_date = ar[0] + " " + ar[1] + " " + ar[2] + " " + ar[3];
+    let ar = movies[indx].release_date.toString().split(' ');
+    let r_date = ar[0] + ' ' + ar[1] + ' ' + ar[2] + ' ' + ar[3];
     movies[indx].release_date = r_date;
     let x = movies[indx].language;
-    let y = "Marathi";
-    if (x == "EN") y = "English";
-    else if (x == "Hi") y = "Hindi";
+    let y = 'Marathi';
+    if (x == 'EN') y = 'English';
+    else if (x == 'Hi') y = 'Hindi';
     movies[indx].language = y;
     indx = indx + 1;
   }
@@ -46,9 +46,9 @@ exports.getMovieFlix = async (req, res) => {
       `SELECT * FROM movies WHERE release_date < CURDATE() ORDER BY release_date DESC;`
     );
     let mov = filterMovieData(movies);
-    res.render("Bookings/movie", {
-      pg: "book_movie",
-
+    res.render('Bookings/movie', {
+      pg: 'book_movie',
+      user: req.user,
       movies: mov,
     });
   } catch (err) {
@@ -80,8 +80,9 @@ exports.getSelectFlix = async (req, res) => {
       theater[indx].movies = movies;
       indx = indx + 1;
     }
-    res.render("Bookings/select_flix", {
-      pg: "select_flix",
+    res.render('Bookings/select_flix', {
+      user: req.user,
+      pg: 'select_flix',
       theater: theater,
     });
   } catch (err) {
@@ -89,15 +90,16 @@ exports.getSelectFlix = async (req, res) => {
   }
 };
 exports.getSelectSeat = (req, res) => {
-  res.render("Bookings/seat", {
-    pg: "select_seat",
+  res.render('Bookings/seat', {
+    user: req.user,
+    pg: 'select_seat',
   });
 };
 
 exports.getSelectMovie = async (req, res) => {
   const id = req.params.theaterId;
 
-  console.log(id, "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
+  console.log(id, 'SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS');
 
   try {
     let movies = await query(
@@ -105,9 +107,9 @@ exports.getSelectMovie = async (req, res) => {
     );
     let mov = filterMovieData(movies);
 
-    res.render("Bookings/select_movie", {
-      pg: "select_movie",
-
+    res.render('Bookings/select_movie', {
+      pg: 'select_movie',
+      user: req.user,
       movies: mov,
     });
   } catch (err) {
@@ -115,12 +117,14 @@ exports.getSelectMovie = async (req, res) => {
   }
 };
 exports.getSelectTime = (req, res) => {
-  res.render("Bookings/select_time", {
-    pg: "select_time",
+  res.render('Bookings/select_time', {
+    user: req.user,
+    pg: 'select_time',
   });
 };
 exports.getConfirmPayment = (req, res) => {
-  res.render("Bookings/confirm_payment", {
-    pg: "confirm_payment",
+  res.render('Bookings/confirm_payment', {
+    user: req.user,
+    pg: 'confirm_payment',
   });
 };
