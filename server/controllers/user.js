@@ -81,11 +81,8 @@ exports.updateProf = async (req, res, next) => {
   }
 };
 exports.login = async (req, res, next) => {
-<<<<<<< HEAD
   passport.authenticate("local", function (err, user, info) {
-=======
-  passport.authenticate('local', function(err, user, info) {
->>>>>>> upstream/main
+
     if (err) {
       return next(err);
     }
