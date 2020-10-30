@@ -25,7 +25,6 @@ module.exports = function (passport) {
           user[0].type = 'Customer';
 
           if (user[0].Email === 'admin') {
-            console.log(user[0].Email === 'admin');
             user[0].type = 'Admin';
           }
         }

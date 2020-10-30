@@ -4,7 +4,6 @@ const passport = require('passport');
 const query = require('../util/db').query();
 
 exports.getProfile = async (req, res) => {
-  console.log(req.user);
   res.render('User/Profile', {
     pg: 'profile',
     user: req.user,
