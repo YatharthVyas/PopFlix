@@ -32,12 +32,12 @@ exports.signup = async (req, res) => {
       p_id: id,
     };
 
-    req.logIn(user, function (err) {
+    req.logIn(user, function(err) {
       if (err) {
         return next(err);
       }
     });
-    res.redirect('/user/profile');
+    req.redirect('/user/profile');
   } catch (e) {
     console.log(e);
     res.render('Error/error', {
@@ -48,7 +48,7 @@ exports.signup = async (req, res) => {
 };
 
 exports.login = async (req, res, next) => {
-  passport.authenticate('local', function (err, user, info) {
+  passport.authenticate('local', function(err, user, info) {
     if (err) {
       return next(err);
     }
@@ -57,7 +57,7 @@ exports.login = async (req, res, next) => {
       return;
     }
 
-    req.logIn(user, function (err) {
+    req.logIn(user, function(err) {
       if (err) {
         return next(err);
       }
