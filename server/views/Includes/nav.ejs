@@ -5,8 +5,9 @@
       <h4 id="navhome"><span>Pop</span><span>Flix</span></h4>
     </a>
   </div>
+  <div id="list-open" align="right" onclick="showNav()">&equiv;</div>
   <div class="column-6" align="right">
-    <ul type="none">
+    <ul type="none" id="nav-list">
       <li>
         <a href="/user/book_flix" class="<%= pg==='book_flix'? 'on':'' %>"
           >Book Flix</a
@@ -35,6 +36,16 @@
       <%}%>
     </ul>
   </div>
+  <script type="text/javascript">
+    function showNav(){
+      if(document.getElementById('nav-list').style.display==="block"){
+        document.getElementById('nav-list').style.display="none";
+      }
+      else{
+        document.getElementById('nav-list').style.display="block";
+      }
+    }
+  </script>
   <!-- <li class="dropdown"><a href="" class="dropbtn">User Menu </a>
 
 	<div class="dropdown-content">

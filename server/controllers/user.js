@@ -11,6 +11,7 @@ exports.getProfile = async (req, res) => {
     const user = req.user;
     let names = person[0].name.toString().split(' ');
     user.fname = names[0];
+
     if (names.length > 1) user.lname = names[1];
     else user.lname = ' ';
     if (person.gender == 'M') user.gender = 'Male';
