@@ -57,7 +57,7 @@ exports.signup = async (req, res) => {
         return next(err);
       }
     });
-    req.redirect('/user/profile');
+    res.redirect('/user/profile');
   } catch (e) {
     console.log(e);
     res.render('Error/error', {
