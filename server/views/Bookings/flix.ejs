@@ -38,11 +38,12 @@
 							<br /><%}%>
 				<p> &#127968;Location  : <%= theaters[x].location %></p>
 							<div align="right">
-								<a href="/user/select_movie/<%=theaters[x].t_id %>"><button
-										class="btn-curved btn-book-now">
+								<button
+										class="btn-curved btn-book-now"
+										onclick="saveFlix('<%=theaters[x].t_id %>')">
 										Book
 										Now!
-									</button></a>
+									</button>
 							</div>
 						</div>
 					</div>
@@ -60,6 +61,20 @@
 			</div>
 			<%- include('../Includes/footer.ejs') %>
 			<!-- End of footer -->
+			<script type="text/javascript">
+				function saveFlix(id){
+					let ticket = {
+						movie_id : '',
+						flix_id : id,
+						seat_id : [],
+						date: '',
+						show_id: '',
+						cost: ''
+					}
+					localStorage.setItem('ticket',JSON.stringify(ticket))
+					window.location.href =`/user/select_movie/${id}`;
+				}
+			</script>
 </body>
 
 </html>
