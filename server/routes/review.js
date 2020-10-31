@@ -7,6 +7,7 @@ const {
 
 router.get('/myReview', ensureAuthenticated, getMyReview);
 router.get('/movieReview', getParticularMovieReview);
+
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();

@@ -16,21 +16,35 @@ exports.postAddShow = async (req, res, next) => {
   const time = req.body.time;
   const price = req.body.price;
   const w_price = req.body.w_price;
-  const t_id = req.body.t_id;
+  const t_id = req.user.theater_id;
+  // console.log(req.user);
   let response = await query(
     `INSERT INTO shows (slot,price,weekend_price,m_id,t_id) values ("${time}","${price}","${
       w_price - price
-    }",${m_id},1)`
+    }",${m_id},${t_id});`
   );
   res.redirect("/flix/profile");
 };
+exports.postEditShow = async (req, res, next) => {
+  // console.log(req.body);
+  try {
+    const m_id = req.body.m_id;
+    const time = req.body.time;
+    const price = req.body.price;
+    const w_price = req.body.w_price;
+    const t_id = req.user.theater_id;
+    let response = await query(
+      `UPDATE shows SET slot="${time}",price="${price}",weekend_price="${w_price}",t_id=${t_id} WHERE m_id=${m_id};`
+    );
+    res.redirect("/flix/profile");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 exports.postDeleteShow = async (req, res, next) => {
-  console.log(req.params);
+  // console.log(req.params);
   const m_id = req.params.movieId;
-  // const time = req.body.time;
-  // const price = req.body.price;
-  // const w_price = req.body.w_price;
-  // const t_id = req.body.t_id;
   let response = await query(`DELETE FROM SHOWS WHERE m_id=${m_id};`);
   res.redirect("/flix/profile");
 };
