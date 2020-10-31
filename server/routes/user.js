@@ -35,6 +35,8 @@ router.get(
   userControllers.getProfile
 );
 
+router.get('/logout', ensureAuthenticated, userControllers.logout);
+
 // Auth Routes
 
 router.post('/signup', userControllers.signup);
