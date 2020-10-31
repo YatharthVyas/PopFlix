@@ -30,6 +30,12 @@
 				<button type="submit" class="red-btn">Search</button>
 			</div>
 		</form>
+		<% if (movies.length == 0) {%>
+
+			<div style="height: 180px; width: 600px;background-color: crimson;text-align: center;margin: auto;">
+				<h1 align="center" style="color: white;padding-top: 7%;">SORRY &#128533;<h1 style="color: wheat;"> No movies available</h1></h1>
+			</div>
+		<% } else { %>
 		<% for (x in movies) { %>
 					<div class="row card">
 						<div class="column-4 border-right content-card">
@@ -40,9 +46,7 @@
 							<h3>Release date :<%=  movies[x].release_date%></h3>
 
 							<h3>Language: <%= movies[x].language%></h3>
-							Directed by: <a href="https://www.imdb.com/search/name/?name="> Director Name </a> <br />
-							Actors: <a href="https://www.imdb.com/search/name/?name="> Actor Name #1 </a> , <a
-								href="https://www.imdb.com/search/name/?name="> Actor Name #2 </a>
+							Actors: <% for (i in movies[x].actors) { %> <a href="https://www.imdb.com/search/name/?name=<%= movies[x].actors[i].name %>"><%= movies[x].actors[i].name %></a> , <% } %>
 							<p> Description. Lorem ipsum cillum nostrud ullamco dolor est magna magna ut commodo fugiat
 								enim ad ut.
 								Magna sunt elit cupidatat esse duis ut sed est magna laboris est.</p>
@@ -53,6 +57,7 @@
 							</div>
 						</div>
 					</div>
+					<% } %>
 					<% } %>
 			</div>
 			<!-- F<ooter -->
