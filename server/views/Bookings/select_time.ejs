@@ -30,11 +30,10 @@
 			</div>
 			<div class="content-card">
 				<label>Date: </label>
-				<input type="date" class="input-text" id="date"style="width: 220px;">
+				<input type="date" class="input-text" id="date"style="width: 220px;" required>
 				<br /><br /><br />
 				<label>Time: </label>
-				<select class="input-text" id="slot" style="width: 280px;">
-					<option>Time</option>
+				<select class="input-text" id="slot" style="width: 280px;" required aria-placeholder="Time">
 					<% for (x in shows) {%> 
 					
 					<option value="<%= shows[x].show_id %>"><%= shows[x].slot %></option>
@@ -42,6 +41,7 @@
 				</select>
 			</div>
 			<div align="right"><button onclick="saveShow()" class="btn-curved btn-book-now" style="background-color: white !important;color: red">Proceed</button></div>
+			<div id="err"></div>
 		</div>
 	</div>
 	<%- include('../Includes/footer.ejs') %> 
@@ -49,7 +49,11 @@
 	<script type="text/javascript">
 		function saveShow(){
 			let date=document.querySelector('#date').value;
-			let show_id=document.querySelector('#slot').value;
+			let show_id=document.querySelector('#slot').value; // yes this is correct, value of options is show id
+			if (!date){				
+				document.querySelector("#err").innerHTML = "Please Select valid date";
+				return;
+			}
 			let ticket = JSON.parse(localStorage.getItem('ticket'));
 			ticket.date = date;
 			ticket.show_id = show_id;

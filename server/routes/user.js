@@ -9,9 +9,24 @@ router.get('/book_movie', bookingControllers.getMovieFlix);
 router.post('/book_movie/search', bookingControllers.searchMovie);
 router.get('/select_movie/:theaterId', bookingControllers.getSelectMovie);
 router.get('/select_flix/:movieId', bookingControllers.getSelectFlix);
-router.get('/select_time', bookingControllers.getSelectTime);
-router.get('/select_seat', bookingControllers.getSelectSeat);
-router.get('/confirm_payment', bookingControllers.getConfirmPayment);
+router.get(
+  '/select_time',
+  ensureAuthenticated,
+  ensureCustomer,
+  bookingControllers.getSelectTime
+);
+router.get(
+  '/select_seat',
+  ensureAuthenticated,
+  ensureCustomer,
+  bookingControllers.getSelectSeat
+);
+router.post(
+  '/confirm_payment',
+  ensureAuthenticated,
+  ensureCustomer,
+  bookingControllers.getConfirmPayment
+);
 
 router.get(
   '/profile',
