@@ -1,170 +1,193 @@
-<%- include('../Includes/header.ejs') %> 
+<%- include('../Includes/header.ejs') %>
+
 <body>
-<%- include('../Includes/nav.ejs') %> 
-<style type="text/css">
-	.movie-card{
-		margin-left:15px;
-		margin-left: 15px;
-		padding: 10px;
-		max-height: 450px;
-		transition: 1s;
-		overflow-y: hidden;
-		border-radius: 25px;
-		background-color: #fff;
-		position: relative;
-	}
-	.movie-card:hover{
-		max-height: 1000px;
-	}
-	body{
-		background: #f12711;  /* fallback for old browsers */
-		background: -webkit-linear-gradient(to right, #883333, #f12711);  /* Chrome 10-25, Safari 5.1-6 */
-		background: linear-gradient(to right, #883333, #f12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari */
-	}
-	.topright {
-	  position: absolute;
-	  top: 8px;
-	  right: 16px;
-	  font-size: 18px;
-	  z-index: 20;
-	}
-	.delete-btn{
-		background-color: #f00;
-		color:white;
-		font-weight: 900;
-		font-size: 10px;
-		padding: 5px;
-		width: 30px;
-		height: 30px;
-		border-radius: 50%;
-		border: 0px;
-		outline: 0px;
-		transition: 1s;
-	}
-	.delete-btn:hover{
-		transform: rotate(360deg);
-	}
-	.movie-card-content{
-		padding: 10px 30px 0px 30px;
-	}
-	.edit-btn{
-		background-color: #2a3eb1;
-		color:white;
-		font-weight: 900;
-		font-size: 10px;
-		padding: 5px;
-		width: 30px;
-		height: 30px;
-		border-radius: 50%;
-		border: 0px;
-		outline: 0px;
-		margin-right: 10px;
-		transition: 1s;
-	}
-	.edit-btn:hover{
-		transform: rotate(360deg);
-	}
-	.btn-success{
-		background-color: #3f51b5;
-		color: white;
-	}
-
-
-/* The Modal (background) */
-.modal-1 {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index:25 ; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-
-/* The Close Button */
-.close-1 {
-  color: #aaaaaa;
-  float: right;
-  margin-right: 20px;
-  margin-top: 20px;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close-1:hover,
-.close-1:focus {
-  color: #f00;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-</style>
+	<%- include('../Includes/nav.ejs') %>
+	<style type="text/css">
+		.movie-card {
+			margin-left: 15px;
+			margin-left: 15px;
+			padding: 10px;
+			max-height: 450px;
+			transition: 1s;
+			overflow-y: hidden;
+			border-radius: 25px;
+			background-color: #fff;
+			position: relative;
+		}
+		.movie-card:hover {
+			max-height: 1000px;
+		}
+		body {
+			background: #f12711;
+			/* fallback for old browsers */
+			background: -webkit-linear-gradient(to right, #883333, #f12711);
+			/* Chrome 10-25, Safari 5.1-6 */
+			background: linear-gradient(to right, #883333, #f12711);
+			/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari */
+		}
+		.topright {
+			position: absolute;
+			top: 8px;
+			right: 16px;
+			font-size: 18px;
+			z-index: 20;
+		}
+		.delete-btn {
+			background-color: #f00;
+			color: white;
+			font-weight: 900;
+			font-size: 10px;
+			padding: 5px;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			border: 0px;
+			outline: 0px;
+			transition: 1s;
+		}
+		.delete-btn:hover {
+			transform: rotate(360deg);
+		}
+		.movie-card-content {
+			padding: 10px 30px 0px 30px;
+		}
+		.edit-btn {
+			background-color: #2a3eb1;
+			color: white;
+			font-weight: 900;
+			font-size: 10px;
+			padding: 5px;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			border: 0px;
+			outline: 0px;
+			margin-right: 10px;
+			transition: 1s;
+		}
+		.edit-btn:hover {
+			transform: rotate(360deg);
+		}
+		.btn-success {
+			background-color: #3f51b5;
+			color: white;
+		}
+		/* The Modal (background) */
+		.modal-1 {
+			display: none;
+			/* Hidden by default */
+			position: fixed;
+			/* Stay in place */
+			z-index: 25;
+			/* Sit on top */
+			padding-top: 100px;
+			/* Location of the box */
+			left: 0;
+			top: 0;
+			width: 100%;
+			/* Full width */
+			height: 100%;
+			/* Full height */
+			overflow: auto;
+			/* Enable scroll if needed */
+			background-color: rgb(0, 0, 0);
+			/* Fallback color */
+			background-color: rgba(0, 0, 0, 0.4);
+			/* Black w/ opacity */
+		}
+		/* The Close Button */
+		.close-1 {
+			color: #aaaaaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+			margin-right: 20px;
+			margin-top: 20px;
+		}
+		.close-1:hover,
+		.close-1:focus {
+			color: #f00;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	</style>
 	<div class="content row">
 		<div class="content" style="padding-top: 0px">
 			<div style="position: relative;margin: 30px">
 				<div class="card-header" style="color: white">Now Showing:</div>
 				<div class="topright"> <button class="btn-curved btn-success" id="myBtn-1"> Add Movie </button> </div>
 			</div>
-			 <!-- ADD Movie Modal HERE -->
-			 <div id="myModal-1" class="modal-1">
-				  <form class="modal-content" action="/flix/add_show" method="POST">
-				  <span class="close-1">&times;</span>
-					<h1 style="margin-left: 3%;margin-right: 3%; color:white;">ADD  Show</h1>
+			<!-- ADD Movie Modal HERE -->
+			<div id="myModal-1" class="modal-1">
+				<form class="modal-content" action="/flix/add_show" method="POST">
+					<span class="close-1">&times;</span>
+					<h1 style="margin-left: 3%;margin-right: 3%; color:white;">ADD Show</h1>
 					<hr style="margin-left: 3%;margin-right: 3%;">
 					<div style="flex-direction: row;display: flex;">
-				  <div class="container" style="flex:3" >
-					<label for="name" class="hh" style="padding-left: 7%;"><b>Movie Name</b></label><br/>
-					<select class="input-text" name="m_id" style="width: 280px;">
-						<option>Select Movie</option>
-						<% for (x in movies) {%> 
-						<option value="<%= movies[x].m_id %>"><%= movies[x].name %></option>
-						<% } %> 
-					</select>
-					<br/><br>
-					<label for="name" class="hh" style="padding-left: 7%;"><b>Set Show Time</b></label><br/>
-					<select class="input-text" style="width: 280px;" name="time">
-						<option>No Slot Selected</option>
-						<option value="10:00:00">10 A.M.</option>
-						<option value="12:00:00">12 NOON</option>
-						<option value="14:00:00">2 P.M.</option>
-						<option value="16:00:00">4 P.M.</option>
-						<option value="18:00:00">6 P.M.</option>
-					</select><br><br>
-					<label for="name" class="hh" style="padding-left: 7%;"><b>Set Price</b></label><br/>
-					<input type="text" class="input-text" style="margin-top: 8px ;" placeholder="Enter Price" name="price"><br><br>
-					<label for="name" class="hh" style="padding-left: 7%;"><b>Set Weekend Price</b></label><br/>
-					<input type="text" class="input-text" style="margin-top: 8px ;" placeholder="Enter Price" name="w_price"><br><br>
-					<br><br>
-					<div class="clearfix">
-					  <button type="submit" class="btn-curved bg-red signup" style="margin-left: 20%;">ADD SHOW</button>
+						<div class="container" style="flex:3">
+							<label for="name" class="hh" style="padding-left: 7%;"><b>Movie Name</b></label><br />
+							<select class="input-text" name="m_id" style="width: 280px;">
+								<option>Select Movie</option>
+								<% for (x in movies) {%>
+								<option value="<%= movies[x].m_id %>"><%= movies[x].name %></option>
+								<% } %>
+							</select>
+							<br /><br>
+							<label for="name" class="hh" style="padding-left: 7%;"><b>Set Show
+									Time</b></label><br />
+							<select class="input-text" style="width: 280px;" name="time">
+								<option>No Slot Selected</option>
+								<option value="10:00:00">10 A.M.</option>
+								<option value="12:00:00">12 NOON</option>
+								<option value="14:00:00">2 P.M.</option>
+								<option value="16:00:00">4 P.M.</option>
+								<option value="18:00:00">6 P.M.</option>
+							</select><br><br>
+							<label for="name" class="hh" style="padding-left: 7%;"><b>Set Price</b></label><br />
+							<input type="text" class="input-text" style="margin-top: 8px ;"
+								placeholder="Enter Price" name="price"><br><br>
+							<label for="name" class="hh" style="padding-left: 7%;"><b>Set Weekend
+									Price</b></label><br />
+							<input type="text" class="input-text" style="margin-top: 8px ;"
+								placeholder="Enter Price" name="w_price"><br><br>
+							<br><br>
+							<div class="clearfix">
+								<button type="submit" class="btn-curved bg-red signup" style="margin-left: 20%;">ADD
+									SHOW</button>
+							</div>
+						</div>
+						<div style="flex: 2;margin-top: 2%;">
+							<img height="400px" src="/public/img/flixprof.png">
+						</div>
 					</div>
-					</div>
-					<div style="flex: 2;margin-top: 2%;">
-						<img height="400px"  src="/public/img/flixprof.png">
-					</div>
-				 </div>
 				</form>
-			  </div>
-			  <!-- ADD Movie modal End -->
+			</div>
+			<!-- ADD Movie modal End -->
 			<div class="row">
 				<% for (x in theater_movies) { %>
 				<div class="card movie-card column-4">
-					<div class="topright"><button class="edit-btn">&#9998;</button><button class="delete-btn">X</button></div>
+					<div class="topright">
+						<a href="">
+							<button type="submit" class="edit-btn">&#9998;</button>
+						</a>
+						<a href="/flix/delete_show/<%= theater_movies[x].m_id %>">
+							<button class="delete-btn">X</button>
+						</a>
+					</div>
 					<div class="movie-card-content">
 						<h2 class="card-header"> <%= theater_movies[x].name %> </h2>
-						<img src="https://picsum.photos/220?random=<%= theater_movies[x].name%>" width="220px" height="220px">
+						<img src="https://picsum.photos/220?random=<%= theater_movies[x].name%>" width="220px"
+							height="220px">
 					</div>
 					<div class="movie-card-content" style="border-top: 1px solid #ccc">
 						Directed by: <a href="https://www.imdb.com/search/name/?name="> Director Name </a> <br />
 						Language : <%= theater_movies[x].language %> <br>
 						Release Date : <%= theater_movies[x].release_date %> <br>
-						Actors: <a href="https://www.imdb.com/search/name/?name="> Actor Name #1 </a> , <a href="https://www.imdb.com/search/name/?name="> Actor Name #2 </a>
-						<p> Description. Lorem ipsum cillum nostrud ullamco dolor est magna magna ut commodo fugiat enim ad ut. Magna sunt elit cupidatat esse duis ut sed est magna laboris est.</p>
+						Actors: <a href="https://www.imdb.com/search/name/?name="> Actor Name #1 </a> , <a
+							href="https://www.imdb.com/search/name/?name="> Actor Name #2 </a>
+						<p> Description. Lorem ipsum cillum nostrud ullamco dolor est magna magna ut commodo fugiat
+							enim
+							ad ut. Magna sunt elit cupidatat esse duis ut sed est magna laboris est.</p>
 						<div align="center">
 							<a href="#"><button class="btn-curved bg-red btn-book-now"> Shows </button></a>
 							<a href="#"><button class="btn-curved bg-red btn-book-now"> Analytics </button></a>
@@ -172,45 +195,41 @@
 					</div>
 				</div>
 				<%if((x+1) % 3 == 0){%>
-					</div>
-					<div class="row">
+			</div>
+			<div class="row">
 				<%}%>
 				<%if (x == theater_movies.length -1){%>
-					<%for (let i = 0;i < 3-((x+1)%3); ++i){%>
-						<div class="column-4"></div>
-					<%}%>
+				<%for (let i = 0;i < 3-((x+1)%3); ++i){%>
+				<div class="column-4"></div>
 				<%}%>
-			<% } %> 
+				<%}%>
+				<% } %>
 			</div>
-			
+
 		</div>
 	</div>
-	<%- include('../Includes/footer.ejs') %> 
+	<%- include('../Includes/footer.ejs') %>
 </body>
 <script>
 	// Get the modal
 	var modal = document.getElementById("myModal-1");
-	
 	// Get the button that opens the modal
 	var btn = document.getElementById("myBtn-1");
-	
 	// Get the <span> element that closes the modal
 	var span = document.getElementsByClassName("close-1")[0];
-	
 	// When the user clicks the button, open the modal 
-	btn.onclick = function() {
-	  modal.style.display = "block";
+	btn.onclick = function () {
+		modal.style.display = "block";
 	}
-	
 	// When the user clicks on <span> (x), close the modal
-	span.onclick = function() {
-	  modal.style.display = "none";
-	}
-	
-	window.onclick = function(event) {
-	  if (event.target == modal) {
+	span.onclick = function () {
 		modal.style.display = "none";
-	  }
 	}
-	</script>
+	window.onclick = function (event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+</script>
+
 </html>
