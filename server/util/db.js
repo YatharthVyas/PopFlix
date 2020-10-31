@@ -12,6 +12,10 @@ exports.connect = () => {
   connection.connect();
 };
 
+exports.connection = () => {
+  return connection;
+};
+
 exports.query = () => {
   return util.promisify(connection.query).bind(connection);
 };
