@@ -39,7 +39,7 @@
 			Selected = <font color="#f00" id="seats_picked">0</font><br/>
 			Total Cost = <font color="#f00" >Rs <font id="total_cost">0</font>/-</font>
 		</h3>
-		<form action="" method="POST">
+		<form action="/user/confirm_payment/" method="POST">
 			<input type="hidden" name="date" id="date" readonly>
 			<input type="hidden" name="flix_id" id="flix_id" readonly>
 			<input type="hidden" name="movie_id" id="movie_id" readonly>
@@ -51,15 +51,26 @@
 	<script type="text/javascript">
 	window.onload = function setForm(){
 		ticket = JSON.parse(localStorage.getItem('ticket'))
+		if(!ticket){
+			window.location.href="/"
+		}
 		document.getElementById('date').value=ticket.date;
 		document.getElementById('flix_id').value=ticket.flix_id;
 		document.getElementById('movie_id').value=ticket.movie_id;
 		document.getElementById('show_id').value=ticket.show_id;
 	}
 	var res = <%- seats%>;
+
 	const booked = <%- booked %>;
+
+	const base_id = res[0].s_id;
 	var base_cost = <%- base_cost%>;
-	ctr = Math.sqrt(res.length)
+
+	ctr = Math.sqrt(res.length);
+
+	res = res.map((seat)=>{seat.s_id = seat.s_id - base_id+1;return seat;});
+
+	console.log(res);
 	seat_table = document.getElementById("Seats");
 	var seat_content = "";
 	for (var x = 0; x < ctr; x++) {
@@ -116,7 +127,8 @@
 	}
 
 	function saveSeat(){
-		document.getElementById('seat_id').value=seat_id.join(",");
+		console.log(seats_selection);	
+		document.getElementById('seat_id').value=seats_selection.map((id)=>{return id+base_id;}).join(",");
 		let ticket = JSON.parse(localStorage.getItem('ticket'));
 		ticket.seat_id = seats_selection;
 		ticket.cost = document.getElementById('total_cost').innerHTML;
