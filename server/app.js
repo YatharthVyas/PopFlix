@@ -6,18 +6,19 @@ const db = require("./util/db");
 const flixRoutes = require("./routes/flix");
 const userRoutes = require("./routes/user");
 const adminRoutes = require("./routes/admin");
+const reviewRoutes = require("./routes/review");
 
 db.connect();
 
 const app = express();
 
 app.use(
-  session({
-    secret: "MYS",
-    resave: true,
-    saveUninitialized: false,
-    ephemeral: true,
-  })
+	session({
+		secret: "MYS",
+		resave: true,
+		saveUninitialized: false,
+		ephemeral: true,
+	})
 );
 
 // Passport Config
@@ -35,9 +36,10 @@ app.use("/public", express.static(path.join(__dirname, "public")));
 app.use("/flix", flixRoutes);
 app.use("/user", userRoutes);
 app.use("/admin", adminRoutes);
+app.use("/review", reviewRoutes);
 app.get("/", (req, res) => {
-  res.redirect("/flix/home");
+	res.redirect("/flix/home");
 });
 app.listen(3000, () => {
-  console.log("Server started on port 3000");
+	console.log("Server started on port 3000");
 });

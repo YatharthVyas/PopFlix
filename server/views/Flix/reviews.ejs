@@ -1,0 +1,66 @@
+<%- include('../Includes/header.ejs') %>
+<style type="text/css">
+	.movie-name-review{
+		border-left: 10px solid #f00; border-radius: 14px;padding:20px;padding-left: 4%;
+	}
+	.comments{
+		border-left: 10px solid #ccc; border-radius: 14px;padding:20px;padding-left: 4%;margin-top: 30px;
+	}
+	.comment-header{
+		font-size: x-large;
+		padding-bottom: 5px;
+	}
+	.name-avatar{
+		border-radius: 50%;
+		padding: 2px 14px;
+		margin-right: 4px;
+		background-color: #f00;
+		color: white;
+	}
+</style>
+<body>
+	<%- include('../Includes/nav.ejs') %>
+	<div class="content" style="padding-left: 10%;padding-right: 10%">
+		<div class="card movie-name-review" style="">
+			<div class="card-header">
+				Movie name
+			</div>
+			<div class="card-content">
+				<br/>
+				Movie Date <br/>
+				Actor <br/>
+				Director <br/>
+				Movie description: Movie description: Movie description: Movie description: Movie description: Movie description:  Ut tempor et minim id occaecat qui fugiat est ea quis qui sunt consequat aute dolore officia nisi fugiat deserunt anim anim culpa commodo ut eu qui ullamco incididunt.
+			</div>
+		<div class="card comments">
+			<div class="card-header comment-header">
+				<span class="name-avatar">C</span>Commenter name
+			</div>
+			<div class="card-content">
+				<br/>
+				Ut tempor et minim id occaecat qui fugiat est ea quis qui sunt consequat aute dolore officia nisi fugiat deserunt anim anim culpa commodo ut eu qui ullamco incididunt.
+			</div>
+		</div>
+		<div class="card comments" >
+			<div class="card-header comment-header">
+				<span class="name-avatar">J</span>John Doe
+			</div>
+			<div class="card-content">
+				<br/>
+				Ut tempor et minim id occaecat qui fugiat est ea quis qui sunt consequat aute dolore officia nisi fugiat deserunt anim anim culpa commodo ut eu qui ullamco incididunt.
+			</div>
+		</div>
+		<div class="card comments" >
+			<div class="card-header comment-header">
+				<span class="name-avatar">Y</span>Yatharth Vyas
+			</div>
+			<div class="card-content">
+				<br/>
+				Ut tempor et minim id occaecat qui fugiat est ea quis qui sunt consequat aute dolore officia nisi fugiat deserunt anim anim culpa commodo ut eu qui ullamco incididunt.
+			</div>
+		</div>
+		</div>
+	</div>
+	<%- include('../Includes/footer.ejs') %>
+</body>
+</html>

@@ -64,6 +64,27 @@ CREATE TABLE person(
     constraint primary key(p_id) 
     );
 
+
+CREATE TABLE customer( 
+    p_id int NOT NULL, 
+    Email varchar(30) UNIQUE, 
+    Phone varchar(10) UNIQUE, 
+    password varchar(61),
+    constraint primary key(p_id), 
+    constraint fk_pid_customer foreign key(p_id) references person(p_id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE 
+    );
+
+CREATE TABLE payment(
+    payment_id int auto_increment,
+    timeAndDateOfPurchase datetime,
+    amount int,
+    c_id int,
+    constraint primary key(payment_id), 
+    constraint fk_c_id_payment foreign key(c_id) references customer(p_id)
+);
+
 CREATE TABLE ticket( 
     ticket_id int auto_increment, 
     dt date,
@@ -100,16 +121,6 @@ CREATE TABLE actor(
     ON DELETE CASCADE 
     );
 
-CREATE TABLE customer( 
-    p_id int NOT NULL, 
-    Email varchar(30) UNIQUE, 
-    Phone varchar(10) UNIQUE, 
-    password varchar(61),
-    constraint primary key(p_id), 
-    constraint fk_pid_customer foreign key(p_id) references person(p_id)
-    ON UPDATE CASCADE
-    ON DELETE CASCADE 
-    );
 CREATE TABLE acted_in( 
     p_id int, 
     m_id int, 
@@ -135,12 +146,4 @@ CREATE TABLE review(
     ON DELETE CASCADE 
     );
 
-CREATE TABLE payment(
-    payment_id int auto_increment,
-    timeAndDateOfPurchase datetime,
-    amount int,
-    c_id int,
-    constraint primary key(payment_id), 
-    constraint fk_c_id_payment foreign key(c_id) references customer(p_id)
-);
 

@@ -1,8 +1,8 @@
 use popflix;
-select * from payment;
-select * from booking;
-select * from ticket;
-SELECT * FROM booking Inner Join ticket where t.payment=1;
+-- select * from payment;
+-- select * from booking;
+-- select * from ticket;
+-- SELECT * FROM booking Inner Join ticket where t.payment=1;
 /*Theater 10*/
 insert into theater (t_id, name, location, rating) values (1, 'Munmro', 'Cambridge', 3.41);
 insert into theater (t_id, name, location, rating) values (2, 'Alana', 'Londonderry', 2.27);
