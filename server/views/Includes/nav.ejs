@@ -34,15 +34,19 @@
         <a href="/admin/home" class="login-nav">Admin</a>
       </li>
       <%}%>
+      <li>
+        <%if(user){%>
+        <a href="/user/logout" class="">Logout</a>
+        <%}%>
+      </li>
     </ul>
   </div>
   <script type="text/javascript">
-    function showNav(){
-      if(document.getElementById('nav-list').style.display==="block"){
-        document.getElementById('nav-list').style.display="none";
-      }
-      else{
-        document.getElementById('nav-list').style.display="block";
+    function showNav() {
+      if (document.getElementById('nav-list').style.display === 'block') {
+        document.getElementById('nav-list').style.display = 'none';
+      } else {
+        document.getElementById('nav-list').style.display = 'block';
       }
     }
   </script>

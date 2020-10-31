@@ -65,23 +65,31 @@ CREATE TABLE person(
     );
 
 CREATE TABLE ticket( 
-    ticket_id int, 
+    ticket_id int auto_increment, 
     dt date,
-    addon_meal boolean default 0, 
     show_id int, 
-    seat_id int, 
-    p_id int, 
-    gs_tax float(2), 
-    total_price float(2) check(total_price>0), 
+    payment_id int, 
+    p_id int,  
     constraint primary key(ticket_id), 
     constraint fk_shid_ticket foreign key(show_id) references shows(show_id)
     ON UPDATE CASCADE
-    ON DELETE CASCADE, constraint fk_sid_ticket foreign key(seat_id) references seats(s_id)
+    ON DELETE CASCADE,
+    constraint fk_pay_ticket foreign key(payment_id) references payment(payment_id)
     ON UPDATE CASCADE
-    ON DELETE CASCADE, constraint fk_pid_ticket foreign key(p_id) references person(p_id)
+    ON DELETE CASCADE,
+    constraint fk_pid_ticket foreign key(p_id) references person(p_id)
     ON UPDATE CASCADE
     ON DELETE CASCADE 
     );
+
+
+CREATE TABLE booking(
+    payment int,
+    seat_id int,
+    constraint primary key(payment,seat_id), 
+    constraint fk_booking_ticket foreign key(seat_id) references seats(s_id),
+    constraint fk_booking_payment foreign key(payment) references payment(payment_id)
+);
 
 CREATE TABLE actor( 
     p_id int, 
@@ -128,12 +136,11 @@ CREATE TABLE review(
     );
 
 CREATE TABLE payment(
-    payment_id int UNIQUE,
+    payment_id int auto_increment,
     timeAndDateOfPurchase datetime,
     amount int,
-    t_id int,
     c_id int,
-    constraint fk_t_id_payment foreign key(t_id) references ticket(ticket_id),
+    constraint primary key(payment_id), 
     constraint fk_c_id_payment foreign key(c_id) references customer(p_id)
-    );
+);
 
