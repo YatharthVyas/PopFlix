@@ -13,8 +13,8 @@ exports.getProfile = async (req, res) => {
 
     if (names.length > 1) user.lname = names[1];
     else user.lname = " ";
-    if (person.gender == "M") user.gender = "Male";
-    else if (person.gender == "F") user.gender = "Female";
+    if (person[0].gender == "M") user.gender = "Male";
+    else if (person[0].gender == "F") user.gender = "Female";
     else user.gender = "Other";
     res.render("User/Profile", {
       pg: "profile",
