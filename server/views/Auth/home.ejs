@@ -52,8 +52,8 @@
 				</form>
 				<div id="btns">
 					<h3 class="heading-btns-home"><button class="btn-curved red-text login"
-							onclick="showLogin()">Login</button> <button
-							onclick="document.getElementById('id01').style.display='block'"
+							onclick="showLogin();disableScrollEffect();">Login</button> <button
+							onclick="document.getElementById('id01').style.display='block';disableScrollEffect();"
 							class="btn-curved bg-red signup">Signup</button></h3>
 				</div>
 				<%}%>
@@ -162,11 +162,13 @@
 		scrolledTo2 = false;
 		scrolledTo3 = false;
 		isScrolling = false;
-		if(window.pageYOffset!==0){
+		function disableScrollEffect(){
 			scrolledTo1 = true;
 			scrolledTo2 = true;
 			scrolledTo3 = true;
-			scrolling1 = true;
+		}
+		if(window.pageYOffset!==0){
+			disableScrollEffect();
 		}
 		window.onscroll = function animateHomeScroll(){
 			if(!isScrolling){

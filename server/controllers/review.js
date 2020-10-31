@@ -1,4 +1,4 @@
-const query = require("../util/db").query();
+const query = require('../util/db').query();
 // Not dynamic yet since didnt knew frontend implementaion
 exports.getMyReview = async (req, res) => {
   let myReviews = await query(`SELECT * FROM REVIEW WHERE p_id=1`, function (

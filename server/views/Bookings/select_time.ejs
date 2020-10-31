@@ -41,15 +41,19 @@
 					<%} %> 
 				</select>
 			</div>
-			<div align="right"><button onclick="retrieve()" class="btn-curved btn-book-now" style="background-color: white !important;color: red">Proceed</button></div>
+			<div align="right"><button onclick="saveShow()" class="btn-curved btn-book-now" style="background-color: white !important;color: red">Proceed</button></div>
 		</div>
 	</div>
 	<%- include('../Includes/footer.ejs') %> 
-	<script>
-		const retrieve = ()=>{
+	
+	<script type="text/javascript">
+		function saveShow(){
 			let date=document.querySelector('#date').value;
 			let show_id=document.querySelector('#slot').value;
-			console.log(date,show_id);
+			let ticket = JSON.parse(localStorage.getItem('ticket'));
+			ticket.date = date;
+			ticket.show_id = show_id;
+			localStorage.setItem('ticket',JSON.stringify(ticket));
 			window.location.href=`/user/select_seat?date=${date}&show_id=${show_id}`;
 		}
 	</script>

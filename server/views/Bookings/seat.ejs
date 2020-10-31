@@ -1,4 +1,10 @@
 <%- include('../Includes/header.ejs') %> 
+<style>
+	.overlay{
+		background-color: rgba(255,223,0,1);
+  		background-blend-mode: multiply;
+	}
+</style>
 <body>
 <%- include('../Includes/nav.ejs') %> 
 	<div class="content row">
@@ -33,86 +39,49 @@
 			Selected = <font color="#f00" id="seats_picked">0</font><br/>
 			Total Cost = <font color="#f00" >Rs <font id="total_cost">0</font>/-</font>
 		</h3>
-		<a href="confirm_payment"><button class="btn-curved bg-red btn-book-now">Proceed to pay</button></a>
+		<form action="" method="POST">
+			<input type="hidden" name="date" id="date" readonly>
+			<input type="hidden" name="flix_id" id="flix_id" readonly>
+			<input type="hidden" name="movie_id" id="movie_id" readonly>
+			<input type="hidden" name="show_id" id="show_id" readonly>
+			<input type="hidden" name="seat_id" id="seat_id" readonly>
+			<button class="btn-curved bg-red btn-book-now" onclick="saveSeat()" disabled="true" id="submitTicketForm" style="cursor: not-allowed;">Proceed to pay</button>
+		</form>
 	</div>
 	<script type="text/javascript">
-	var res = [{
-			id: 0,
-			allocated: true
-		},
-		{
-			id: 1,
-			allocated: true
-		},
-		{
-			id: 2,
-			allocated: false
-		},
-		{
-			id: 3,
-			allocated: false
-		},
-		{
-			id: 4,
-			allocated: false
-		},
-		{
-			id: 5,
-			allocated: false
-		},
-		{
-			id: 6,
-			allocated: false
-		},
-		{
-			id: 7,
-			allocated: false
-		},
-		{
-			id: 8,
-			allocated: true
-		},
-		{
-			id: 9,
-			allocated: true
-		},
-		{
-			id: 10,
-			allocated: false
-		},
-		{
-			id: 11,
-			allocated: false
-		},
-		{
-			id: 12,
-			allocated: true
-		},
-		{
-			id: 13,
-			allocated: true
-		},
-		{
-			id: 14,
-			allocated: true
-		},
-		{
-			id: 15,
-			allocated: true
-		},
-	]
-	var cost = 100;
+	window.onload = function setForm(){
+		ticket = JSON.parse(localStorage.getItem('ticket'))
+		document.getElementById('date').value=ticket.date;
+		document.getElementById('flix_id').value=ticket.flix_id;
+		document.getElementById('movie_id').value=ticket.movie_id;
+		document.getElementById('show_id').value=ticket.show_id;
+	}
+	var res = <%- seats%>;
+	const booked = <%- booked %>;
+	var base_cost = <%- base_cost%>;
 	ctr = Math.sqrt(res.length)
 	seat_table = document.getElementById("Seats");
 	var seat_content = "";
 	for (var x = 0; x < ctr; x++) {
 		seat_content += "<tr>";
 		for (var y = 0; y < ctr; y++) {
-			if (res[x * 4 + y].allocated) {
-				seat_content += "<td class='occupied'>" + res[x * 4 + y].id + "</td>";
-			} else {
-				seat_content += "<td class='available' onclick='selectSeat(event," + res[x * 4 + y].id + ")'>" + res[x * 4 + y].id + "</td>"
+
+			seat_content += "<td class = '"; // start of td
+			 
+			// Check if extra price
+			if(res[x*ctr+y].seat_price != 0){
+				seat_content += "overlay ";
 			}
+
+			// Check if booked
+			if (booked.includes(res[x * ctr + y].s_id)) {
+				seat_content += "occupied'>" ;
+			} else {
+				seat_content += "available' onclick='selectSeat(event," + (x * ctr + y)+ ")'>" ;
+			}
+
+			// End of td
+			seat_content += res[x * ctr + y].s_id + "</td>";
 
 		}
 		seat_content += "</tr>";
@@ -122,15 +91,37 @@
 	var seats_selection = [];
 
 	function selectSeat(evt, id) {
+		
 		if (seats_selection.includes(id)) {
 			evt.srcElement.style.filter = "opacity(60%)";
-			seats_selection = seats_selection.filter(function(value) { return value !== id; }); //Dekete Seat
+			seats_selection = seats_selection.filter(function(value) { return value !== id; }); //Delete Seat
 		} else {
 			evt.srcElement.style.filter = "opacity(100%)";
 			seats_selection.push(id);
 		}
+
 		document.getElementById('seats_picked').innerHTML = seats_selection.length;
-		document.getElementById('total_cost').innerHTML = seats_selection.length*cost;
+
+		// Reduce doesn't work on empty array so extra check
+		if(seats_selection.length == 0){
+			document.getElementById('submitTicketForm').disabled=true;
+			document.getElementById('submitTicketForm').style.cursor='not-allowed';
+			document.getElementById('total_cost').innerHTML = "0";
+		}else{
+			document.getElementById('submitTicketForm').disabled=false;
+			document.getElementById('submitTicketForm').style.cursor='pointer';
+			document.getElementById('total_cost').innerHTML = seats_selection.map((_id)=>{return res[_id].seat_price+base_cost;}).reduce((a,b)=>{return a+b;});
+		}
+		
+	}
+
+	function saveSeat(){
+		document.getElementById('seat_id').value=seat_id.join(",");
+		let ticket = JSON.parse(localStorage.getItem('ticket'));
+		ticket.seat_id = seats_selection;
+		ticket.cost = document.getElementById('total_cost').innerHTML;
+		localStorage.setItem('ticket',JSON.stringify(ticket));
+		window.location.href =`/user/confirm_payment`;
 	}
 	</script>
 	<%- include('../Includes/footer.ejs') %> 
