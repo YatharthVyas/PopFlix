@@ -89,8 +89,18 @@ exports.getMovieFlix = async (req, res) => {
       `SELECT distinct m.m_id as m_id,m.name as name,m.release_date as release_date,m.language as language from movies m inner join shows s on s.m_id=m.m_id inner join theater t on t.t_id=s.t_id where  release_date < CURDATE() ORDER BY m.release_date DESC;`
     );
     let mov = filterMovieData(movies);
-    let dropLanguage = await query(`SELECT DISTINCT language FROM movies;`);
-    let dropGenre = await query(`SELECT DISTINCT Genre FROM genre;`);
+
+    for(x in mov)
+    {
+      let actors = await query(
+        `SELECT name from person where p_id IN (select p_id from acted_in where m_id=${mov[x].m_id});`
+      );
+      mov[x].actors=actors;
+      console.log(mov[x].actors,"SSSSS");
+    }
+    let dropLanguage = await query(`SELECT DISTINCT LANGUAGE FROM MOVIES;`);
+    let dropGenre = await query(`SELECT DISTINCT Genre FROM Genre;`);
+
     let indx = 0;
     while (indx < dropLanguage.length) {
       let x = dropLanguage[indx].LANGUAGE;
@@ -245,15 +255,23 @@ exports.getSelectSeat = async (req, res) => {
 
 exports.getSelectMovie = async (req, res) => {
   const id = req.params.theaterId;
-
+  console.log("SAXASC");
   try {
     let movies = await query(
       `SELECT * from movies where m_id IN (select m_id from shows where t_id=${id});`
     );
     let mov = filterMovieData(movies);
 
-    res.render('Bookings/select_movie', {
-      pg: 'select_movie',
+    for(x in mov)
+    {
+      let actors = await query(
+        `SELECT name from person where p_id IN (select p_id from acted_in where m_id=${mov[x].m_id});`
+      );
+      mov[x].actors=actors;
+      console.log(mov[x].actors,"SSSSS");
+    }
+    res.render("Bookings/select_movie", {
+      pg: "select_movie",
       user: req.user,
       movies: mov,
       theaterId: id,

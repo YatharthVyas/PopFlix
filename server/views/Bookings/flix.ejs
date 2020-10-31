@@ -23,6 +23,12 @@
 			<button type="submit" class="red-btn">Search</button>
 		</div>
 	</form>
+	<% if (theaters.length == 0) {%>
+
+		<div style="height: 180px; width: 600px;background-color: crimson;text-align: center;margin: auto;">
+			<h1 align="center" style="color: white;padding-top: 7%;">SORRY &#128533;<h1 style="color: wheat;"> No movies available</h1></h1>
+		</div>
+	<% } else { %>
 		<% for (x in theaters) { %>
 
 					<div class="row card">
@@ -48,7 +54,7 @@
 						</div>
 					</div>
 					<% } %>
-
+					<% } %>
 			</div>
 			<!-- F<ooter -->
 			<div align="center" id="subscribe-news">

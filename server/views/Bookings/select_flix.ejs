@@ -25,6 +25,28 @@
 		</div>
 	</div>
 	<div class="content">
+
+		<div class="row">
+			<input type="search" placeholder="Enter Flix Name" id="searchmovie" class="input-text full-width">
+			<select class="input-text">
+				<option>Region</option>
+				<option value="Mumbai West">Mumbai West</option>
+				<option value="Mumbai South">Mumbai South</option>
+				<option value="Mumbai North">Mumbai North</option>
+				<option value="Mumbai East">Mumbai East</option>
+				<option value="Vasai">Vasai</option>
+				<option value="Thane">Thane</option>
+				<option value="Others">Others</option>
+			</select>
+			<button class="red-btn">Search</button>
+		</div>
+		<% if (theater.length == 0) {%>
+
+		<div style="height: 180px; width: 600px;background-color: crimson;text-align: center;margin: auto;">
+			<h1 align="center" style="color: white;padding-top: 7%;">SORRY &#128533;<h1 style="color: wheat;"> No theaters available</h1></h1>
+		</div>
+		<% } else { %>
+
 		<% for (x in theater) { %>
 		<div class="row card">
 			<div class="column-4 border-right content-card">
@@ -46,6 +68,7 @@
 			</div>
 		</div>
 		<% } %>
+	<% } %> 
 	</div>
 	<%- include('../Includes/footer.ejs') %>
 	<script type="text/javascript">
