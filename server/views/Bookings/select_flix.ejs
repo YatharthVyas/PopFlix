@@ -55,28 +55,21 @@
 				<p class="border"><i class="fa fa-home" style="font-size:30px;color:red"></i> Address: <%= theater[x].location%>
 				</p>
 				<div align="right">
-					<a href="/user/select_time?theater=<%=theater[x].t_id%>&movie=<%= movieId %>"><button class="btn-curved btn-book-now"> Proceed </button></a>
+					<a href="/user/select_time?theater=<%=theater[x].t_id%>&movie=<%= movieId %>"><button class="btn-curved btn-book-now" onclick="saveFlix('<%=theater[x].t_id%>')"> Proceed </button>
 				</div>
 			</div>
 		</div>
 		<% } %>
-
-		<!-- <div class="row card">
-			<div class="column-4 border-right content-card">
-				<img src="/public/img/seat.png" width="80%">
-			</div>
-			<div class="column-8 content-card">
-				<h2 class="card-header"> PVR Juhu</h2>
-				Rating: <span> 4.6 </span>&#9733; <br />
-				Now Showing: <a href="#"> Movie Name #1 </a> , <a href="#"> Movie Name #2 </a>
-				<p> Address. Lorem ipsum cillum nostrud ullamco dolor est magna magna ut commodo fugiat enim ad ut. Magna sunt elit cupidatat esse duis ut sed est magna laboris est.</p>
-				<div align="right">
-					<a href="select_time"><button class="btn-curved btn-book-now"> Proceed </button></a>
-				</div>
-			</div>
-		</div> -->
 	</div>
 	<%- include('../Includes/footer.ejs') %>
+	<script type="text/javascript">
+		function saveFlix(id){
+			let ticket = JSON.parse(localStorage.getItem('ticket'));
+			ticket.flix_id = id;
+			localStorage.setItem('ticket',JSON.stringify(ticket));
+			window.location.href =`/user/select_time?theater=${ticket.flix_id}&movie=${ticket.movie_id}`;
+		}
+	</script>
 </body>
 
 </html>

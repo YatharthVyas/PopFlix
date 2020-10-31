@@ -39,7 +39,7 @@
 			Selected = <font color="#f00" id="seats_picked">0</font><br/>
 			Total Cost = <font color="#f00" >Rs <font id="total_cost">0</font>/-</font>
 		</h3>
-		<a href="confirm_payment"><button class="btn-curved bg-red btn-book-now">Proceed to pay</button></a>
+		<button class="btn-curved bg-red btn-book-now" onclick="saveSeat()">Proceed to pay</button>
 	</div>
 	<script type="text/javascript">
 	var res = <%- seats%>;
@@ -95,6 +95,14 @@
 			document.getElementById('total_cost').innerHTML = seats_selection.map((_id)=>{return res[_id].seat_price+base_cost;}).reduce((a,b)=>{return a+b;});
 		}
 		
+	}
+
+	function saveSeat(){
+		let ticket = JSON.parse(localStorage.getItem('ticket'));
+		ticket.seat_id = seats_selection;
+		ticket.cost = document.getElementById('total_cost').innerHTML;
+		localStorage.setItem('ticket',JSON.stringify(ticket));
+		window.location.href =`/user/confirm_payment`;
 	}
 	</script>
 	<%- include('../Includes/footer.ejs') %> 
