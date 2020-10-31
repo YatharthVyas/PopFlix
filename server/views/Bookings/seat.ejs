@@ -39,9 +39,23 @@
 			Selected = <font color="#f00" id="seats_picked">0</font><br/>
 			Total Cost = <font color="#f00" >Rs <font id="total_cost">0</font>/-</font>
 		</h3>
-		<button class="btn-curved bg-red btn-book-now" onclick="saveSeat()">Proceed to pay</button>
+		<form action="" method="POST">
+			<input type="hidden" name="date" id="date" readonly>
+			<input type="hidden" name="flix_id" id="flix_id" readonly>
+			<input type="hidden" name="movie_id" id="movie_id" readonly>
+			<input type="hidden" name="show_id" id="show_id" readonly>
+			<input type="hidden" name="seat_id" id="seat_id" readonly>
+			<button class="btn-curved bg-red btn-book-now" onclick="saveSeat()" disabled="true" id="submitTicketForm" style="cursor: not-allowed;">Proceed to pay</button>
+		</form>
 	</div>
 	<script type="text/javascript">
+	window.onload = function setForm(){
+		ticket = JSON.parse(localStorage.getItem('ticket'))
+		document.getElementById('date').value=ticket.date;
+		document.getElementById('flix_id').value=ticket.flix_id;
+		document.getElementById('movie_id').value=ticket.movie_id;
+		document.getElementById('show_id').value=ticket.show_id;
+	}
 	var res = <%- seats%>;
 	const booked = <%- booked %>;
 	var base_cost = <%- base_cost%>;
@@ -90,14 +104,19 @@
 
 		// Reduce doesn't work on empty array so extra check
 		if(seats_selection.length == 0){
+			document.getElementById('submitTicketForm').disabled=true;
+			document.getElementById('submitTicketForm').style.cursor='not-allowed';
 			document.getElementById('total_cost').innerHTML = "0";
 		}else{
+			document.getElementById('submitTicketForm').disabled=false;
+			document.getElementById('submitTicketForm').style.cursor='pointer';
 			document.getElementById('total_cost').innerHTML = seats_selection.map((_id)=>{return res[_id].seat_price+base_cost;}).reduce((a,b)=>{return a+b;});
 		}
 		
 	}
 
 	function saveSeat(){
+		document.getElementById('seat_id').value=seat_id.join(",");
 		let ticket = JSON.parse(localStorage.getItem('ticket'));
 		ticket.seat_id = seats_selection;
 		ticket.cost = document.getElementById('total_cost').innerHTML;
