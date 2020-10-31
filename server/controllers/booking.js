@@ -88,6 +88,14 @@ exports.getMovieFlix = async (req, res) => {
       `SELECT * FROM movies WHERE release_date < CURDATE() ORDER BY release_date DESC;`
     );
     let mov = filterMovieData(movies);
+    for(x in mov)
+    {
+      let actors = await query(
+        `SELECT name from person where p_id IN (select p_id from acted_in where m_id=${mov[x].m_id});`
+      );
+      mov[x].actors=actors;
+      console.log(mov[x].actors,"SSSSS");
+    }
     let dropLanguage = await query(`SELECT DISTINCT LANGUAGE FROM MOVIES;`);
     let dropGenre = await query(`SELECT DISTINCT Genre FROM Genre;`);
     let indx = 0;
@@ -240,13 +248,20 @@ exports.getSelectSeat = async (req, res) => {
 
 exports.getSelectMovie = async (req, res) => {
   const id = req.params.theaterId;
-
+  console.log("SAXASC");
   try {
     let movies = await query(
       `SELECT * from movies where m_id IN (select m_id from shows where t_id=${id});`
     );
     let mov = filterMovieData(movies);
-
+    for(x in mov)
+    {
+      let actors = await query(
+        `SELECT name from person where p_id IN (select p_id from acted_in where m_id=${mov[x].m_id});`
+      );
+      mov[x].actors=actors;
+      console.log(mov[x].actors,"SSSSS");
+    }
     res.render("Bookings/select_movie", {
       pg: "select_movie",
       user: req.user,
