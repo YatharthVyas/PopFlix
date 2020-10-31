@@ -18,7 +18,7 @@ CREATE TABLE theater_user(
 CREATE TABLE movies( 
     m_id int auto_increment, 
     name varchar(30) , 
-    release_date Date, 
+    release_date DateTime, 
     language ENUM('EN','Hi','Ma') ,
     constraint PRIMARY KEY (m_id) 
     ); 

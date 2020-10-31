@@ -1,4 +1,8 @@
 use popflix;
+select * from payment;
+select * from booking;
+select * from ticket;
+SELECT * FROM booking Inner Join ticket where t.payment=1;
 /*Theater 10*/
 insert into theater (t_id, name, location, rating) values (1, 'Munmro', 'Cambridge', 3.41);
 insert into theater (t_id, name, location, rating) values (2, 'Alana', 'Londonderry', 2.27);
@@ -13,6 +17,7 @@ insert into theater (t_id, name, location, rating) values (10, 'Rice', 'Goodland
 
 
 /*movies 50*/
+alter table movies modify column release_date datetime;
 insert into movies (m_id, name, release_date, language) values (1, 'Cheslie Lang', '2020-09-30 09:38:52', 'EN');
 insert into movies (m_id, name, release_date, language) values (2, 'Garvey Clunie', '2020-04-28 08:34:00', 'Ma');
 insert into movies (m_id, name, release_date, language) values (3, 'Marcelia Ambroise', '2020-07-25 07:54:56', 'Ma');
@@ -63,7 +68,7 @@ insert into movies (m_id, name, release_date, language) values (47, 'Eartha Pret
 insert into movies (m_id, name, release_date, language) values (48, 'Doll Godley', '2019-12-09 19:44:54', 'EN');
 insert into movies (m_id, name, release_date, language) values (49, 'Silvester Grennan', '2020-08-23 12:15:12', 'Ma');
 insert into movies (m_id, name, release_date, language) values (50, 'Korella Toke', '2020-06-23 02:59:38', 'EN');
-
+select * from movies;
 /*Genre 75*/
 insert into genre (m_id, Genre) values (24, 'ADVENTURE');
 insert into genre (m_id, Genre) values (2, 'ROMANTIC');
