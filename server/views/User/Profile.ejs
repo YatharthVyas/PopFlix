@@ -49,7 +49,38 @@
                 </h1>
                 <nav>
                     <ul>
+                        <% for (x in ticket) {%>
                         <li class="row card">
+                            <div class="column-4 border-right content-card-2">
+                                <img src="/public/img/tickets.png" width="100%">
+                                <h3 style="color: rgb(0, 0, 0);"> <%= ticket[x].dt%></h3>
+                            </div>
+                            <div class="column-8 content-card-2">
+                                <h2 class="card-header" style="color: rgb(0, 0, 0);font-size: 2em;"> <span
+                                        style="color: red;"><%= ticket[x].theaterName %></span> -
+                                    <span><%= ticket[x].movieName %></span>
+                                </h2>
+                                <div align="center">
+                                    <span style="color: rgb(0, 0, 0);margin-right: 10%;font-size: 1.3em;">Amount :
+                                        <%= ticket[x].amount %></span>
+                                </div>
+                                <div align="center">
+                                    <span style="color: rgb(0, 0, 0);margin-right: 10%;font-size: 15px;">Purchased on :
+                                        <%= ticket[x].timeAndDateOfPurchase %></span>
+                                </div>
+                                <div align="center">
+                                    <span style="color: rgb(0, 0, 0);margin-right: 10%;font-size: 15px;">Location :
+                                        <%= ticket[x].location %></span>
+                                </div>
+                                <p style="font-size: 15px;">Seat No :</p>
+                                <div align="center">
+                                    <span style="color: rgb(0, 0, 0);font-size: 15px;">
+                                        <%= ticket[x].seats_id %>, </span>
+                                </div>
+                            </div>
+                        </li>
+                        <%}%>
+                                    <!-- <li class="row card">
                             <div class="column-4 border-right content-card-2">
                                 <img src="/public/img/tickets.png" width="100%">
                                 <h3 style="color: white;">Date 18/01/2001</h3>
@@ -58,7 +89,7 @@
                                 <h2 class="card-header" style="color: honeydew;font-size: 2em;"> <span
                                         style="color: red;">Ticket ID</span> - <span>10001</span></h2>
                                 <div align="center">
-                                    <span style="color: white;margin-right: 10%;font-size: 1.3em;">Amount : 700</span><a
+                                    <span style="color: white;margin-right: 10%;font-size: 1.3em;">Amount : 500</span><a
                                         href="/user/confirm_payment"><button class="btn-curved btn-book-now-2"> View
                                             Ticket </button></a>
                                 </div>
@@ -93,22 +124,7 @@
                                             Ticket </button></a>
                                 </div>
                             </div>
-                        </li>
-                        <li class="row card">
-                            <div class="column-4 border-right content-card-2">
-                                <img src="/public/img/tickets.png" width="100%">
-                                <h3 style="color: white;">Date 18/01/2001</h3>
-                            </div>
-                            <div class="column-8 content-card-2">
-                                <h2 class="card-header" style="color: honeydew;font-size: 2em;"> <span
-                                        style="color: red;">Ticket ID</span> - <span>10001</span></h2>
-                                <div align="center">
-                                    <span style="color: white;margin-right: 10%;font-size: 1.3em;">Amount : 500</span><a
-                                        href="/user/confirm_payment"><button class="btn-curved btn-book-now-2"> View
-                                            Ticket </button></a>
-                                </div>
-                            </div>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
             </div>
