@@ -24,6 +24,17 @@ exports.postAddShow = async (req, res, next) => {
   );
   res.redirect("/flix/profile");
 };
+exports.postDeleteShow = async (req, res, next) => {
+  console.log(req.params);
+  const m_id = req.params.movieId;
+  // const time = req.body.time;
+  // const price = req.body.price;
+  // const w_price = req.body.w_price;
+  // const t_id = req.body.t_id;
+  let response = await query(`DELETE FROM SHOWS WHERE m_id=${m_id};`);
+  res.redirect("/flix/profile");
+};
+
 const filterMovieData = (movies) => {
   let indx = 0;
   while (indx < movies.length) {
@@ -44,12 +55,10 @@ exports.getFlixProfile = async (req, res, next) => {
     let movies = await query(
       `SELECT name,m_id FROM movies WHERE release_date < CURDATE() ORDER BY release_date DESC LIMIT 15;`
     );
-    console.log(req.user);
     let mov = await query(
       `SELECT * from movies where m_id IN (select m_id from shows where t_id=${req.user.theater_id});`
     );
     let theater_movies = filterMovieData(mov);
-
     res.render("Flix/flix_profile", {
       pg: "profile",
       user: req.user,

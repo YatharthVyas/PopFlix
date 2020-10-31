@@ -11,10 +11,8 @@ exports.getBookFlix = async (req, res, next) => {
       theaters[indx].movies = movies;
       indx = indx + 1;
     }
-    console.log(theaters);
-    let dropRegions = await query(`SELECT Location FROM THEATER;`);
-    // console.log(dropRegions);
-    // console.log("Regions", regions);
+
+    let dropRegions = await query(`SELECT Location FROM theater;`);
     return res.render("Bookings/flix", {
       pg: "book_flix",
       user: req.user,
@@ -29,26 +27,23 @@ exports.getBookFlix = async (req, res, next) => {
 
 exports.searchFlix = async (req, res) => {
   try {
-    console.log(req.body);
     const theaterName = req.body.searchmovie;
     const theaterLocation = req.body.region;
-    let dropRegions = await query(`SELECT Location FROM THEATER;`);
-    console.log("Drop", dropRegions);
+    let dropRegions = await query(`SELECT Location FROM theater;`);
+
     let theaters = {};
     if (req.body.region == "Region") {
       theaters = await query(
-        `SELECT * FROM THEATER WHERE name LIKE '%${theaterName}%';`
+        `SELECT * FROM theater WHERE name LIKE '%${theaterName}%';`
       );
     } else if (req.body.searchmovie == "") {
       theaters = await query(
-        `SELECT * FROM THEATER AS t WHERE LOCATION='${theaterLocation}' GROUP BY t.LOCATION ORDER BY t.rating;`
+        `SELECT * FROM theater AS t WHERE LOCATION='${theaterLocation}' GROUP BY t.LOCATION ORDER BY t.rating;`
       );
-      // console.log("Location", theaters);
     } else {
       theaters = await query(
-        `SELECT * FROM THEATER AS t WHERE name LIKE '%${theaterName}%' AND t.LOCATION='${theaterLocation}' GROUP BY t.LOCATION ORDER BY t.rating;`
+        `SELECT * FROM theater AS t WHERE name LIKE '%${theaterName}%' AND t.LOCATION='${theaterLocation}' GROUP BY t.LOCATION ORDER BY t.rating;`
       );
-      // console.log("Both", theaters);
     }
     let indx = 0;
     while (indx < theaters.length) {
@@ -58,8 +53,7 @@ exports.searchFlix = async (req, res) => {
       theaters[indx].movies = movies;
       indx = indx + 1;
     }
-    // let regions = await query(`SELECT * FROM THEATER;`);
-    // console.log("Regions", regions);
+
     return res.render("Bookings/flix", {
       pg: "book_flix",
       user: req.user,
@@ -104,7 +98,7 @@ exports.getMovieFlix = async (req, res) => {
       else dropLanguage[indx].LANGUAGE = "Marathi";
       indx = indx + 1;
     }
-    console.log(dropGenre[0].Genre);
+
     res.render("Bookings/movie", {
       pg: "book_movie",
       user: req.user,
@@ -120,7 +114,6 @@ exports.getMovieFlix = async (req, res) => {
 
 exports.searchMovie = async (req, res) => {
   try {
-    console.log("MOV", req.body);
     let movieName = req.body.searchMovie;
     let language = req.body.lang;
     let genre = req.body.genre;
@@ -134,7 +127,7 @@ exports.searchMovie = async (req, res) => {
       else dropLanguage[indx].LANGUAGE = "Marathi";
       indx = indx + 1;
     }
-    // console.log(dropLanguage);
+
     let mov = {};
     if (language == "Language" && genre == "Genre") {
       mov = await query(
@@ -175,7 +168,7 @@ exports.searchMovie = async (req, res) => {
         `SELECT * FROM MOVIES AS m WHERE m.name LIKE '%${movieName}%' AND m.language='${language}' AND m.m_id IN (SELECT m_id from genre where GENRE='${genre}');`
       );
     }
-    console.log(mov);
+
     mov = filterMovieData(mov);
 
     res.render("Bookings/movie", {
@@ -192,11 +185,8 @@ exports.searchMovie = async (req, res) => {
 
 exports.getSelectFlix = async (req, res) => {
   const id = req.params.movieId;
-  // console.log("MovieId", id);
 
   try {
-    // let theater = await query(`SELECT * FROM theater WHERE t_id IN (select t_id from shows where m_id=${id})
-    // ;`);
     let theater = await query(`SELECT * FROM
       movies m INNER JOIN shows s
     	  ON m.m_id = s.m_id
@@ -204,7 +194,7 @@ exports.getSelectFlix = async (req, res) => {
     	  ON t.t_id=s.t_id
       WHERE m.m_id = ${id}
       ;`);
-    console.log(theater);
+
     let indx = 0;
     while (indx < theater.length) {
       let movies = await query(
@@ -223,17 +213,33 @@ exports.getSelectFlix = async (req, res) => {
     console.log(err);
   }
 };
-exports.getSelectSeat = (req, res) => {
+exports.getSelectSeat = async (req, res) => {
+  let { date, show_id } = req.query;
+  let seats = await query(
+    `select * from seats where theater_id=(select t_id from shows where show_id=${show_id}) order by s_id ASC`
+  );
+
+  let base_cost = await query(
+    `select CASE WHEN WEEKDAY(${date}) IN (5,6) THEN s.price+s.weekend_price ELSE s.price END AS cost from shows s where show_id=${show_id}`
+  );
+  const base = seats[0].s_id;
+  for (seat in seats) {
+    seats[seat].s_id = seats[seat].s_id - base + 1;
+  }
+  let booked = await query(
+    `select seat_id from ticket where show_id=${show_id} and dt=${date}`
+  );
   res.render("Bookings/seat", {
     user: req.user,
     pg: "select_seat",
+    base_cost: base_cost[0].cost,
+    seats: JSON.stringify(seats),
+    booked: JSON.stringify(booked),
   });
 };
 
 exports.getSelectMovie = async (req, res) => {
   const id = req.params.theaterId;
-
-  console.log(id, "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
 
   try {
     let movies = await query(
@@ -259,7 +265,6 @@ exports.getSelectTime = async (req, res) => {
     let shows = await query(
       `select * from shows where t_id=${t_id} and m_id=${m_id};`
     );
-    console.log(shows);
     res.render("Bookings/select_time", {
       user: req.user,
       pg: "select_time",

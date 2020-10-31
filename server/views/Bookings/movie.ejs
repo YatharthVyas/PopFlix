@@ -52,10 +52,9 @@
 								enim ad ut.
 								Magna sunt elit cupidatat esse duis ut sed est magna laboris est.</p>
 							<div align="right">
-								<a href="/user/select_flix/<%=movies[x].m_id%>"><button
-										class="btn-curved btn-red btn-book-now">
-										Book Now!
-									</button></a>
+								<button class="btn-curved btn-red btn-book-now" onclick="saveMovie('<%=movies[x].m_id%>')">
+									Book Now!
+								</button>
 							</div>
 						</div>
 					</div>
@@ -71,6 +70,21 @@
 				</form>
 			</div>
 			<%- include('../Includes/footer.ejs') %>
+			<script type="text/javascript">
+				function saveMovie(id){
+					let ticket = {
+						movie_id : id,
+						flix_id : '',
+						seat_id : [],
+						date: '',
+						show_id: '',
+						cost: ''
+					}
+					localStorage.setItem('ticket',JSON.stringify(ticket))
+					console.log(`/user/select_flix/${id}`)
+					window.location.href =`/user/select_flix/${id}`;
+				}
+			</script>
 </body>
 
 </html>

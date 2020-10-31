@@ -5,6 +5,11 @@ body {
   margin-top: 50px;
   width: 100vw;
   overflow-x: hidden;
+  background: #FFFFFF;
+  background: -webkit-radial-gradient(center, #FFFFFF, #F0D1D1);
+  background: -moz-radial-gradient(center, #FFFFFF, #F0D1D1);
+  background: radial-gradient(ellipse at center, #FFFFFF, #F0D1D1);
+
 }
 
 /* Profile  */
@@ -39,6 +44,19 @@ input[type="file"] {
   padding-top: 50px;
   padding-left: 5%;
   padding-right: 5%;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+
+  .arrow {
+    clip-path: polygon(30% 70%, 30% 0, 70% 0, 70% 80%, 100% 70%, 50% 100%, 0% 70%) !important;
+    min-height: 30px;
+    text-align: center;
+  }
 }
 
 /* Grids and Alignments */
@@ -96,6 +114,18 @@ input[type="file"] {
   margin-left: 23%;
   margin-top: 50px;
   font-size: large;
+}
+
+@media screen and (max-width: 768px) {
+  .sub-heading-home {
+    margin-left: 10%;
+    font-size: larger;
+  }
+
+  #heading {
+    margin-left: 10%;
+    font-size: 60px;
+  }
 }
 
 .heading-btns-home {
@@ -164,7 +194,6 @@ input[type="file"] {
 }
 
 @media screen and (max-width: 800px) {
-
   .row,
   .row-fluid {
     flex-direction: column;
@@ -186,13 +215,15 @@ input[type="file"] {
 }
 
 .arrow {
-  clip-path: polygon(0% 20%,
+  clip-path: polygon(
+    0% 20%,
     60% 20%,
     60% 0%,
     100% 50%,
     60% 100%,
     60% 80%,
-    0% 80%);
+    0% 80%
+  );
   justify-content: center;
   padding: 30px;
   font-family: "Roboto", sans-serif;
@@ -204,6 +235,7 @@ input[type="file"] {
 .card {
   border: 1px solid #aaa;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
 }
 
 .card-header {
@@ -322,6 +354,22 @@ nav ul {
   color: white;
 }
 
+@media screen and (max-width: 768px) {
+  .btn-book-now {
+    margin-right: 50px;
+  }
+
+  .full-width {
+    width: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .content-card {
+    width: 80%;
+  }
+}
+
 .btn-book-now-2 {
   transition: 1s;
   background-color: #f66;
@@ -371,7 +419,7 @@ nav ul {
   font-size: 14px;
   margin-left: 20px;
   cursor: pointer;
-  transition: .25s;
+  transition: 0.25s;
 }
 
 .red-btn:hover {
@@ -421,6 +469,41 @@ nav ul {
 .nav li {
   float: left;
 }
+
+#list-open {
+  display: none;
+  color: white;
+}
+
+
+@media screen and (max-width: 768px) {
+  .nav ul {
+    display: block;
+    align-items: left;
+  }
+
+  .nav li {
+    width: 100vw
+  }
+
+  #nav-list {
+    display: none;
+  }
+
+  #list-open {
+    display: block;
+    position: absolute;
+    z-index: 100;
+    padding-left: 90vw;
+    padding-top: 3vh;
+  }
+
+  .input-text {
+    min-width: 100px !important;
+    max-width: 140px;
+  }
+}
+
 
 .login-nav {
   color: #f00 !important;
@@ -636,7 +719,6 @@ hr {
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
-
   .cancelbtn,
   .signupbtn {
     width: 100%;
@@ -704,13 +786,32 @@ hr {
   color: white;
 }
 
-.goUp {
+/* .goUp {
   background-color: inherit;
   border: 0px;
   border-radius: 50%;
   outline: none !important;
+} */
+.goUp {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  float: right;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  /* padding: 15px; */
+  border: none;
+  outline: none !important;
+  background-color: rgb(255, 0, 0);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
 }
-
+#goUpbtn:hover {
+  background-color: #c70000;
+}
 @media screen and (max-width: 768px) {
   .footer-homepg {
     flex-direction: column;
