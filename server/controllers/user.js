@@ -1,7 +1,7 @@
-const bcrypt = require("bcryptjs");
-const { json } = require("express");
-const passport = require("passport");
-const query = require("../util/db").query();
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
+const query = require('../util/db').query();
+const connection = require('../util/db').connection();
 
 exports.getProfile = async (req, res) => {
   let p_id = req.user.p_id;
@@ -9,7 +9,7 @@ exports.getProfile = async (req, res) => {
     let person = await query(`SELECT * from person where p_id=${p_id};`);
 
     const user = req.user;
-    let names = person[0].name.toString().split(" ");
+    let names = person[0].name.toString().split(' ');
     user.fname = names[0];
 
     if (names.length > 1) user.lname = names[1];
@@ -26,25 +26,26 @@ exports.getProfile = async (req, res) => {
   }
 };
 
-exports.signup = async (req, res) => {
+exports.signup = async (req, res, next) => {
   let { name, email, psw, phone, gender } = req.body;
-  let pass2 = req.body["psw-repeat"];
+  let pass2 = req.body['psw-repeat'];
   if (psw !== pass2) {
-    res.render("Error/error", {
-      pg: "error",
+    res.render('Error/error', {
+      pg: 'error',
       user: req.user,
-      error: "Passwords do not match",
+      error: 'Passwords do not match',
     });
     return;
   }
   try {
     let salt = bcrypt.genSaltSync(15);
     let hash = bcrypt.hashSync(psw, salt);
-    let res = await query(
+    connection.beginTransaction();
+    let res1 = await query(
       `INSERT INTO person (name,gender) values ("${name}","${gender}");`
     );
-    const id = res.insertId;
-    res = await query(
+    const id = res1.insertId;
+    res1 = await query(
       `INSERT INTO customer (p_id,Email,Phone,password) values (${id},"${email}","${phone}","${hash}");`
     );
     let user = {
@@ -52,18 +53,21 @@ exports.signup = async (req, res) => {
       password: hash,
       p_id: id,
     };
+    connection.commit();
 
-    req.logIn(user, function(err) {
+    req.logIn(user, function (err) {
       if (err) {
         return next(err);
       }
-      res.redirect("/user/profile");
+      req.user.type = 'Customer';
+
+      return res.redirect('/user/profile');
     });
   } catch (e) {
-    console.log(e);
-    res.render("Error/error", {
-      pg: "error",
-      error: "Email already registered",
+    connection.rollback();
+    res.render('Error/error', {
+      pg: 'error',
+      error: 'Email or Phone already registered',
       user: req.user,
     });
   }
@@ -75,38 +79,37 @@ exports.updateProf = async (req, res, next) => {
     let resp = await query(
       `UPDATE customer SET Email="${req.body.email}",Phone="${req.body.phone}" WHERE p_id=${p_id};`
     );
-    res.redirect("/user/profile");
+    res.redirect('/user/profile');
   } catch (error) {
     console.log(error);
   }
 };
 exports.login = async (req, res, next) => {
-  passport.authenticate("local", function (err, user, info) {
-
+  passport.authenticate('local', function (err, user, info) {
     if (err) {
       return next(err);
     }
     if (!user) {
-      res.render("Error/error", {
-        pg: "error",
+      res.render('Error/error', {
+        pg: 'error',
         user: req.user,
         error: info.message,
       });
       return;
     }
 
-    req.logIn(user, function(err) {
+    req.logIn(user, function (err) {
       if (err) {
         return next(err);
       }
-      if (user.type === "Customer") {
-        res.redirect("/user/profile");
+      if (user.type === 'Customer') {
+        res.redirect('/user/profile');
       }
-      if (user.type == "Admin") {
-        res.redirect("/admin/home");
+      if (user.type == 'Admin') {
+        res.redirect('/admin/home');
       }
-      if (user.type === "Theater") {
-        res.redirect("/flix/profile");
+      if (user.type === 'Theater') {
+        res.redirect('/flix/profile');
       }
       return;
     });
