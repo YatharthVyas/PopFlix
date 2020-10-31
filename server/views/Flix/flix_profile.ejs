@@ -85,26 +85,20 @@
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
-.modal-content-1 {
-  background-color:rgba(0,0,0,0.4);
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
 
 /* The Close Button */
 .close-1 {
   color: #aaaaaa;
   float: right;
+  margin-right: 20px;
+  margin-top: 20px;
   font-size: 28px;
   font-weight: bold;
 }
 
 .close-1:hover,
 .close-1:focus {
-  color: #000;
+  color: #f00;
   text-decoration: none;
   cursor: pointer;
 }
@@ -118,9 +112,8 @@
 			</div>
 			 <!-- ADD Movie Modal HERE -->
 			 <div id="myModal-1" class="modal-1">
-				<div class="modal-content-1">
-				  <span class="close-1">&times;</span>
 				  <form class="modal-content" action="/flix/add_show" method="POST">
+				  <span class="close-1">&times;</span>
 					<h1 style="margin-left: 3%;margin-right: 3%; color:white;">ADD  Show</h1>
 					<hr style="margin-left: 3%;margin-right: 3%;">
 					<div style="flex-direction: row;display: flex;">
@@ -156,9 +149,6 @@
 					</div>
 				 </div>
 				</form>
-			
-				</div>
-			  
 			  </div>
 			  <!-- ADD Movie modal End -->
 			<div class="row">

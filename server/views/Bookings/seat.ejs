@@ -51,6 +51,9 @@
 	<script type="text/javascript">
 	window.onload = function setForm(){
 		ticket = JSON.parse(localStorage.getItem('ticket'))
+		if(!ticket){
+			window.location.href="/"
+		}
 		document.getElementById('date').value=ticket.date;
 		document.getElementById('flix_id').value=ticket.flix_id;
 		document.getElementById('movie_id').value=ticket.movie_id;
