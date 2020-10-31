@@ -6,12 +6,15 @@ const {
   getFlixProfile,
   postAddShow,
   postDeleteShow,
+  postEditShow,
 } = require("../controllers/flix");
 
 router.get("/home", getHome);
 router.get("/aboutus", getAboutUs);
 router.get("/profile", ensureAuthenticated, ensureTheater, getFlixProfile);
 router.post("/add_show", ensureAuthenticated, ensureTheater, postAddShow);
+router.post("/edit_show", ensureAuthenticated, ensureTheater, postEditShow);
+
 router.get(
   "/delete_show/:movieId",
   ensureAuthenticated,
