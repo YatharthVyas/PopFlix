@@ -27,7 +27,7 @@
 	<div class="row">
 		<div class="content">
 
-			<div class="row">
+			<!-- <div class="row">
 				<input type="search" placeholder="Enter Movie Name" id="searchmovie" class="input-text full-width">
 				<select class="input-text">
 					<option>Language</option>
@@ -47,12 +47,14 @@
 					<option value="Suspence">Suspence</option>
 				</select>
 				<button class="red-btn">Search</button>
-			</div>
+			</div> -->
 			<% if (movies.length == 0) {%>
 
-				<div style="height: 180px; width: 600px;background-color: crimson;text-align: center;margin: auto;">
-					<h1 align="center" style="color: white;padding-top: 7%;">SORRY &#128533;<h1 style="color: wheat;"> No movies available</h1></h1>
-				</div>
+			<div style="height: 180px; width: 600px;background-color: crimson;text-align: center;margin: auto;">
+				<h1 align="center" style="color: white;padding-top: 7%;">SORRY &#128533;<h1 style="color: wheat;"> No
+						movies available</h1>
+				</h1>
+			</div>
 			<% } else { %>
 
 			<% for (x in movies) { %>
@@ -66,12 +68,15 @@
 
 					<h3>Language: <%= movies[x].language%></h3>
 					Directed by: <a href="https://www.imdb.com/search/name/?name="> Director Name </a> <br />
-				Actors: <% for (i in movies[x]) { %> <a href="https://www.imdb.com/search/name/?name=<%= movies[x][i].name %>"><%= movies[x][i].name %></a> , <% } %>
+					Actors: <% for (i in movies[x]) { %> <a
+						href="https://www.imdb.com/search/name/?name=<%= movies[x][i].name %>"><%= movies[x][i].name %></a>
+					, <% } %>
 					<p> Description. Lorem ipsum cillum nostrud ullamco dolor est magna magna ut commodo fugiat enim ad
 						ut. Magna sunt elit cupidatat esse duis ut sed est magna laboris est.</p>
 					<div align="right">
-						<button class="btn-curved btn-red btn-book-now" onclick="saveMovie('<%= movies[x].m_id %>')"> Book Now!
-							</button></a>
+						<button class="btn-curved btn-red btn-book-now" onclick="saveMovie('<%= movies[x].m_id %>')">
+							Book Now!
+						</button></a>
 					</div>
 				</div>
 			</div>
@@ -81,11 +86,11 @@
 	</div>
 	<%- include('../Includes/footer.ejs') %>
 	<script type="text/javascript">
-		function saveMovie(id){
+		function saveMovie(id) {
 			let ticket = JSON.parse(localStorage.getItem('ticket'));
 			ticket.movie_id = id;
-			localStorage.setItem('ticket',JSON.stringify(ticket));
-			window.location.href =`/user/select_time?theater=${ticket.flix_id}&movie=${ticket.movie_id}`;
+			localStorage.setItem('ticket', JSON.stringify(ticket));
+			window.location.href = `/user/select_time?theater=${ticket.flix_id}&movie=${ticket.movie_id}`;
 		}
 	</script>
 </body>
