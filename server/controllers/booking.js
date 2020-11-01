@@ -95,7 +95,7 @@ exports.getMovieFlix = async (req, res) => {
         `SELECT name from person where p_id IN (select p_id from acted_in where m_id=${mov[x].m_id});`
       );
       mov[x].actors = actors;
-      console.log(mov[x].actors, "SSSSS");
+      // console.log(mov[x].actors, "SSSSS");
     }
     let dropLanguage = await query(`SELECT DISTINCT LANGUAGE FROM MOVIES;`);
     let dropGenre = await query(`SELECT DISTINCT Genre FROM Genre;`);
@@ -266,7 +266,7 @@ exports.getSelectMovie = async (req, res) => {
         `SELECT name from person where p_id IN (select p_id from acted_in where m_id=${mov[x].m_id});`
       );
       mov[x].actors = actors;
-      console.log(mov[x].actors, "SSSSS");
+      // console.log(mov[x].actors, "SSSSS");
     }
     res.render("Bookings/select_movie", {
       pg: "select_movie",
