@@ -47,28 +47,28 @@
 		</div>
 		<% } else { %>
 
-		<% for (x in theater) { %>
-		<div class="row card">
-			<div class="column-4 border-right content-card">
-				<img src="/public/img/seat.png" width="80%">
-			</div>
-			<div class="column-8 content-card">
-				<h2 class="card-header"> <%= theater[x].name%></h2>
-				Rating: <span><%= theater[x].rating%> </span>&#9733; <br />
-				<p class="border">Now Showing: <% for (y in theater[x].movies) { %><a
-						href="#"><br /><%=theater[x].movies[y].name%>
-					</a>
-					<%}%></p>
-
-				<p class="border"><i class="fa fa-home" style="font-size:30px;color:red"></i> Address: <%= theater[x].location%>
-				</p>
-				<div align="right">
-					<a href="/user/select_time?theater=<%=theater[x].t_id%>&movie=<%= movieId %>"><button class="btn-curved btn-book-now" onclick="saveFlix('<%=theater[x].t_id%>')"> Proceed </button>
+			<% for (x in theater) { %>
+			<div class="row card">
+				<div class="column-4 border-right content-card">
+					<img src="/public/img/seat.png" width="80%">
+				</div>
+				<div class="column-8 content-card">
+					<h2 class="card-header"> <%= theater[x].name%></h2>
+					<b>Rating:</b> <span><%= theater[x].rating%> </span>&#9733; <br />
+					<b>Now Showing: </b>
+					<% for (y in theater[x].movies) { %>
+					<a href="#"><%=theater[x].movies[y].name%></a>,
+					<%}%><br/>
+					<i class="fa fa-home" style="font-size:30px;color:red"></i> Address: <%= theater[x].location%><br/>
+					<div align="right">
+						<a href="/user/select_time?theater=<%=theater[x].t_id%>&movie=<%= movieId %>">
+							<button class="btn-curved btn-book-now" onclick="saveFlix('<%=theater[x].t_id%>')"> Proceed </button>
+						</a>
+					</div>
 				</div>
 			</div>
-		</div>
-		<% } %>
-	<% } %> 
+			<% } %>
+		<% } %> 
 	</div>
 	<%- include('../Includes/footer.ejs') %>
 	<script type="text/javascript">
