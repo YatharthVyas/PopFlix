@@ -27,6 +27,11 @@
 		background-color: #f00;
 		color: white;
 	}
+
+	#review:hover {
+		background-color: #c70000;
+
+	}
 </style>
 
 <body>
@@ -60,14 +65,22 @@
 				</div>
 			</div>
 			<%}%>
-			<% }else { %>
 
 		</div>
-		<div class="card movie-name-review">No Reviews Available</div>
-		<%}%>
-	</div>
+		<% }else { %>
 
-	<%- include('../Includes/footer.ejs') %>
+			<div class="card movie-name-review">No Reviews Available</div>
+			<%}%>
+			<form action="/review/movieReview/<%= movie_id %>" method="POST" class="card comments" style="margin-top:
+			10px;padding: 10px; border-left: 10px solid black;">
+			<input cols=type="textbox" minlength="4" maxlength="100" placeholder="Write here..."
+				style="height: 25px;width: 80%; padding: 10px;border: none;border-bottom: 1px solid black; " required
+				name="description">
+			<button id="review" style="margin: 3px;" class="btn-curved" type="submit">Add Review</button>
+			</form>
+		</div>
+
+		<%- include('../Includes/footer.ejs') %>
 </body>
 
 </html>
