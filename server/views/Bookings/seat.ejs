@@ -70,7 +70,7 @@
 
 	res = res.map((seat)=>{seat.s_id = seat.s_id - base_id+1;return seat;});
 
-	console.log(res);
+	
 	seat_table = document.getElementById("Seats");
 	var seat_content = "";
 	for (var x = 0; x < ctr; x++) {
@@ -127,7 +127,7 @@
 	}
 
 	function saveSeat(){
-		console.log(seats_selection);	
+		
 		document.getElementById('seat_id').value=seats_selection.map((id)=>{return id+base_id;}).join(",");
 		let ticket = JSON.parse(localStorage.getItem('ticket'));
 		ticket.seat_id = seats_selection;

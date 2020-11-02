@@ -14,10 +14,10 @@ SELECT * FROM shows WHERE t_id = (SELECT t_id from theatre WHERE name='INP');
 SELECT s.price FROM SHOWS AS s WHERE s.show_id='id'; 
 
 /*Get time of shows with given movies */
-SELECT s.time FROM SHOWS AS s WHERE m_id = (SELECT m_id from MOVIES WHERE NAME ='NAME') ORDER BY s.time ASC;
+SELECT s.time FROM SHOWS AS s WHERE m_id = (SELECT m_id from movies WHERE NAME ='NAME') ORDER BY s.time ASC;
 
 /*Get shows before particular time*/
-SELECT s.time, t.name FROM SHOWS AS s,THEATRE AS t WHERE m_id = (SELECT m_id FROM MOVIES WHERE NAME ='NAME') ORDER BY s.time ASC;
+SELECT s.time, t.name FROM SHOWS AS s,THEATRE AS t WHERE m_id = (SELECT m_id FROM movies WHERE NAME ='NAME') ORDER BY s.time ASC;
 
 /* implement below query */
 
