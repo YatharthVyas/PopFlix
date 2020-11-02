@@ -146,6 +146,7 @@ CREATE TABLE review(
     ON DELETE CASCADE 
     );
 
+
 create trigger user_bkp 
 after 
 insert 
@@ -169,5 +170,6 @@ on customer
 FOR EACH ROW  
   insert into user_updated_bkp_(p_id,Email,Phone, password) values 
 (new.p_id, new.Email,new.Phone,new.password); 
+
 
 
