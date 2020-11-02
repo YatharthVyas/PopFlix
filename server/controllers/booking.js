@@ -178,6 +178,12 @@ exports.searchMovie = async (req, res) => {
     }
 
     mov = filterMovieData(mov);
+    for (x in mov) {
+      let actors = await query(
+        `SELECT name from person where p_id IN (select p_id from acted_in where m_id=${mov[x].m_id});`
+      );
+      mov[x].actors = actors;
+    }
 
     res.render('Bookings/movie', {
       pg: 'book_movie',

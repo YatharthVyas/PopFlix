@@ -47,8 +47,10 @@
 			<div class="card-content">
 				<br />
 				<b>Date:</b> <%=movie[0].release_date%>
-				<br />
-				Actor <br />
+				<br /><br>
+				Actor : <% for (i in movie.actors) { %> <a
+					href="https://www.imdb.com/search/name/?name=<%= movie.actors[i].name %>"><%= movie.actors[i].name %></a>
+				, <% } %><br><br>
 				<b>Movie description:</b> Movie description: Movie description: Movie description: Movie description:
 				Movie
 				description: Ut tempor et minim id occaecat qui fugiat est ea quis qui sunt consequat aute dolore
