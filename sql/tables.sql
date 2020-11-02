@@ -146,4 +146,28 @@ CREATE TABLE review(
     ON DELETE CASCADE 
     );
 
+create trigger user_bkp 
+after 
+insert 
+on person 
+FOR EACH ROW  
+  insert into user_bkp(p_id,name,gender) values 
+(new.p_id, new.name,new.gender); 
+
+create trigger user_bkp_ 
+after 
+insert 
+on customer 
+FOR EACH ROW  
+  insert into user_bkp_(p_id,Email,Phone, password) values 
+(new.p_id, new.Email,new.Phone,new.password); 
+
+create trigger user_updated_bkp_ 
+after 
+update 
+on customer 
+FOR EACH ROW  
+  insert into user_updated_bkp_(p_id,Email,Phone, password) values 
+(new.p_id, new.Email,new.Phone,new.password); 
+
 
