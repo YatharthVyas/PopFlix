@@ -145,5 +145,3 @@ CREATE TABLE review(
     ON UPDATE CASCADE
     ON DELETE CASCADE 
     );
-
-
