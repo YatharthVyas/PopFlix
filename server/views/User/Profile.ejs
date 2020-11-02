@@ -1,137 +1,169 @@
 <%- include('../Includes/header.ejs') %>
 
 <body>
-    <%- include('../Includes/nav.ejs') %>
-    <div style="background-image: url('/public/img/background.png');width: 100%;">
-        <h1 style="margin-left: 3%;margin-right: 3%;margin-top: 4%; color:white;padding-top: 20px;">Dashboard</h1>
-        <hr style="margin-left: 3%;margin-right: 3%;" />
-        <div class="row-fluid">
-            <div class="column-6 popfile" align="center" id="p1" style="display: visible;">
-                <h1 id="navhome" style="margin-bottom: 3%;margin-top: 3%;">
-                    <span style="margin-right: 3%;">My</span><span>PopFile</span>
-                </h1>
-                <img height="140px" style="border:2px solid white ;border-radius: 50%; margin-top: 1%;" width="140px"
-                    src="/public/img/seat.png">
-                <h2 id=profname style="margin-bottom: 5%;color: white;">
-                    <span style="margin-right: 3%;"><%=user.fname%></span><span><%=user.lname%></span>
+  <%- include('../Includes/nav.ejs') %>
+  <div style="background-image: url('/public/img/background.png'); width: 100%">
+    <h1
+      style="
+        margin-left: 3%;
+        margin-right: 3%;
+        margin-top: 4%;
+        color: white;
+        padding-top: 20px;
+      "
+    >
+      Dashboard
+    </h1>
+    <hr style="margin-left: 3%; margin-right: 3%" />
+    <div class="row-fluid">
+      <div
+        class="column-6 popfile"
+        align="center"
+        id="p1"
+        style="display: visible"
+      >
+        <h1 id="navhome" style="margin-bottom: 3%; margin-top: 3%">
+          <span style="margin-right: 3%">My</span><span>PopFile</span>
+        </h1>
+        <img
+          height="140px"
+          style="border: 2px solid white; border-radius: 50%; margin-top: 1%"
+          width="140px"
+          src="/public/img/seat.png"
+        />
+        <h2 id="profname" style="margin-bottom: 5%; color: white">
+          <span style="margin-right: 3%"><%=user.fname%></span
+          ><span><%=user.lname%></span>
+        </h2>
+        <h3 id="profname">&#9794; <%=user.gender %></h3>
+        <h3 id="profname">&#128222; <%=user.Phone%></h3>
+        <h3 id="profname">&#x1F4E7; <%=user.Email%></h3>
+        <button
+          class="btn-curved red-text login"
+          style="margin-bottom: 3%; margin-top: 3%"
+          onclick="showUpdate()"
+        >
+          Update
+        </button>
+      </div>
+      <div
+        class="column-6 popfile"
+        align="center"
+        id="p2"
+        style="display: none; margin-top: 6%"
+      >
+        <h1 id="navhome" style="margin-bottom: 3%; margin-top: 3%">
+          <span style="margin-right: 3%; margin-bottom: 3%">Update</span
+          ><span>PopFile</span>
+        </h1>
+        <form action="/user/update" method="POST">
+          <label
+            for="fname"
+            style="font-size: medium; color: #b3b3b3; margin-bottom: 5%"
+            >Email</label
+          ><br />
+          <input
+            class="inp"
+            type="email"
+            name="email"
+            value="<%= user.Email %>"
+          /><br /><br />
+          <label
+            for="lname"
+            style="font-size: medium; color: #b3b3b3; margin-bottom: 5%"
+            >Phone</label
+          ><br />
+          <input
+            class="inp"
+            type="text"
+            name="phone"
+            value="<%= user.Phone %>"
+          /><br /><br />
+          <label
+            for="lname"
+            style="font-size: medium; color: #b3b3b3; margin-bottom: 5%"
+            >Image</label
+          ><br /><br />
+          <label for="file-upload" class="custom-file-upload">
+            <i class="fa fa-cloud-upload"></i> &#x1F4C1; Image Upload </label
+          ><br />
+          <input id="file-upload" type="file" />
+          <h3 style="margin-top: 8%; margin-bottom: 4%" align="center">
+            <span
+              class="btn-curved red-text login"
+              style="font-size: small; background-color: honeydew"
+              onclick="showProf()"
+              >Back</span
+            ><button class="btn-curved bg-red signup" onclick="showUpdate()">
+              Update Profile
+            </button>
+          </h3>
+        </form>
+      </div>
+      <div class="column-6 popfile" align="center">
+        <h1 id="navhome" style="margin-bottom: 3%; margin-top: 3%">
+          <span style="margin-right: 3%">Pop</span><span>Tickets</span>
+        </h1>
+        <nav>
+          <ul>
+            <% for (x in ticket) {%>
+            <li class="row card">
+              <div class="column-4 border-right content-card-2">
+                <img src="/public/img/tickets.png" width="100%" />
+                <h3 style="color: rgb(0, 0, 0)"><%= ticket[x].dt%></h3>
+              </div>
+              <div class="column-8 content-card-2">
+                <h2
+                  class="card-header"
+                  style="color: rgb(0, 0, 0); font-size: 2em"
+                >
+                  <span style="color: red"><%= ticket[x].theaterName %></span> -
+                  <span><%= ticket[x].movieName %></span>
                 </h2>
-                <h3 id="profname">&#9794; <%=user.gender %></h3>
-                <h3 id="profname"> &#128222; <%=user.Phone%></h3>
-                <h3 id="profname">&#x1F4E7; <%=user.Email%></h3>
-                <button class="btn-curved red-text login" style="margin-bottom: 3%;margin-top: 3%;"
-                    onclick="showUpdate()">Update</button>
-            </div>
-            <div class="column-6 popfile" align="center" id="p2" style="display: none;margin-top:6%;">
-                <h1 id="navhome" style="margin-bottom: 3%;margin-top: 3%;">
-                    <span style="margin-right: 3%;margin-bottom: 3%;">Update</span><span>PopFile</span>
-                </h1>
-                <form action="/user/update" method="POST">
-                    <label for="fname" style="font-size:medium; color:#b3b3b3;margin-bottom: 5%;">Email</label><br />
-                    <input class="inp" type="email" name="email" value="<%= user.Email %>"><br><br>
-                    <label for="lname" style="font-size:medium ;color:#b3b3b3; margin-bottom: 5%;">Phone</label><br />
-                    <input class="inp" type="text" name="phone" value="<%= user.Phone %>"><br><br>
-                    <label for="lname"
-                        style="font-size:medium ;color:#b3b3b3;margin-bottom: 5%;">Image</label><br /><br />
-                    <label for="file-upload" class="custom-file-upload">
-                        <i class="fa fa-cloud-upload"></i> &#x1F4C1; Image Upload
-                    </label><br />
-                    <input id="file-upload" type="file" />
-                    <h3 style="margin-top: 8%;margin-bottom: 4%;" align="center"><span class="btn-curved red-text login"
-                            style=" font-size: small;background-color: honeydew;"
-                            onclick="showProf()">Back</span><button class="btn-curved bg-red signup"
-                            onclick="showUpdate()">Update Profile</button></h3>
-                </form>
-            </div>
-            <div class="column-6 popfile" align="center">
-
-                <h1 id="navhome" style="margin-bottom: 3%;margin-top: 3%;">
-                    <span style="margin-right: 3%;">Pop</span><span>Tickets</span>
-                </h1>
-                <nav>
-                    <ul>
-                        <% for (x in ticket) {%>
-                        <li class="row card">
-                            <div class="column-4 border-right content-card-2">
-                                <img src="/public/img/tickets.png" width="100%">
-                                <h3 style="color: rgb(0, 0, 0);"> <%= ticket[x].dt%></h3>
-                            </div>
-                            <div class="column-8 content-card-2">
-                                <h2 class="card-header" style="color: rgb(0, 0, 0);font-size: 2em;"> <span
-                                        style="color: red;"><%= ticket[x].theaterName %></span> -
-                                    <span><%= ticket[x].movieName %></span>
-                                </h2>
-                                <div align="center">
-                                    <span style="color: rgb(0, 0, 0);margin-right: 10%;font-size: 1.3em;">Amount :
-                                        <%= ticket[x].amount %></span>
-                                </div>
-                                <div align="center">
-                                    <span style="color: rgb(0, 0, 0);margin-right: 10%;font-size: 15px;">Purchased on :
-                                        <%= ticket[x].timeAndDateOfPurchase %></span>
-                                </div>
-                                <div align="center">
-                                    <span style="color: rgb(0, 0, 0);margin-right: 10%;font-size: 15px;">Location :
-                                        <%= ticket[x].location %></span>
-                                </div>
-                                <p style="font-size: 15px;">Seat No :</p>
-                                <div align="center">
-                                    <span style="color: rgb(0, 0, 0);font-size: 15px;">
-                                        <%= ticket[x].seats_id %>, </span>
-                                </div>
-                            </div>
-                        </li>
-                        <%}%>
-                                    <!-- <li class="row card">
-                            <div class="column-4 border-right content-card-2">
-                                <img src="/public/img/tickets.png" width="100%">
-                                <h3 style="color: white;">Date 18/01/2001</h3>
-                            </div>
-                            <div class="column-8 content-card-2">
-                                <h2 class="card-header" style="color: honeydew;font-size: 2em;"> <span
-                                        style="color: red;">Ticket ID</span> - <span>10001</span></h2>
-                                <div align="center">
-                                    <span style="color: white;margin-right: 10%;font-size: 1.3em;">Amount : 500</span><a
-                                        href="/user/confirm_payment"><button class="btn-curved btn-book-now-2"> View
-                                            Ticket </button></a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="row card">
-                            <div class="column-4 border-right content-card-2">
-                                <img src="/public/img/tickets.png" width="100%">
-                                <h3 style="color: white;">Date 18/01/2001</h3>
-                            </div>
-                            <div class="column-8 content-card-2">
-                                <h2 class="card-header" style="color: honeydew;font-size: 2em;"> <span
-                                        style="color: red;">Ticket ID</span> - <span>10001</span></h2>
-                                <div align="center">
-                                    <span style="color: white;margin-right: 10%;font-size: 1.3em;">Amount : 500</span><a
-                                        href="/user/confirm_payment"><button class="btn-curved btn-book-now-2"> View
-                                            Ticket </button></a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="row card">
-                            <div class="column-4 border-right content-card-2">
-                                <img src="/public/img/tickets.png" width="100%">
-                                <h3 style="color: white;">Date 18/01/2001</h3>
-                            </div>
-                            <div class="column-8 content-card-2">
-                                <h2 class="card-header" style="color: honeydew;font-size: 2em;"> <span
-                                        style="color: red;">Ticket ID</span> - <span>10001</span></h2>
-                                <div align="center">
-                                    <span style="color: white;margin-right: 10%;font-size: 1.3em;">Amount : 500</span><a
-                                        href="/user/confirm_payment"><button class="btn-curved btn-book-now-2"> View
-                                            Ticket </button></a>
-                                </div>
-                            </div>
-                        </li> -->
-                    </ul>
-                </nav>
-            </div>
-        </div>
+                <div align="center">
+                  <span
+                    style="
+                      color: rgb(0, 0, 0);
+                      margin-right: 10%;
+                      font-size: 1.3em;
+                    "
+                    >Amount : <%= ticket[x].amount %></span
+                  >
+                </div>
+                <div align="center">
+                  <span
+                    style="
+                      color: rgb(0, 0, 0);
+                      margin-right: 10%;
+                      font-size: 15px;
+                    "
+                    >Purchased on : <%= ticket[x].timeAndDateOfPurchase %></span
+                  >
+                </div>
+                <div align="center">
+                  <span
+                    style="
+                      color: rgb(0, 0, 0);
+                      margin-right: 10%;
+                      font-size: 15px;
+                    "
+                    >Location : <%= ticket[x].location %></span
+                  >
+                </div>
+                <p style="font-size: 15px">Seat No :</p>
+                <div align="center">
+                  <span style="color: rgb(0, 0, 0); font-size: 15px">
+                    <%= ticket[x].seats_id %>,
+                  </span>
+                </div>
+              </div>
+            </li>
+            <%}%>
+          </ul>
+        </nav>
+      </div>
     </div>
+  </div>
 
-
-
-    <%- include('../Includes/footer.ejs') %>
+  <%- include('../Includes/footer.ejs') %>
 </body>

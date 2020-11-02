@@ -1,13 +1,13 @@
-const query = require("../util/db").query();
+const query = require('../util/db').query();
 exports.getHome = (req, res, next) => {
-  res.render("Auth/home", {
-    pg: "home",
+  res.render('Auth/home', {
+    pg: 'home',
     user: req.user,
   });
 };
 exports.getAboutUs = (req, res, next) => {
-  res.render("Auth/aboutus", {
-    pg: "aboutus",
+  res.render('Auth/aboutus', {
+    pg: 'aboutus',
     user: req.user,
   });
 };
@@ -17,16 +17,15 @@ exports.postAddShow = async (req, res, next) => {
   const price = req.body.price;
   const w_price = req.body.w_price;
   const t_id = req.user.theater_id;
-  // console.log(req.user);
+
   let response = await query(
     `INSERT INTO shows (slot,price,weekend_price,m_id,t_id) values ("${time}","${price}","${
       w_price - price
     }",${m_id},${t_id});`
   );
-  res.redirect("/flix/profile");
+  res.redirect('/flix/profile');
 };
 exports.postEditShow = async (req, res, next) => {
-  // console.log(req.body);
   try {
     const m_id = req.body.m_id;
     const time = req.body.time;
@@ -36,29 +35,28 @@ exports.postEditShow = async (req, res, next) => {
     let response = await query(
       `UPDATE shows SET slot="${time}",price="${price}",weekend_price="${w_price}",t_id=${t_id} WHERE m_id=${m_id};`
     );
-    res.redirect("/flix/profile");
+    res.redirect('/flix/profile');
   } catch (err) {
     console.log(err);
   }
 };
 
 exports.postDeleteShow = async (req, res, next) => {
-  // console.log(req.params);
   const m_id = req.params.movieId;
   let response = await query(`DELETE FROM SHOWS WHERE m_id=${m_id};`);
-  res.redirect("/flix/profile");
+  res.redirect('/flix/profile');
 };
 
 const filterMovieData = (movies) => {
   let indx = 0;
   while (indx < movies.length) {
-    let ar = movies[indx].release_date.toString().split(" ");
-    let r_date = ar[0] + " " + ar[1] + " " + ar[2] + " " + ar[3];
+    let ar = movies[indx].release_date.toString().split(' ');
+    let r_date = ar[0] + ' ' + ar[1] + ' ' + ar[2] + ' ' + ar[3];
     movies[indx].release_date = r_date;
     let x = movies[indx].language;
-    let y = "Marathi";
-    if (x == "EN") y = "English";
-    else if (x == "Hi") y = "Hindi";
+    let y = 'Marathi';
+    if (x == 'EN') y = 'English';
+    else if (x == 'Hi') y = 'Hindi';
     movies[indx].language = y;
     indx = indx + 1;
   }
@@ -73,8 +71,8 @@ exports.getFlixProfile = async (req, res, next) => {
       `SELECT * from movies where m_id IN (select m_id from shows where t_id=${req.user.theater_id});`
     );
     let theater_movies = filterMovieData(mov);
-    res.render("Flix/flix_profile", {
-      pg: "profile",
+    res.render('Flix/flix_profile', {
+      pg: 'profile',
       user: req.user,
       movies: movies,
       theater_movies: theater_movies,
@@ -82,11 +80,10 @@ exports.getFlixProfile = async (req, res, next) => {
   } catch (err) {
     console.log(err);
 
-    res.render("Error/error", {
-      pg: "error",
+    res.render('Error/error', {
+      pg: 'error',
       user: req.user,
-      error: "Some Error Occurred",
+      error: 'Some Error Occurred',
     });
-    /*TODO Error pg */
   }
 };
