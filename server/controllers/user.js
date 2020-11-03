@@ -100,9 +100,6 @@ exports.signup = async (req, res, next) => {
       `INSERT INTO person (name,gender) values ("${name}","${gender}");`
     );
     const id = res1.insertId;
-    // const t = await query(`select * from person where p_id=${id};`);
-    const t = await query(`desc customer;`);
-    console.log(id, t);
 
     res1 = await query(
       `INSERT INTO customer (p_id,Email,Phone,password) values (${id},"${email}","${phone}","${hash}");`
