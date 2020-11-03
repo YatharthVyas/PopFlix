@@ -19,37 +19,39 @@
 				<option value="Vasai">Vasai</option>
 				<option value="Thane">Thane</option>
 				<option value="Others">Others</option> -->
-			</select>
-			<button type="submit" class="red-btn">Search</button>
-		</div>
-	</form>
+				</select>
+				<button type="submit" class="red-btn seacrh-btn">Search</button>
+			</div>
+		</form>
 	<% if (theaters.length == 0) {%>
 
-		<div style="height: 180px; width: 600px;background-color: crimson;text-align: center;margin: auto;">
-			<h1 align="center" style="color: white;padding-top: 7%;">SORRY &#128533;<h1 style="color: wheat;"> No movies available</h1></h1>
-		</div>
-	<% } else { %>
-		<% for (x in theaters) { %>
+					<div style="height: 180px; width: 600px;background-color: crimson;text-align: center;margin: auto;">
+						<h1 align="center" style="color: white;padding-top: 7%;">SORRY &#128533;<h1
+								style="color: wheat;"> No movies available</h1>
+						</h1>
+					</div>
+					<% } else { %>
+					<% for (x in theaters) { %>
 
 					<div class="row card">
 						<div class="column-4 border-right content-card">
 							<img src="/public/img/seat.png" width="80%">
 						</div>
-						<div class="column-8 content-card">
-							<h2 class="card-header"> <%= theaters[x].name %></h2>
+						<div class="column-8 content-card ">
+							<h2 class="card-header site-heading"
+								style="padding-top: 20px;padding-bottom: 20px; background-color: red;padding-left: 5px;">
+								<%= theaters[x].name %></h2>
 							Rating: <%= theaters[x].rating %><span> </span>&#9733; <br />
 							Now Showing: <% for (y in theaters[x].movies) { %><a
 								href="#"><%=theaters[x].movies[y].name%>
 							</a>
 							<br /><%}%>
-				<p> &#127968;Location  : <%= theaters[x].location %></p>
+				<p> &#127968; Location  : <%= theaters[x].location %></p>
 							<div align="right">
-								<button
-										class="btn-curved btn-book-now"
-										onclick="saveFlix('<%=theaters[x].t_id %>')">
-										Book
-										Now!
-									</button>
+								<button class="btn-curved btn-book-now" onclick="saveFlix('<%=theaters[x].t_id %>')">
+									Book
+									Now!
+								</button>
 							</div>
 						</div>
 					</div>
@@ -68,17 +70,17 @@
 			<%- include('../Includes/footer.ejs') %>
 			<!-- End of footer -->
 			<script type="text/javascript">
-				function saveFlix(id){
+				function saveFlix(id) {
 					let ticket = {
-						movie_id : '',
-						flix_id : id,
-						seat_id : [],
+						movie_id: '',
+						flix_id: id,
+						seat_id: [],
 						date: '',
 						show_id: '',
 						cost: ''
 					}
-					localStorage.setItem('ticket',JSON.stringify(ticket))
-					window.location.href =`/user/select_movie/${id}`;
+					localStorage.setItem('ticket', JSON.stringify(ticket))
+					window.location.href = `/user/select_movie/${id}`;
 				}
 			</script>
 </body>

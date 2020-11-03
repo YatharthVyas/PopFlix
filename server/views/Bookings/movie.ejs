@@ -27,7 +27,7 @@
 					<%}%>
 
 				</select>
-				<button type="submit" class="red-btn">Search</button>
+				<button type="submit" class="red-btn seacrh-btn">Search</button>
 			</div>
 		</form>
 		<% if (movies.length == 0) {%>
@@ -56,7 +56,7 @@
 								Magna sunt elit cupidatat esse duis ut sed est magna laboris est.</p>
 							<div align="right">
 								<a href="/review/movieReview/<%=movies[x].name%>"><button
-										class="btn-curved btn-red btn-book-now">
+										class="btn-curved btn-red btn-book-now btn-wid">
 										Reviews
 									</button></a>
 
@@ -91,7 +91,7 @@
 						cost: ''
 					}
 					localStorage.setItem('ticket', JSON.stringify(ticket))
-					
+
 					window.location.href = `/user/select_flix/${id}`;
 				}
 			</script>
