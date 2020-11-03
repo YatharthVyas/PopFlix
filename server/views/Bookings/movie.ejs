@@ -40,10 +40,11 @@
 					<% } else { %>
 					<% for (x in movies) { %>
 					<div class="row card effect5">
-						<div class="column-4 border-right content-card">
-							<img src="https://picsum.photos/220?random=<%= movies[x].name%>" width="80%">
+						<div align="center" class="column-4 content-card pict">
+							<img src="https://picsum.photos/220?random=<%= movies[x].name%>" width="80%" height="90%"
+								style="border-radius: 40px;">
 						</div>
-						<div class="column-8 content-card">
+						<div class="column-8 content-card border-right">
 							<h2 class="card-header"> <%= movies[x].name%></h2>
 							<h3>Release date :<%=  movies[x].release_date%></h3>
 
@@ -54,7 +55,7 @@
 							<p> Description. Lorem ipsum cillum nostrud ullamco dolor est magna magna ut commodo fugiat
 								enim ad ut.
 								Magna sunt elit cupidatat esse duis ut sed est magna laboris est.</p>
-							<div align="right">
+							<div class="btn-position">
 								<a href="/review/movieReview/<%=movies[x].name%>"><button
 										class="btn-curved btn-red btn-book-now btn-wid">
 										Reviews

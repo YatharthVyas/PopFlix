@@ -10,12 +10,11 @@ body {
   background: -moz-radial-gradient(center, #ffffff, #f0d1d1);
   background: radial-gradient(ellipse at center, #ffffff, #f0d1d1);
 }
-.effect5
-{
+.effect5 {
   position: relative;
 }
-.effect5:before, .effect5:after
-{
+.effect5:before,
+.effect5:after {
   z-index: -1;
   position: absolute;
   content: "";
@@ -23,7 +22,7 @@ body {
   left: 10px;
   width: 50%;
   top: 80%;
-  max-width:300px;
+  max-width: 300px;
   background: #777;
   -webkit-box-shadow: 0 35px 20px #777;
   -moz-box-shadow: 0 35px 20px #777;
@@ -34,8 +33,7 @@ body {
   -ms-transform: rotate(-8deg);
   transform: rotate(-8deg);
 }
-.effect5:after
-{
+.effect5:after {
   -webkit-transform: rotate(8deg);
   -moz-transform: rotate(8deg);
   -o-transform: rotate(8deg);
@@ -289,22 +287,26 @@ input[type="file"] {
 
 .card-header {
   font-size: 2.5em;
-  font-family: "Anton", sans-serif;
+  font-family: serif;
   border-bottom: 1px solid #ccc;
 }
 
 .border-right {
-  border-right: 2px solid #ccc;
+  border-left: 2px solid #ccc;
 }
 
 .content-card {
   padding: 40px;
-  font-family: Arial;
+  font-family: sans-serif;
 }
 
 .content-card-2 {
   padding: 5px;
   font-family: Arial;
+}
+.pict:hover {
+  transition: 2s;
+  transform: rotateX(360deg);
 }
 
 /* End */
@@ -402,10 +404,16 @@ nav ul {
   background-color: #f66;
   color: white;
 }
-
+.btn-position {
+  text-align: right;
+}
 @media screen and (max-width: 768px) {
-  .btn-book-now {
+  /* .btn-book-now {
     margin-right: 50px;
+  } */
+  .btn-position {
+    text-align: center;
+    margin-left: 30px;
   }
 
   .full-width {
@@ -556,7 +564,7 @@ nav ul {
     width: 75%;
   }
   .seacrh-btn {
-    width: 80%;
+    width: 75%;
     margin-left: 40px;
   }
 }

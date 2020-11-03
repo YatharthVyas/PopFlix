@@ -34,8 +34,9 @@
 					<% for (x in theaters) { %>
 
 					<div class="row card effect5">
-						<div class="column-4 border-right content-card">
-							<img src="/public/img/<%= (x%8)+1 %>.jpg" width="80%">
+						<div align="center" class="column-4 border-right content-card">
+							<img src="/public/img/<%= (x%8)+1 %>.jpg" width="80%" height="90%"
+								style="border-radius: 40px;">
 						</div>
 						<div class="column-8 content-card ">
 							<h2 class="card-header site-heading"
@@ -47,7 +48,7 @@
 							</a>
 							<br /><%}%>
 				<p> &#127968; Location  : <%= theaters[x].location %></p>
-							<div align="right">
+							<div class="btn-position">
 								<button class="btn-curved btn-book-now" onclick="saveFlix('<%=theaters[x].t_id %>')">
 									Book
 									Now!

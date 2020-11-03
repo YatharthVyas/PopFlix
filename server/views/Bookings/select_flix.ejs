@@ -51,18 +51,20 @@
 
 		<% for (x in theater) { %>
 		<div class="row card effect5">
-			<div class="column-4 border-right content-card">
-				<img src="/public/img/seat.png" width="80%">
+			<div align="center" class="column-4 border-right content-card">
+				<img src="/public/img/<%= (x%8)+1 %>.jpg" width="80%" height="90%" style="border-radius: 40px;">
 			</div>
 			<div class="column-8 content-card">
-				<h2 class="card-header"> <%= theater[x].name%></h2>
+				<h2 class="card-header site-heading"
+					style="padding-top: 20px;padding-bottom: 20px; background-color: red;padding-left: 5px;">
+					<%= theater[x].name%></h2>
 				<b>Rating:</b> <span><%= theater[x].rating%> </span>&#9733; <br />
 				<b>Now Showing: </b>
 				<% for (y in theater[x].movies) { %>
 				<a href="#"><%=theater[x].movies[y].name%></a>,
 				<%}%><br/>
 					<i class="fa fa-home" style="font-size:30px;color:red"></i> Address: <%= theater[x].location%><br />
-				<div align="right">
+				<div class="btn-position">
 					<a href="/user/select_time?theater=<%=theater[x].t_id%>&movie=<%= movieId %>">
 						<button class="btn-curved btn-book-now" onclick="saveFlix('<%=theater[x].t_id%>')"> Proceed
 						</button>
