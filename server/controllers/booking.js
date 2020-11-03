@@ -360,9 +360,12 @@ exports.getConfirmPayment = async (req, res) => {
       `select s_id from seats where theater_id=${flix_id} order by s_id limit 1;`
     );
     const base_id = res1[0].s_id;
+    res1 = await query(`select name from movies where m_id=${flix_id};`);
+    const movie = res1[0].name;
     res.render('Bookings/confirm_payment', {
       user: req.user,
       pg: 'confirm_payment',
+      movie: movie,
       seats: seat_id
         .split(',')
         .map((id) => {
