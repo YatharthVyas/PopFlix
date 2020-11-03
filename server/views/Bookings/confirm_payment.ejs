@@ -1,44 +1,34 @@
-<%- include('../Includes/header.ejs') %> 
+<%- include('../Includes/header.ejs') %>
 <body>
-<%- include('../Includes/nav.ejs') %> 
-	<div class="content row">
-		<div class="column-3">
-			<div class="arrow bg-red">
-				Movie Name
-			</div>
-		</div>
-		<div class="column-3">
-			<div class="arrow bg-red">
-				Show Time
-			</div>
-		</div>
-		<div class="column-3">
-			<div class="arrow bg-red">
-				Select Seat
-			</div>
-		</div>
-		<div class="column-3">
-			<div class="arrow bg-red">
-				Confirm Payment
-			</div>
-		</div>
-	</div>
-	<div class="content" align="center">
-		<div class="ticket-frame" align="left">
-			<div class="card-header" style="border-bottom: 0px">Movie Name</div>
-			<div class="ticket-content">
-				Seats: <b><%- seats%></b><br />
-				Cinema Name: <b> <%- theater%> </b><br />
-				Timing: <b> <%- slot%> </b><br />
-				Date: <b> <%- date%></b><br />
-			</div>
-		</div>
-		<a href="/user/profile"><button class="btn-curved bg-red btn-book-now">View All Tickets</button></a>
-	</div>
-	<%- include('../Includes/footer.ejs') %>
-	<script type="text/javascript">
-		localStorage.removeItem('ticket');
-	</script>
-</body>
+  <%- include('../Includes/nav.ejs') %>
+  <div class="content steps">
+    <div class="arrow bg-red">1</div>
+    <span class="dir-line bg-red"></span>
+    <div class="arrow bg-red">2</div>
+    <span class="dir-line bg-red"></span>
+    <div class="arrow bg-red">3</div>
+    <span class="dir-line bg-red"></span>
+    <div class="arrow bg-red">4</div>
+  </div>
 
-</html>
+  <div class="content" align="center">
+    <div class="ticket-frame" align="left">
+      <div class="card-header" style="border-bottom: 0px">Movie Name</div>
+      <div class="ticket-content">
+        Seats: <b><%- seats%></b><br />
+        Cinema Name: <b> <%- theater%> </b><br />
+        Timing: <b> <%- slot%> </b><br />
+        Date: <b> <%- date%></b><br />
+      </div>
+    </div>
+    <a href="/user/profile"
+      ><button class="btn-curved bg-red btn-book-now">
+        View All Tickets
+      </button></a
+    >
+  </div>
+  <%- include('../Includes/footer.ejs') %>
+  <script type="text/javascript">
+    localStorage.removeItem('ticket');
+  </script>
+</body>
