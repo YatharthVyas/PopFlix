@@ -15,54 +15,50 @@
     <div class="content">
       <% if (movies.length == 0) {%>
 
-      <div style="
-          height: 180px;
-          width: 600px;
-          background-color: crimson;
-          text-align: center;
-          margin: auto;
-        ">
-        <h1 align="center" style="color: white; padding-top: 7%">
-          SORRY &#128533;
-          <h1 style="color: wheat">No movies available</h1>
-        </h1>
-      </div>
-      <% } else { %> <% for (x in movies) { %>
-      <div class="row card effect5">
-        <div class="column-4 border-right content-card">
-
-          <img src="https://picsum.photos/220?random=<%= movies[x].name%>" width="100%" height="100%"
-            style="border-radius: 40px;" />
-
+        <div style="
+      height: 180px;
+      width: 600px;
+      background-color: crimson;
+      text-align: center;
+      margin: auto;
+    ">
+          <h1 align="center" style="color: white; padding-top: 7%">
+            SORRY &#128533;
+            <h1 style="color: wheat">No movies available</h1>
+          </h1>
         </div>
-        <div class="column-8 content-card">
-          <h2 class="card-header"><%= movies[x].name%></h2>
-          <h3>Release date :<%= movies[x].release_date%></h3>
+        <% } else { %> <% for (x in movies) { %>
+        <div class="row card effect5">
+          <div align="center" class="column-4 border-right content-card">
+            <img class="drib" src="https://picsum.photos/220?random=<%= movies[x].name%>" width="80%" height="80%" style="margin-top: 5%;"
+              />
+          </div>
+          <div class="column-8 content-card" >
+            <h2 class="card-header" style="color: crimson;"><%= movies[x].name%></h2>
+            <h3><span style="color: rgb(252, 168, 168);">Release date :</span><span ><%= movies[x].release_date%></span></h3>
+            <h3><span style="color: rgb(252, 168, 168);">Language:  </span><%= movies[x].language%></h3>
+            <h3><span style="color: rgb(252, 168, 168);">Actors: </span><% for (i in movies[x].actors) { %>
+            <a	style="color: white; margin-right: 3%;"
+              href="https://www.imdb.com/search/name/?name=<%= movies[x].actors[i].name %>"><%= movies[x].actors[i].name %></a>
+            , <% } %>
+            <p>
+              <span style="color: rgb(252, 168, 168);">Description : </span>Loum nostrud ullamco dolor est magna magna
+              ut commodo fugiat enim ad ut. Magna sunt elit cupidatat esse duis ut
+              sed est magna laboris est.
+            </p>
+            </h3>
+            <div align="right">
+              <a href="/review/movieReview/<%=movies[x].name%>"><button
+                  class="btn-curved btn-red btn-book-now">Reviews</button></a>
 
-
-
-
-          <h3>Language: <%= movies[x].language%></h3>
-          Directed by:
-          <a href="https://www.imdb.com/search/name/?name="> Director Name </a>
-          <br />
-          Actors: <% for (i in movies[x].actors) { %>
-          <a
-            href="https://www.imdb.com/search/name/?name=<%= movies[x].actors[i].name %>"><%= movies[x].actors[i].name %></a>
-          , <% } %>
-          <p>
-            Description. Lorem ipsum cillum nostrud ullamco dolor est magna
-            magna ut commodo fugiat enim ad ut. Magna sunt elit cupidatat esse
-            duis ut sed est magna laboris est.
-          </p>
-          <div class="row">
-            <button class="btn-curved btn-red btn-book-now" onclick="saveMovie('<%= movies[x].m_id %>')">
-              Book Now!
-            </button>
+              <button class="btn-curved btn-red btn-book-now"
+                onclick="saveMovie('<%=movies[x].m_id%>')">
+                Book Now!
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      <% } %> <% } %>
+        <% } %> <% } %>
     </div>
   </div>
   <%- include('../Includes/footer.ejs') %>

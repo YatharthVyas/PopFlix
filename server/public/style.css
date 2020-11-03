@@ -5,10 +5,10 @@ body {
   margin-top: 50px;
   width: 100vw;
   overflow-x: hidden;
-  background: #ffffff;
-  background: -webkit-radial-gradient(center, #ffffff, #f0d1d1);
-  background: -moz-radial-gradient(center, #ffffff, #f0d1d1);
-  background: radial-gradient(ellipse at center, #ffffff, #f0d1d1);
+  background: #394255;
+  background: -webkit-radial-gradient(center, #6679a0,  #191c25);
+  background: -moz-radial-gradient(center,#8ca2d1,  #191c25);
+  background: radial-gradient(ellipse at center, #8ca2d1  #191c25);
 }
 .effect5 {
   position: relative;
@@ -23,10 +23,10 @@ body {
   width: 50%;
   top: 80%;
   max-width: 300px;
-  background: #777;
-  -webkit-box-shadow: 0 35px 20px #777;
-  -moz-box-shadow: 0 35px 20px #777;
-  box-shadow: 0 35px 20px #777;
+  background: #1a1a1a;
+  -webkit-box-shadow: 0 35px 20px #1a1a1a;
+  -moz-box-shadow: 0 35px 20px #1a1a1a;
+  box-shadow: 0 35px 20px #1a1a1a;
   -webkit-transform: rotate(-8deg);
   -moz-transform: rotate(-8deg);
   -o-transform: rotate(-8deg);
@@ -75,6 +75,7 @@ input[type="file"] {
   padding-top: 50px;
   padding-left: 5%;
   padding-right: 5%;
+  color: white;
 }
 
 @media screen and (max-width: 768px) {
@@ -92,7 +93,7 @@ input[type="file"] {
   .steps {
     margin-left: 2rem !important;
   }
-
+  
   .dir-line {
     height: 0.5rem !important;
     width: 2.5rem !important;
@@ -105,13 +106,28 @@ input[type="file"] {
   width: 25%;
   padding: 30px 40px 30px 40px;
 }
-
+.drib{
+  border: 5px solid hsl(0, 0%, 40%);
+  
+  /* #2 */
+  padding: 5px;
+  background: hsl(0, 0%, 20%);
+  
+  /* #3 */
+  outline: 5px solid hsl(0, 0%, 60%);
+  
+  /* #4 AND INFINITY!!! (CSS3 only) */
+  box-shadow:
+      0 0 0 10px hsl(0, 0%, 80%),
+      0 0 0 15px hsl(0, 0%, 90%);
+}
 .row,
 .row-sm {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 6%;
   margin-left: 5%;
+  margin-top: 3%;
   margin-right: 5%;
 }
 
@@ -304,6 +320,7 @@ input[type="file"] {
 .content-card {
   padding: 40px;
   font-family: sans-serif;
+  background-color: #1d1e22;
 }
 
 .content-card-2 {
@@ -365,7 +382,9 @@ a.custom-white:hover {
 
 /*Date and Time Select page*/
 .time-block {
-  padding: 50px;
+  padding: 60px;
+  background-color: #002e4d;
+  box-shadow: 10px 10px 5px black;
 }
 
 .parallax {

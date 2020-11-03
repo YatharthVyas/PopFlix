@@ -3,6 +3,7 @@
   .overlay {
     background-color: rgba(255, 223, 0, 1);
     background-blend-mode: multiply;
+    z-index: 2;
   }
 </style>
 <body>
@@ -18,14 +19,16 @@
   </div>
 
   <div align="center">
-    <h2 class="card-header">Select Your Seats</h2>
-    <table border="1" cellspacing="10" cellpadding="0" id="seat-holder">
+    <h2 class="card-header" style="color: white;text-shadow: 2px 2px 0px black; ">Select Your Seats</h2>
+    <table border="1" cellspacing="20" cellpadding="0" id="seat-holder" style="width: 60%;background-color: #262626;">
       <tbody id="Seats"></tbody>
     </table>
-    <h3>
+    <div style="background-color: white;border: black 3px solid;margin: 3% 20% 2%;">
+    <h3 style="color: black; font-weight: bold;font-size: x-large;">
       Selected = <font color="#f00" id="seats_picked">0</font><br />
       Total Cost = <font color="#f00">Rs <font id="total_cost">0</font>/-</font>
     </h3>
+  </div>
     <form action="/user/confirm_payment/" method="POST">
       <input type="hidden" name="date" id="date" readonly />
       <input type="hidden" name="flix_id" id="flix_id" readonly />
