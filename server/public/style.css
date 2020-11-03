@@ -5,26 +5,24 @@ body {
   margin-top: 50px;
   width: 100vw;
   overflow-x: hidden;
-  background: #FFFFFF;
-  background: -webkit-radial-gradient(center, #FFFFFF, #F0D1D1);
-  background: -moz-radial-gradient(center, #FFFFFF, #F0D1D1);
-  background: radial-gradient(ellipse at center, #FFFFFF, #F0D1D1);
-
+  background: #ffffff;
+  background: -webkit-radial-gradient(center, #ffffff, #f0d1d1);
+  background: -moz-radial-gradient(center, #ffffff, #f0d1d1);
+  background: radial-gradient(ellipse at center, #ffffff, #f0d1d1);
 }
-.effect5
-{
+.effect5 {
   position: relative;
 }
-.effect5:before, .effect5:after
-{
+.effect5:before,
+.effect5:after {
   z-index: -1;
   position: absolute;
-  content: "";
+  content: '';
   bottom: 25px;
   left: 10px;
   width: 50%;
   top: 80%;
-  max-width:300px;
+  max-width: 300px;
   background: #777;
   -webkit-box-shadow: 0 35px 20px #777;
   -moz-box-shadow: 0 35px 20px #777;
@@ -35,8 +33,7 @@ body {
   -ms-transform: rotate(-8deg);
   transform: rotate(-8deg);
 }
-.effect5:after
-{
+.effect5:after {
   -webkit-transform: rotate(8deg);
   -moz-transform: rotate(8deg);
   -o-transform: rotate(8deg);
@@ -61,7 +58,7 @@ body {
   border-radius: 3%;
 }
 
-input[type="file"] {
+input[type='file'] {
   display: none;
 }
 
@@ -87,7 +84,15 @@ input[type="file"] {
   }
 
   .arrow {
-    clip-path: polygon(30% 70%, 30% 0, 70% 0, 70% 80%, 100% 70%, 50% 100%, 0% 70%) !important;
+    clip-path: polygon(
+      30% 70%,
+      30% 0,
+      70% 0,
+      70% 80%,
+      100% 70%,
+      50% 100%,
+      0% 70%
+    ) !important;
     min-height: 30px;
     text-align: center;
   }
@@ -125,7 +130,7 @@ input[type="file"] {
 }
 
 #heading {
-  font-family: "Permanent Marker", cursive;
+  font-family: 'Permanent Marker', cursive;
   font-size: 120px;
   color: white;
   margin-left: 20%;
@@ -260,7 +265,7 @@ input[type="file"] {
   );
   justify-content: center;
   padding: 30px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 900;
 }
 
@@ -390,7 +395,8 @@ nav ul {
 
 @media screen and (max-width: 768px) {
   .btn-book-now {
-    margin-right: 50px;
+    width: 100%;
+    margin-right: 10px;
   }
 
   .full-width {
@@ -481,7 +487,7 @@ nav ul {
 }
 
 #navhome {
-  font-family: "Permanent Marker", cursive;
+  font-family: 'Permanent Marker', cursive;
   /*font-size: 20px;*/
   color: white;
   margin: 0px 0px 0px 10px;
@@ -509,7 +515,6 @@ nav ul {
   color: white;
 }
 
-
 @media screen and (max-width: 768px) {
   .nav ul {
     display: block;
@@ -517,7 +522,7 @@ nav ul {
   }
 
   .nav li {
-    width: 100vw
+    width: 100vw;
   }
 
   #nav-list {
@@ -532,12 +537,17 @@ nav ul {
     padding-top: 3vh;
   }
 
+  form .row {
+    border-style: solid;
+    border-radius: 1rem;
+    padding: 0.5rem;
+  }
+
   .input-text {
+    margin: 1rem;
     min-width: 100px !important;
-    max-width: 140px;
   }
 }
-
 
 .login-nav {
   color: #f00 !important;
@@ -589,7 +599,7 @@ nav ul {
   padding-bottom: 60px;
   width: 600px;
   height: 230px;
-  background-image: url("/public/img/ticket.svg");
+  background-image: url('/public/img/ticket.svg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -602,7 +612,7 @@ nav ul {
 /* Seat Booking */
 .occupied {
   background-color: #aaa;
-  background-image: url("/public/img/seat.png");
+  background-image: url('/public/img/seat.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 50px 50px;
@@ -617,7 +627,7 @@ nav ul {
 
 .available {
   color: black;
-  background-image: url("/public/img/seat.png");
+  background-image: url('/public/img/seat.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 50px 50px;
@@ -722,6 +732,17 @@ button:hover {
   /* Could be more or less, depending on screen size */
 }
 
+@media screen and (max-width: 786px) {
+  .modal-content {
+    background-color: #181821;
+    margin: 5% 5% 15% 5%;
+    /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+  }
+}
+
 /* Style the horizontal ruler */
 hr {
   border: 1px solid #f1f1f1;
@@ -746,7 +767,7 @@ hr {
 
 /* Clear floats */
 .clearfix::after {
-  content: "";
+  content: '';
   clear: both;
   display: table;
 }
