@@ -7,8 +7,8 @@
 		<form action="/user/book_movie/search" method="POST">
 			<div class="row">
 				<input type="search" placeholder="Enter Movie Name" id="searchmovie" class="input-text full-width"
-					name="searchMovie" />
-				<select name="lang" class="input-text">
+					name="searchMovie" style="box-shadow: 10px 10px;" />
+				<select name="lang" class="input-text" style="box-shadow: 10px 10px;">
 					<option value="Language">Language</option>
 					<% for (z in dropLanguage){%>
 					<option value="<%= dropLanguage[z].LANGUAGE%>">
@@ -20,7 +20,7 @@
 					<option value="Telugu">Telugu</option>
 					<option value="Others">Others</option> -->
         </select>
-        <select name="genre" class="input-text">
+        <select name="genre" class="input-text" style="box-shadow: 10px 10px;">
           <option value="Genre">Genre</option>
           <% for (z in dropGenre){%>
 
@@ -29,7 +29,7 @@
 					</option>
 					<%}%>
         </select>
-        <button type="submit" class="red-btn seacrh-btn ">Search</button>
+        <button type="submit" class="red-btn seacrh-btn " >Search</button>
       </div>
     </form>
     <% if (movies.length == 0) {%>
@@ -49,22 +49,23 @@
 					<% } else { %> <% for (x in movies) { %>
 					<div class="row card effect5">
 						<div align="center" class="column-4 border-right content-card">
-							<img src="https://picsum.photos/220?random=<%= movies[x].name%>" width="100%" height="100%"
-								style="border-radius: 40px;" />
+							<img class="drib" src="https://picsum.photos/220?random=<%= movies[x].name%>" width="80%" height="80%" style="margin-top: 5%;"
+								/>
 						</div>
-						<div class="column-8 content-card">
-							<h2 class="card-header"><%= movies[x].name%></h2>
-							<h3>Release date :<%= movies[x].release_date%></h3>
-							<h3>Language: <%= movies[x].language%></h3>
-							Actors: <% for (i in movies[x].actors) { %>
-							<a
+						<div class="column-8 content-card" >
+							<h2 class="card-header" style="color: crimson;"><%= movies[x].name%></h2>
+							<h3><span style="color: rgb(252, 168, 168);">Release date :</span><span ><%= movies[x].release_date%></span></h3>
+							<h3><span style="color: rgb(252, 168, 168);">Language:  </span><%= movies[x].language%></h3>
+							<h3><span style="color: rgb(252, 168, 168);">Actors: </span><% for (i in movies[x].actors) { %>
+							<a	style="color: white; margin-right: 3%;"
 								href="https://www.imdb.com/search/name/?name=<%= movies[x].actors[i].name %>"><%= movies[x].actors[i].name %></a>
 							, <% } %>
 							<p>
-								Description. Lorem ipsum cillum nostrud ullamco dolor est magna magna
+								<span style="color: rgb(252, 168, 168);">Description : </span>Loum nostrud ullamco dolor est magna magna
 								ut commodo fugiat enim ad ut. Magna sunt elit cupidatat esse duis ut
 								sed est magna laboris est.
 							</p>
+							</h3>
 							<div align="right">
 								<a href="/review/movieReview/<%=movies[x].name%>"><button
 										class="btn-curved btn-red btn-book-now">Reviews</button></a>

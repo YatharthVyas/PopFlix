@@ -13,42 +13,43 @@
   </div>
 
   <div class="content">
-    <% if (theater.length == 0) {%>
-
+	<% if (theater.length == 0) {%>
 
 		<div style="height: 180px; width: 600px;background-color: crimson;text-align: center;margin: auto;">
-			<h1 align="center" style="color: white;padding-top: 7%;">SORRY &#128533;<h1 style="color: wheat;"> No
-					theaters available</h1>
+			<h1 align="center" style="color: white;padding-top: 7%;">SORRY &#128533;<h1
+					style="color: wheat;"> No movies available</h1>
 			</h1>
 		</div>
 		<% } else { %>
-
 		<% for (x in theater) { %>
+
 		<div class="row card effect5">
 			<div align="center" class="column-4 border-right content-card">
-				<img src="/public/img/<%= (x%8)+1 %>.jpg" width="80%" height="90%" style="border-radius: 40px;">
+				<img class="drib" src="/public/img/<%= (x%8)+1 %>.jpg" width="80%" height="70%" style="margin-top: 8%;"
+					>
 			</div>
-			<div class="column-8 content-card">
-				<h2 class="card-header site-heading"
-					style="padding-top: 20px;padding-bottom: 20px; background-color: red;padding-left: 5px;">
-					<%= theater[x].name%></h2>
-				<b>Rating:</b> <span><%= theater[x].rating%> </span>&#9733; <br />
-				<b>Now Showing: </b>
-				<% for (y in theater[x].movies) { %>
-				<a href="#"><%=theater[x].movies[y].name%></a>,
-				<%}%><br/>
-					<i class="fa fa-home" style="font-size:30px;color:red"></i> Address: <%= theater[x].location%><br />
+			<div class="column-8 content-card ">
+				<h2 class="card-header" style="color: crimson;">
+					<%= theater[x].name %></h2>
+				<h3><span style="color: rgb(252, 168, 168);">Rating: </span><%= theater[x].rating %><span> </span>&#9733; <br /><br><br>
+				<span style="color: rgb(252, 168, 168);">Now Showing: </span><% for (y in theater[x].movies) { %><a style="color: white; margin-right: 3%;"
+					href="#"><%=theater[x].movies[y].name%>
+				</a>
+				<%}%>
+				<br>
+				<br><br>
+				 &#127968;<span style="color: rgb(252, 168, 168);">Location: </span><%= theater[x].location %></h3>
 				<div class="btn-position">
-					<a href="/user/select_time?theater=<%=theater[x].t_id%>&movie=<%= movieId %>">
-						<button class="btn-curved btn-book-now" onclick="saveFlix('<%=theater[x].t_id%>')"> Proceed
-						</button>
-					</a>
+					<button class="btn-curved btn-book-now" onclick="saveFlix('<%=theater[x].t_id %>')">
+						Book
+						Now!
+					</button>
 				</div>
 			</div>
 		</div>
 		<% } %>
 		<% } %>
-	</div>
+</div>
 	<%- include('../Includes/footer.ejs') %>
 	<script type="text/javascript">
 		function saveFlix(id) {

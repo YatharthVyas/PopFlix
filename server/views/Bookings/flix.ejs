@@ -6,8 +6,8 @@
 		<form action="/user/book_flix/search" method="POST">
 			<div class="row">
 				<input type="search" placeholder="Enter Flix Name" id="searchmovie" class="input-text full-width"
-					name="searchmovie">
-				<select name="region" class="input-text">
+					name="searchmovie" style="box-shadow: 10px 10px;">
+				<select name="region" class="input-text" style="box-shadow: 10px 10px;">
 					<option value="Region">Region</option>
 					<%for (z in dropRegions){%>
 					<option value="<%= dropRegions[z].Location%>">
@@ -35,19 +35,20 @@
 
 					<div class="row card effect5">
 						<div align="center" class="column-4 border-right content-card">
-							<img src="/public/img/<%= (x%8)+1 %>.jpg" width="80%" height="90%"
-								style="border-radius: 40px;">
+							<img class="drib" src="/public/img/<%= (x%8)+1 %>.jpg" width="80%" height="70%" style="margin-top: 8%;"
+								>
 						</div>
 						<div class="column-8 content-card ">
-							<h2 class="card-header site-heading"
-								style="padding-top: 20px;padding-bottom: 20px; background-color: red;padding-left: 5px;">
+							<h2 class="card-header" style="color: crimson;">
 								<%= theaters[x].name %></h2>
-							Rating: <%= theaters[x].rating %><span> </span>&#9733; <br />
-							Now Showing: <% for (y in theaters[x].movies) { %><a
+							<h3><span style="color: rgb(252, 168, 168);">Rating: </span><%= theaters[x].rating %><span> </span>&#9733; <br /><br><br>
+							<span style="color: rgb(252, 168, 168);">Now Showing: </span><% for (y in theaters[x].movies) { %><a style="color: white; margin-right: 3%;"
 								href="#"><%=theaters[x].movies[y].name%>
 							</a>
-							<br /><%}%>
-				<p> &#127968; Location  : <%= theaters[x].location %></p>
+							<%}%>
+							<br>
+							<br><br>
+							 &#127968;<span style="color: rgb(252, 168, 168);">Location: </span><%= theaters[x].location %></h3>
 							<div class="btn-position">
 								<button class="btn-curved btn-book-now" onclick="saveFlix('<%=theaters[x].t_id %>')">
 									Book
