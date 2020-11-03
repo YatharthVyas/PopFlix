@@ -2,12 +2,10 @@ const mysql = require("mysql");
 const util = require("util");
 
 const connection = mysql.createConnection({
-
   host: "localhost",
   user: "root",
-  password: "Tejas@18",
+  password: "Vatsal13@13",
   database: "popflix",
-
 });
 
 exports.connect = () => {

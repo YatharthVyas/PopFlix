@@ -15,56 +15,48 @@
   <div class="content">
     <% if (theater.length == 0) {%>
 
-    <div
-      style="
-        height: 180px;
-        width: 600px;
-        background-color: crimson;
-        text-align: center;
-        margin: auto;
-      "
-    >
-      <h1 align="center" style="color: white; padding-top: 7%">
-        SORRY &#128533;
-        <h1 style="color: wheat">No theaters available</h1>
-      </h1>
-    </div>
-    <% } else { %> <% for (x in theater) { %>
-    <div class="row card effect5">
-      <div class="column-4 border-right content-card">
-        <img src="/public/img/seat.png" width="80%" />
-      </div>
-      <div class="column-8 content-card">
-        <h2 class="card-header"><%= theater[x].name%></h2>
-        <b>Rating:</b> <span><%= theater[x].rating%> </span>&#9733; <br />
-        <b>Now Showing: </b>
-        <% for (y in theater[x].movies) { %>
-        <a href="#"><%=theater[x].movies[y].name%></a>, <%}%><br />
-        <i class="fa fa-home" style="font-size: 30px; color: red"></i> Address:
-        <%= theater[x].location%><br />
-        <div align="right">
-          <a
-            href="/user/select_time?theater=<%=theater[x].t_id%>&movie=<%= movieId %>"
-          >
-            <button
-              class="btn-curved btn-book-now"
-              onclick="saveFlix('<%=theater[x].t_id%>')"
-            >
-              Proceed
-            </button>
-          </a>
-        </div>
-      </div>
-    </div>
-    <% } %> <% } %>
-  </div>
-  <%- include('../Includes/footer.ejs') %>
-  <script type="text/javascript">
-    function saveFlix(id) {
-      let ticket = JSON.parse(localStorage.getItem('ticket'));
-      ticket.flix_id = id;
-      localStorage.setItem('ticket', JSON.stringify(ticket));
-      window.location.href = `/user/select_time?theater=${ticket.flix_id}&movie=${ticket.movie_id}`;
-    }
-  </script>
+
+		<div style="height: 180px; width: 600px;background-color: crimson;text-align: center;margin: auto;">
+			<h1 align="center" style="color: white;padding-top: 7%;">SORRY &#128533;<h1 style="color: wheat;"> No
+					theaters available</h1>
+			</h1>
+		</div>
+		<% } else { %>
+
+		<% for (x in theater) { %>
+		<div class="row card effect5">
+			<div align="center" class="column-4 border-right content-card">
+				<img src="/public/img/<%= (x%8)+1 %>.jpg" width="80%" height="90%" style="border-radius: 40px;">
+			</div>
+			<div class="column-8 content-card">
+				<h2 class="card-header site-heading"
+					style="padding-top: 20px;padding-bottom: 20px; background-color: red;padding-left: 5px;">
+					<%= theater[x].name%></h2>
+				<b>Rating:</b> <span><%= theater[x].rating%> </span>&#9733; <br />
+				<b>Now Showing: </b>
+				<% for (y in theater[x].movies) { %>
+				<a href="#"><%=theater[x].movies[y].name%></a>,
+				<%}%><br/>
+					<i class="fa fa-home" style="font-size:30px;color:red"></i> Address: <%= theater[x].location%><br />
+				<div class="btn-position">
+					<a href="/user/select_time?theater=<%=theater[x].t_id%>&movie=<%= movieId %>">
+						<button class="btn-curved btn-book-now" onclick="saveFlix('<%=theater[x].t_id%>')"> Proceed
+						</button>
+					</a>
+				</div>
+			</div>
+		</div>
+		<% } %>
+		<% } %>
+	</div>
+	<%- include('../Includes/footer.ejs') %>
+	<script type="text/javascript">
+		function saveFlix(id) {
+			let ticket = JSON.parse(localStorage.getItem('ticket'));
+			ticket.flix_id = id;
+			localStorage.setItem('ticket', JSON.stringify(ticket));
+			window.location.href = `/user/select_time?theater=${ticket.flix_id}&movie=${ticket.movie_id}`;
+		}
+	</script>
+
 </body>

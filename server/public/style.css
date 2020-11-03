@@ -17,7 +17,7 @@ body {
 .effect5:after {
   z-index: -1;
   position: absolute;
-  content: '';
+  content: "";
   bottom: 25px;
   left: 10px;
   width: 50%;
@@ -58,7 +58,7 @@ body {
   border-radius: 3%;
 }
 
-input[type='file'] {
+input[type="file"] {
   display: none;
 }
 
@@ -131,7 +131,7 @@ input[type='file'] {
 }
 
 #heading {
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Permanent Marker", cursive;
   font-size: 120px;
   color: white;
   margin-left: 20%;
@@ -248,6 +248,14 @@ input[type='file'] {
   .column-9 {
     width: 100%;
   }
+  .input-text {
+    margin-top: 30px;
+    width: fit-content;
+  }
+  .seacrh-btn {
+    margin-top: 10px;
+    width: 100%;
+  }
 }
 
 .full-width {
@@ -255,10 +263,12 @@ input[type='file'] {
 }
 
 .arrow {
+
   clip-path: circle(25px);
   display: inline;
   padding: 25px;
   font-family: 'Roboto', sans-serif;
+
   font-weight: 900;
 }
 
@@ -283,7 +293,7 @@ input[type='file'] {
 
 .card-header {
   font-size: 2.5em;
-  font-family: 'Anton', sans-serif;
+  font-family: serif;
   border-bottom: 1px solid #ccc;
 }
 
@@ -293,12 +303,16 @@ input[type='file'] {
 
 .content-card {
   padding: 40px;
-  font-family: Arial;
+  font-family: sans-serif;
 }
 
 .content-card-2 {
   padding: 5px;
   font-family: Arial;
+}
+.pict:hover {
+  transition: 2s;
+  transform: rotateX(360deg);
 }
 
 /* End */
@@ -396,8 +410,17 @@ nav ul {
   background-color: #f66;
   color: white;
 }
-
+.btn-position {
+  text-align: right;
+}
 @media screen and (max-width: 768px) {
+  /* .btn-book-now {
+    margin-right: 50px;
+  } */
+  .btn-position {
+    text-align: center;
+    margin-left: 30px;
+  }
   .btn-book-now {
     width: 100%;
     margin-right: 10px;
@@ -411,6 +434,13 @@ nav ul {
 
   .content-card {
     width: 80%;
+  }
+  /* .btn-wid {
+    padding-left: 44px;
+    align-items: center;
+  } */
+  .border-right {
+    border: none;
   }
 }
 
@@ -491,7 +521,7 @@ nav ul {
 }
 
 #navhome {
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Permanent Marker", cursive;
   /*font-size: 20px;*/
   color: white;
   margin: 0px 0px 0px 10px;
@@ -548,8 +578,16 @@ nav ul {
   }
 
   .input-text {
-    margin: 1rem;
-    min-width: 100px !important;
+    /* min-width: 100px !important;
+    max-width: 140px; */
+    width: 75%;
+  }
+  .seacrh-btn {
+    width: 75%;
+    margin-left: 40px;
+
+    /* margin: 1rem;
+    min-width: 100px !important; */
   }
 }
 
@@ -625,7 +663,7 @@ nav ul {
   padding-bottom: 60px;
   width: 600px;
   height: 230px;
-  background-image: url('/public/img/ticket.svg');
+  background-image: url("/public/img/ticket.svg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -638,7 +676,7 @@ nav ul {
 /* Seat Booking */
 .occupied {
   background-color: #aaa;
-  background-image: url('/public/img/seat.png');
+  background-image: url("/public/img/seat.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 50px 50px;
@@ -653,7 +691,7 @@ nav ul {
 
 .available {
   color: black;
-  background-image: url('/public/img/seat.png');
+  background-image: url("/public/img/seat.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 50px 50px;
@@ -793,7 +831,7 @@ hr {
 
 /* Clear floats */
 .clearfix::after {
-  content: '';
+  content: "";
   clear: both;
   display: table;
 }
@@ -803,6 +841,9 @@ hr {
   .cancelbtn,
   .signupbtn {
     width: 100%;
+  }
+  .seacrh-btn {
+    width: 90%;
   }
 }
 
