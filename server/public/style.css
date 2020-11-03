@@ -84,17 +84,18 @@ input[type="file"] {
   }
 
   .arrow {
-    clip-path: polygon(
-      30% 70%,
-      30% 0,
-      70% 0,
-      70% 80%,
-      100% 70%,
-      50% 100%,
-      0% 70%
-    ) !important;
-    min-height: 30px;
+    clip-path: circle(20px) !important;
+    padding: 15px !important;
     text-align: center;
+  }
+
+  .steps {
+    margin-left: 2rem !important;
+  }
+
+  .dir-line {
+    height: 0.5rem !important;
+    width: 2.5rem !important;
   }
 }
 
@@ -262,19 +263,24 @@ input[type="file"] {
 }
 
 .arrow {
-  clip-path: polygon(
-    0% 20%,
-    60% 20%,
-    60% 0%,
-    100% 50%,
-    60% 100%,
-    60% 80%,
-    0% 80%
-  );
-  justify-content: center;
-  padding: 30px;
-  font-family: "Roboto", sans-serif;
+
+  clip-path: circle(25px);
+  display: inline;
+  padding: 25px;
+  font-family: 'Roboto', sans-serif;
+
   font-weight: 900;
+}
+
+.steps {
+  margin-top: 8vh;
+  margin-left: 25%;
+}
+
+.dir-line {
+  display: inline-block;
+  height: 0.5rem;
+  width: 10rem;
 }
 
 /* Card */
@@ -626,6 +632,28 @@ nav ul {
 /* End of Navbar */
 
 /*Confirm ticket payment*/
+
+@media screen and (max-width: 786px) {
+  .ticket-frame {
+    border-radius: -25px;
+    padding-top: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 90px;
+    padding-bottom: 0px !important;
+    width: 200px !important;
+    height: 150px !important;
+  }
+  .card-header {
+    padding-top: 1.5rem;
+    margin-left: 4rem;
+    font-size: 1rem;
+  }
+  .ticket-content {
+    margin-top: 0 !important;
+    margin-left: 4rem !important;
+    font-size: 0.7rem !important;
+  }
+}
 
 .ticket-frame {
   border-radius: -25px;

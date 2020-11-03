@@ -2,19 +2,14 @@
 
 <body>
   <%- include('../Includes/nav.ejs') %>
-  <div class="content row">
-    <div class="column-3">
-      <div class="arrow bg-red">Select Movie</div>
-    </div>
-    <div class="column-3">
-      <div class="arrow silver-bg">Show Time</div>
-    </div>
-    <div class="column-3">
-      <div class="arrow silver-bg">Select Seat</div>
-    </div>
-    <div class="column-3">
-      <div class="arrow silver-bg">Confirm Payment</div>
-    </div>
+  <div class="content steps">
+    <div class="arrow bg-red">1</div>
+    <span class="dir-line silver-bg"></span>
+    <div class="arrow silver-bg">2</div>
+    <span class="dir-line silver-bg"></span>
+    <div class="arrow silver-bg">3</div>
+    <span class="dir-line silver-bg"></span>
+    <div class="arrow silver-bg">4</div>
   </div>
   <div class="row">
     <div class="content">
@@ -35,8 +30,10 @@
       <% } else { %> <% for (x in movies) { %>
       <div class="row card effect5">
         <div class="column-4 border-right content-card">
+
           <img src="https://picsum.photos/220?random=<%= movies[x].name%>" width="100%" height="100%"
             style="border-radius: 40px;" />
+
         </div>
         <div class="column-8 content-card">
           <h2 class="card-header"><%= movies[x].name%></h2>
