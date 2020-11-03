@@ -6,9 +6,9 @@ body {
   width: 100vw;
   overflow-x: hidden;
   background: #394255;
-  background: -webkit-radial-gradient(center, #6679a0,  #191c25);
-  background: -moz-radial-gradient(center,#8ca2d1,  #191c25);
-  background: radial-gradient(ellipse at center, #8ca2d1  #191c25);
+  background: -webkit-radial-gradient(center, #8ca2d1,  #242936);
+  background: -moz-radial-gradient(center,#8ca2d1,  #242936);
+  background: radial-gradient(ellipse at center, #8ca2d1  #242936);
 }
 .effect5 {
   position: relative;
@@ -309,7 +309,7 @@ input[type="file"] {
 
 .card-header {
   font-size: 2.5em;
-  font-family: serif;
+  font-family: 'Righteous', cursive;
   border-bottom: 1px solid #ccc;
 }
 
