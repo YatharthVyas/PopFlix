@@ -11,12 +11,13 @@ body {
   background: radial-gradient(ellipse at center, #FFFFFF, #F0D1D1);
 
 }
-.effect5
-{
+
+.effect5 {
   position: relative;
 }
-.effect5:before, .effect5:after
-{
+
+.effect5:before,
+.effect5:after {
   z-index: -1;
   position: absolute;
   content: "";
@@ -24,7 +25,7 @@ body {
   left: 10px;
   width: 50%;
   top: 80%;
-  max-width:300px;
+  max-width: 300px;
   background: #777;
   -webkit-box-shadow: 0 35px 20px #777;
   -moz-box-shadow: 0 35px 20px #777;
@@ -35,8 +36,8 @@ body {
   -ms-transform: rotate(-8deg);
   transform: rotate(-8deg);
 }
-.effect5:after
-{
+
+.effect5:after {
   -webkit-transform: rotate(8deg);
   -moz-transform: rotate(8deg);
   -o-transform: rotate(8deg);
@@ -228,6 +229,7 @@ input[type="file"] {
 }
 
 @media screen and (max-width: 800px) {
+
   .row,
   .row-fluid {
     flex-direction: column;
@@ -249,15 +251,13 @@ input[type="file"] {
 }
 
 .arrow {
-  clip-path: polygon(
-    0% 20%,
+  clip-path: polygon(0% 20%,
     60% 20%,
     60% 0%,
     100% 50%,
     60% 100%,
     60% 80%,
-    0% 80%
-  );
+    0% 80%);
   justify-content: center;
   padding: 30px;
   font-family: "Roboto", sans-serif;
@@ -386,6 +386,15 @@ nav ul {
   transition: 1s;
   background-color: #f66;
   color: white;
+}
+
+/* To remove background color overlay */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+  -webkit-transition-delay: 9999s;
 }
 
 @media screen and (max-width: 768px) {
@@ -753,6 +762,7 @@ hr {
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
+
   .cancelbtn,
   .signupbtn {
     width: 100%;
@@ -843,9 +853,11 @@ hr {
   font-size: 25px;
   cursor: pointer;
 }
+
 #goUpbtn:hover {
   background-color: #c70000;
 }
+
 @media screen and (max-width: 768px) {
   .footer-homepg {
     flex-direction: column;
