@@ -591,6 +591,10 @@ input:-webkit-autofill:active {
   color: white;
 }
 
+#home-nav-mobile-only {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   .nav ul {
     display: block;
@@ -604,6 +608,11 @@ input:-webkit-autofill:active {
   #nav-list {
     display: none;
   }
+
+  #home-nav-mobile-only {
+    display: block;
+  }
+
 
   #list-open {
     display: block;
