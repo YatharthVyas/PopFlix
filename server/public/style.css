@@ -5,12 +5,12 @@ body {
   margin-top: 50px;
   width: 100vw;
   overflow-x: hidden;
-  background: #FFFFFF;
-  background: -webkit-radial-gradient(center, #FFFFFF, #F0D1D1);
-  background: -moz-radial-gradient(center, #FFFFFF, #F0D1D1);
-  background: radial-gradient(ellipse at center, #FFFFFF, #F0D1D1);
-
+  background: #394255;
+  background: -webkit-radial-gradient(center, #8ca2d1, #242936);
+  background: -moz-radial-gradient(center, #8ca2d1, #242936);
+  background: radial-gradient(ellipse at center, #8ca2d1 #242936);
 }
+
 
 .effect5 {
   position: relative;
@@ -79,6 +79,7 @@ input[type="file"] {
   padding-top: 50px;
   padding-left: 5%;
   padding-right: 5%;
+  color: white;
 }
 
 @media screen and (max-width: 768px) {
@@ -88,9 +89,18 @@ input[type="file"] {
   }
 
   .arrow {
-    clip-path: polygon(30% 70%, 30% 0, 70% 0, 70% 80%, 100% 70%, 50% 100%, 0% 70%) !important;
-    min-height: 30px;
+    clip-path: circle(20px) !important;
+    padding: 15px !important;
     text-align: center;
+  }
+
+  .steps {
+    margin-left: 2rem !important;
+  }
+
+  .dir-line {
+    height: 0.5rem !important;
+    width: 2.5rem !important;
   }
 }
 
@@ -101,12 +111,29 @@ input[type="file"] {
   padding: 30px 40px 30px 40px;
 }
 
+.drib {
+  border: 5px solid hsl(0, 0%, 40%);
+
+  /* #2 */
+  padding: 5px;
+  background: hsl(0, 0%, 20%);
+
+  /* #3 */
+  outline: 5px solid hsl(0, 0%, 60%);
+
+  /* #4 AND INFINITY!!! (CSS3 only) */
+  box-shadow:
+    0 0 0 10px hsl(0, 0%, 80%),
+    0 0 0 15px hsl(0, 0%, 90%);
+}
+
 .row,
 .row-sm {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 6%;
   margin-left: 5%;
+  margin-top: 3%;
   margin-right: 5%;
 }
 
@@ -244,6 +271,16 @@ input[type="file"] {
   .column-9 {
     width: 100%;
   }
+
+  .input-text {
+    margin-top: 30px;
+    width: fit-content;
+  }
+
+  .seacrh-btn {
+    margin-top: 10px;
+    width: 100%;
+  }
 }
 
 .full-width {
@@ -251,17 +288,22 @@ input[type="file"] {
 }
 
 .arrow {
-  clip-path: polygon(0% 20%,
-    60% 20%,
-    60% 0%,
-    100% 50%,
-    60% 100%,
-    60% 80%,
-    0% 80%);
-  justify-content: center;
-  padding: 30px;
-  font-family: "Roboto", sans-serif;
+  clip-path: circle(25px);
+  display: inline;
+  padding: 25px;
+  font-family: 'Roboto', sans-serif;
   font-weight: 900;
+}
+
+.steps {
+  margin-top: 8vh;
+  margin-left: 25%;
+}
+
+.dir-line {
+  display: inline-block;
+  height: 0.5rem;
+  width: 10rem;
 }
 
 /* Card */
@@ -274,7 +316,7 @@ input[type="file"] {
 
 .card-header {
   font-size: 2.5em;
-  font-family: 'Anton', sans-serif;
+  font-family: 'Righteous', cursive;
   border-bottom: 1px solid #ccc;
 }
 
@@ -284,12 +326,18 @@ input[type="file"] {
 
 .content-card {
   padding: 40px;
-  font-family: Arial;
+  font-family: sans-serif;
+  background-color: #1d1e22;
 }
 
 .content-card-2 {
   padding: 5px;
   font-family: Arial;
+}
+
+.pict:hover {
+  transition: 2s;
+  transform: rotateX(360deg);
 }
 
 /* End */
@@ -342,7 +390,9 @@ a.custom-white:hover {
 
 /*Date and Time Select page*/
 .time-block {
-  padding: 50px;
+  padding: 60px;
+  background-color: #002e4d;
+  box-shadow: 10px 10px 5px black;
 }
 
 .parallax {
@@ -397,9 +447,24 @@ input:-webkit-autofill:active {
   -webkit-transition-delay: 9999s;
 }
 
+
+.btn-position {
+  text-align: right;
+}
+
 @media screen and (max-width: 768px) {
-  .btn-book-now {
+
+  /* .btn-book-now {
     margin-right: 50px;
+  } */
+  .btn-position {
+    text-align: center;
+    margin-left: 30px;
+  }
+
+  .btn-book-now {
+    width: 100%;
+    margin-right: 10px;
   }
 
   .full-width {
@@ -410,6 +475,14 @@ input:-webkit-autofill:active {
 
   .content-card {
     width: 80%;
+  }
+
+  /* .btn-wid {
+    padding-left: 44px;
+    align-items: center;
+  } */
+  .border-right {
+    border: none;
   }
 }
 
@@ -518,7 +591,6 @@ input:-webkit-autofill:active {
   color: white;
 }
 
-
 @media screen and (max-width: 768px) {
   .nav ul {
     display: block;
@@ -526,7 +598,7 @@ input:-webkit-autofill:active {
   }
 
   .nav li {
-    width: 100vw
+    width: 100vw;
   }
 
   #nav-list {
@@ -541,12 +613,26 @@ input:-webkit-autofill:active {
     padding-top: 3vh;
   }
 
+  form .row {
+    border-style: solid;
+    border-radius: 1rem;
+    padding: 0.5rem;
+  }
+
   .input-text {
-    min-width: 100px !important;
-    max-width: 140px;
+    /* min-width: 100px !important;
+    max-width: 140px; */
+    width: 75%;
+  }
+
+  .seacrh-btn {
+    width: 75%;
+    margin-left: 40px;
+
+    /* margin: 1rem;
+    min-width: 100px !important; */
   }
 }
-
 
 .login-nav {
   color: #f00 !important;
@@ -589,6 +675,30 @@ input:-webkit-autofill:active {
 /* End of Navbar */
 
 /*Confirm ticket payment*/
+
+@media screen and (max-width: 786px) {
+  .ticket-frame {
+    border-radius: -25px;
+    padding-top: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 90px;
+    padding-bottom: 0px !important;
+    width: 200px !important;
+    height: 150px !important;
+  }
+
+  .card-header {
+    padding-top: 1.5rem;
+    margin-left: 4rem;
+    font-size: 1rem;
+  }
+
+  .ticket-content {
+    margin-top: 0 !important;
+    margin-left: 4rem !important;
+    font-size: 0.7rem !important;
+  }
+}
 
 .ticket-frame {
   border-radius: -25px;
@@ -731,6 +841,17 @@ button:hover {
   /* Could be more or less, depending on screen size */
 }
 
+@media screen and (max-width: 786px) {
+  .modal-content {
+    background-color: #181821;
+    margin: 5% 5% 15% 5%;
+    /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+  }
+}
+
 /* Style the horizontal ruler */
 hr {
   border: 1px solid #f1f1f1;
@@ -766,6 +887,10 @@ hr {
   .cancelbtn,
   .signupbtn {
     width: 100%;
+  }
+
+  .seacrh-btn {
+    width: 90%;
   }
 }
 

@@ -1,66 +1,88 @@
-<%- include('../Includes/header.ejs') %> 
+<%- include('../Includes/header.ejs') %>
 <body>
-<%- include('../Includes/nav.ejs') %> 
-	<div class="content row">
-		<div class="column-3">
-			<div class="arrow bg-red">
-				Movie Name
-			</div>
-		</div>
-		<div class="column-3">
-			<div class="arrow bg-red">
-				Show Time
-			</div>
-		</div>
-		<div class="column-3">
-			<div class="arrow silver-bg">
-				Select Seat
-			</div>
-		</div>
-		<div class="column-3">
-			<div class="arrow silver-bg">
-				Confirm Payment
-			</div>
-		</div>
-	</div>
-	<div class="content row">
-		<div class="card bg-red time-block">
-			<div class="card-header">
-				Date and Time
-			</div>
-			<div class="content-card">
-				<label>Date: </label>
-				<input type="date" class="input-text" id="date"style="width: 220px;" required>
-				<br /><br /><br />
-				<label>Time: </label>
-				<select class="input-text" id="slot" style="width: 280px;" required aria-placeholder="Time">
-					<% for (x in shows) {%> 
-					
-					<option value="<%= shows[x].show_id %>"><%= shows[x].slot %></option>
-					<%} %> 
-				</select>
-			</div>
-			<div align="right"><button onclick="saveShow()" class="btn-curved btn-book-now" style="background-color: white !important;color: red">Proceed</button></div>
-			<div id="err"></div>
-		</div>
-	</div>
-	<%- include('../Includes/footer.ejs') %> 
-	
-	<script type="text/javascript">
-		function saveShow(){
-			let date=document.querySelector('#date').value;
-			let show_id=document.querySelector('#slot').value; // yes this is correct, value of options is show id
-			if (!date){				
-				document.querySelector("#err").innerHTML = "Please Select valid date";
-				return;
-			}
-			let ticket = JSON.parse(localStorage.getItem('ticket'));
-			ticket.date = date;
-			ticket.show_id = show_id;
-			localStorage.setItem('ticket',JSON.stringify(ticket));
-			window.location.href=`/user/select_seat?date=${date}&show_id=${show_id}`;
-		}
-	</script>
-</body>
+  <%- include('../Includes/nav.ejs') %>
+  <div class="content steps">
+    <div class="arrow bg-red">1</div>
+    <span class="dir-line bg-red"></span>
+    <div class="arrow bg-red">2</div>
+    <span class="dir-line silver-bg"></span>
+    <div class="arrow silver-bg">3</div>
+    <span class="dir-line silver-bg"></span>
+    <div class="arrow silver-bg">4</div>
+  </div>
 
-</html>
+  <div class="content row" >
+    <div class="card time-block">
+      <div class="card-header">Date and Time</div>
+      <div class="content-card" style="margin-top: 6%;">
+        <label>Date: </label>
+        <input type="date" class="input-text" id="date" required />
+        <br /><br /><br />
+        <label>Time: </label>
+        <select class="input-text" id="slot" required aria-placeholder="Time">
+          <% for (x in shows) {%>
+
+          <option value="<%= shows[x].show_id %>"><%= shows[x].slot %></option>
+          <%} %>
+        </select>
+      </div>
+      <div align="right">
+        <button
+          onclick="saveShow()"
+          class="btn-curved btn-book-now"
+          style="background-color: white !important; color: red"
+        >
+          Proceed
+        </button>
+      </div>
+      <div id="err"></div>
+    </div>
+  </div>
+  <%- include('../Includes/footer.ejs') %>
+
+  <script type="text/javascript">
+    let today = new Date();
+
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1; //January is 0!
+    let yyyy = today.getFullYear();
+
+    if (dd < 10) {
+      dd = '0' + dd;
+    }
+    if (mm < 10) {
+      mm = '0' + mm;
+    }
+
+    let min = yyyy + '-' + mm + '-' + dd;
+    document.querySelector('#date').setAttribute('min', min);
+
+    today.setDate(today.getDate() + 14); // two weeks forward
+
+    dd = today.getDate();
+    mm = today.getMonth() + 1; //January is 0!
+    yyyy = today.getFullYear();
+
+    if (dd < 10) {
+      dd = '0' + dd;
+    }
+    if (mm < 10) {
+      mm = '0' + mm;
+    }
+    let max = yyyy + '-' + mm + '-' + dd;
+    document.querySelector('#date').setAttribute('max', max);
+    function saveShow() {
+      let date = document.querySelector('#date').value;
+      let show_id = document.querySelector('#slot').value; // yes this is correct, value of options is show id
+      if (!date) {
+        document.querySelector('#err').innerHTML = 'Please Select valid date';
+        return;
+      }
+      let ticket = JSON.parse(localStorage.getItem('ticket'));
+      ticket.date = date;
+      ticket.show_id = show_id;
+      localStorage.setItem('ticket', JSON.stringify(ticket));
+      window.location.href = `/user/select_seat?date=${date}&show_id=${show_id}`;
+    }
+  </script>
+</body>

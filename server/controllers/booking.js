@@ -39,7 +39,7 @@ exports.searchFlix = async (req, res) => {
       );
     } else if (req.body.searchmovie == '') {
       theaters = await query(
-        `SELECT * FROM theater AS t WHERE location='${theaterLocation}' GROUP BY t.location ORDER BY t.rating;`
+        `SELECT * FROM theater AS t WHERE location='${theaterLocation}'  ORDER BY t.rating;`
       );
     } else {
       theaters = await query(
@@ -126,7 +126,7 @@ exports.searchMovie = async (req, res) => {
     let language = req.body.lang;
     let genre = req.body.genre;
     let dropLanguage = await query(`SELECT DISTINCT LANGUAGE FROM movies;`);
-    let dropGenre = await query(`SELECT DISTINCT Genre FROM Genre;`);
+    let dropGenre = await query(`SELECT DISTINCT Genre FROM genre;`);
     let indx = 0;
     while (indx < dropLanguage.length) {
       let x = dropLanguage[indx].LANGUAGE;
@@ -148,7 +148,7 @@ exports.searchMovie = async (req, res) => {
       mov = await query(`SELECT * FROM movies WHERE language='${language}';`);
     } else if (movieName == '' && language == 'Language') {
       mov = await query(
-        `SELECT * FROM movies AS m WHERE m.m_id IN (SELECT m_id from genre where GENRE='${genre}');`
+        `SELECT * FROM movies AS m WHERE m.m_id IN (SELECT m_id from genre where genre='${genre}');`
       );
     } else if (genre == 'Genre') {
       if (language == 'English') language = 'EN';
@@ -162,18 +162,18 @@ exports.searchMovie = async (req, res) => {
       else if (language == 'Hindi') language = 'Hi';
       else language = 'Ma';
       mov = await query(
-        `SELECT * FROM movies AS m WHERE m.language='${language}' AND m.m_id IN (SELECT m_id from genre where GENRE='${genre}');`
+        `SELECT * FROM movies AS m WHERE m.language='${language}' AND m.m_id IN (SELECT m_id from genre where genre='${genre}');`
       );
     } else if (language == 'Language') {
       mov = await query(
-        `SELECT * FROM movies AS m WHERE m.name LIKE '%${movieName}%' AND m.m_id IN (SELECT m_id from genre where GENRE='${genre}');`
+        `SELECT * FROM movies AS m WHERE m.name LIKE '%${movieName}%' AND m.m_id IN (SELECT m_id from genre where genre='${genre}');`
       );
     } else {
       if (language == 'English') language = 'EN';
       else if (language == 'Hindi') language = 'Hi';
       else language = 'Ma';
       mov = await query(
-        `SELECT * FROM movies AS m WHERE m.name LIKE '%${movieName}%' AND m.language='${language}' AND m.m_id IN (SELECT m_id from genre where GENRE='${genre}');`
+        `SELECT * FROM movies AS m WHERE m.name LIKE '%${movieName}%' AND m.language='${language}' AND m.m_id IN (SELECT m_id from genre where genre='${genre}');`
       );
     }
 
@@ -360,9 +360,12 @@ exports.getConfirmPayment = async (req, res) => {
       `select s_id from seats where theater_id=${flix_id} order by s_id limit 1;`
     );
     const base_id = res1[0].s_id;
+    res1 = await query(`select name from movies where m_id=${flix_id};`);
+    const movie = res1[0].name;
     res.render('Bookings/confirm_payment', {
       user: req.user,
       pg: 'confirm_payment',
+      movie: movie,
       seats: seat_id
         .split(',')
         .map((id) => {

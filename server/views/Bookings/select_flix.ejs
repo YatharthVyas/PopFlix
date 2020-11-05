@@ -1,78 +1,55 @@
 <%- include('../Includes/header.ejs') %>
 
 <body>
-	<%- include('../Includes/nav.ejs') %>
-	<div class="content row">
-		<div class="column-3">
-			<div class="arrow bg-red">
-				Select Flix
-			</div>
-		</div>
-		<div class="column-3">
-			<div class="arrow silver-bg">
-				Show Time
-			</div>
-		</div>
-		<div class="column-3">
-			<div class="arrow silver-bg">
-				Select Seat
-			</div>
-		</div>
-		<div class="column-3">
-			<div class="arrow silver-bg">
-				Confirm Payment
-			</div>
-		</div>
-	</div>
-	<div class="content">
+  <%- include('../Includes/nav.ejs') %>
+  <div class="content steps">
+    <div class="arrow bg-red">1</div>
+    <span class="dir-line silver-bg"></span>
+    <div class="arrow silver-bg">2</div>
+    <span class="dir-line silver-bg"></span>
+    <div class="arrow silver-bg">3</div>
+    <span class="dir-line silver-bg"></span>
+    <div class="arrow silver-bg">4</div>
+  </div>
 
-		<!-- <div class="row">
-			<input type="search" placeholder="Enter Flix Name" id="searchmovie" class="input-text full-width">
-			<select class="input-text">
-				<option>Region</option>
-				<option value="Mumbai West">Mumbai West</option>
-				<option value="Mumbai South">Mumbai South</option>
-				<option value="Mumbai North">Mumbai North</option>
-				<option value="Mumbai East">Mumbai East</option>
-				<option value="Vasai">Vasai</option>
-				<option value="Thane">Thane</option>
-				<option value="Others">Others</option>
-			</select>
-			<button class="red-btn">Search</button>
-		</div> -->
-		<% if (theater.length == 0) {%>
+  <div class="content">
+	<% if (theater.length == 0) {%>
 
 		<div style="height: 180px; width: 600px;background-color: crimson;text-align: center;margin: auto;">
-			<h1 align="center" style="color: white;padding-top: 7%;">SORRY &#128533;<h1 style="color: wheat;"> No
-					theaters available</h1>
+			<h1 align="center" style="color: white;padding-top: 7%;">SORRY &#128533;<h1
+					style="color: wheat;"> No movies available</h1>
 			</h1>
 		</div>
 		<% } else { %>
-
 		<% for (x in theater) { %>
+
 		<div class="row card effect5">
-			<div class="column-4 border-right content-card">
-				<img src="/public/img/seat.png" width="80%">
+			<div align="center" class="column-4 border-right content-card">
+				<img class="drib" src="/public/img/<%= (x%8)+1 %>.jpg" width="80%" height="70%" style="margin-top: 8%;"
+					>
 			</div>
-			<div class="column-8 content-card">
-				<h2 class="card-header"> <%= theater[x].name%></h2>
-				<b>Rating:</b> <span><%= theater[x].rating%> </span>&#9733; <br />
-				<b>Now Showing: </b>
-				<% for (y in theater[x].movies) { %>
-				<a href="#"><%=theater[x].movies[y].name%></a>,
-				<%}%><br/>
-					<i class="fa fa-home" style="font-size:30px;color:red"></i> Address: <%= theater[x].location%><br />
-				<div align="right">
-					<a href="/user/select_time?theater=<%=theater[x].t_id%>&movie=<%= movieId %>">
-						<button class="btn-curved btn-book-now" onclick="saveFlix('<%=theater[x].t_id%>')"> Proceed
-						</button>
-					</a>
+			<div class="column-8 content-card ">
+				<h2 class="card-header" style="color: crimson;">
+					<%= theater[x].name %></h2>
+				<h3><span style="color: rgb(252, 168, 168);">Rating: </span><%= theater[x].rating %><span> </span>&#9733; <br /><br><br>
+				<span style="color: rgb(252, 168, 168);">Now Showing: </span><% for (y in theater[x].movies) { %><a style="color: white; margin-right: 3%;"
+					href="#"><%=theater[x].movies[y].name%>
+				</a>
+				<%}%>
+				<br>
+				<br><br>
+				 &#127968;<span style="color: rgb(252, 168, 168);">Location: </span><%= theater[x].location %></h3>
+				<div class="btn-position">
+					<button class="btn-curved btn-book-now" onclick="saveFlix('<%=theater[x].t_id %>')">
+						Book
+						Now!
+					</button>
 				</div>
 			</div>
 		</div>
 		<% } %>
 		<% } %>
-	</div>
+</div>
 	<%- include('../Includes/footer.ejs') %>
 	<script type="text/javascript">
 		function saveFlix(id) {
@@ -82,6 +59,5 @@
 			window.location.href = `/user/select_time?theater=${ticket.flix_id}&movie=${ticket.movie_id}`;
 		}
 	</script>
-</body>
 
-</html>
+</body>
