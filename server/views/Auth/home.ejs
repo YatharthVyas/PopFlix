@@ -2,6 +2,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 <body>
 	<style type="text/css">
+		
 		.parallax-home-1 {
 		  background-image: url("/public/img/home_parallax.jpg");
 		}
@@ -31,7 +32,9 @@
 	         animation-name: fadeInRight;
 		 } 
 		 @media screen and (max-width: 786px) {
-			 
+			.ticketimg{
+				display: none;
+			}	 
 		 }
 	</style>
 	<%- include('../Includes/nav.ejs') %>
@@ -105,7 +108,7 @@
 							</div>
 						</div>
 						<div style="flex: 2;margin-top: 2%;">
-							<img height="400px" style="transform:rotate(340deg);" src="/public/img/signup.png">
+							<img height="400px" style="transform:rotate(340deg);" class="ticketimg" src="/public/img/signup.png">
 						</div>
 				 	</div>
 				</form>

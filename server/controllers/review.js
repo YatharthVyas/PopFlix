@@ -15,7 +15,7 @@ exports.getParticularMovieReview = async (req, res) => {
     `SELECT m_id FROM movies WHERE name='${movieName}';`
   );
   let movieId = movie_id[0].m_id;
-  
+
   let movieReviews = await query(
     `SELECT * FROM review AS r WHERE r.m_id=(SELECT m.m_id FROM movies AS m WHERE m.name='${movieName}');`
   );
@@ -42,8 +42,7 @@ exports.getParticularMovieReview = async (req, res) => {
       let actors = await query(
         `SELECT name FROM person where p_id IN (Select p_id from acted_in where m_id=${movieId});`
       );
-      movie.actors=actors;
-      console.log(actors);
+      movie.actors = actors;
     } catch (error) {
       console.log(error);
     }
@@ -109,15 +108,14 @@ exports.postReview = async (req, res) => {
       movieReviews[indx].name = b[0].name;
       indx = indx + 1;
     }
-   try {
-    let actors = await query(
-      `SELECT name FROM person where p_id IN (Select p_id from acted_in where m_id=${movieId});`
-    );
-    movie.actors=actors;
-    console.log(actors);
-   } catch (error) {
-     console.log(error);
-   }
+    try {
+      let actors = await query(
+        `SELECT name FROM person where p_id IN (Select p_id from acted_in where m_id=${movieId});`
+      );
+      movie.actors = actors;
+    } catch (error) {
+      console.log(error);
+    }
 
     res.render('Flix/reviews', {
       pg: 'reviews',

@@ -1,3 +1,7 @@
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: Roboto, sans-serif;
   margin: 0px;
@@ -6,12 +10,11 @@ body {
   width: 100vw;
   overflow-x: hidden;
   background: #394255;
-  background-image: linear-gradient(to right,#242936, #8ca2d1, #242936);
+  background-image: linear-gradient(to right, #242936, #8ca2d1, #242936);
   /* background: -webkit-radial-gradient(center, #8ca2d1, #242936);
   background: -moz-radial-gradient(center, #8ca2d1, #242936);
   background: radial-gradient(ellipse at center, #8ca2d1 #242936); */
 }
-
 
 .effect5 {
   position: relative;
@@ -21,7 +24,7 @@ body {
 .effect5:after {
   z-index: -1;
   position: absolute;
-  content: "";
+  content: '';
   bottom: 25px;
   left: 10px;
   width: 50%;
@@ -63,7 +66,7 @@ body {
   border-radius: 3%;
 }
 
-input[type="file"] {
+input[type='file'] {
   display: none;
 }
 
@@ -123,9 +126,7 @@ input[type="file"] {
   outline: 5px solid hsl(0, 0%, 60%);
 
   /* #4 AND INFINITY!!! (CSS3 only) */
-  box-shadow:
-    0 0 0 10px hsl(0, 0%, 80%),
-    0 0 0 15px hsl(0, 0%, 90%);
+  box-shadow: 0 0 0 10px hsl(0, 0%, 80%), 0 0 0 15px hsl(0, 0%, 90%);
 }
 
 .row,
@@ -154,7 +155,7 @@ input[type="file"] {
 }
 
 #heading {
-  font-family: "Permanent Marker", cursive;
+  font-family: 'Permanent Marker', cursive;
   font-size: 120px;
   color: white;
   margin-left: 20%;
@@ -257,7 +258,6 @@ input[type="file"] {
 }
 
 @media screen and (max-width: 800px) {
-
   .row,
   .row-fluid {
     flex-direction: column;
@@ -444,17 +444,15 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+  -webkit-transition: 'color 9999s ease-out, background-color 9999s ease-out';
   -webkit-transition-delay: 9999s;
 }
-
 
 .btn-position {
   text-align: right;
 }
 
 @media screen and (max-width: 768px) {
-
   /* .btn-book-now {
     margin-right: 50px;
   } */
@@ -564,7 +562,7 @@ input:-webkit-autofill:active {
 }
 
 #navhome {
-  font-family: "Permanent Marker", cursive;
+  font-family: 'Permanent Marker', cursive;
   /*font-size: 20px;*/
   color: white;
   margin: 0px 0px 0px 10px;
@@ -613,7 +611,6 @@ input:-webkit-autofill:active {
   #home-nav-mobile-only {
     display: block;
   }
-
 
   #list-open {
     display: block;
@@ -699,7 +696,7 @@ input:-webkit-autofill:active {
 
   .card-header {
     padding-top: 1.5rem;
-    margin-left: 4rem;
+
     font-size: 1rem;
   }
 
@@ -718,7 +715,7 @@ input:-webkit-autofill:active {
   padding-bottom: 60px;
   width: 600px;
   height: 230px;
-  background-image: url("/public/img/ticket.svg");
+  background-image: url('/public/img/ticket.svg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -731,7 +728,7 @@ input:-webkit-autofill:active {
 /* Seat Booking */
 .occupied {
   background-color: #aaa;
-  background-image: url("/public/img/seat.png");
+  background-image: url('/public/img/seat.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 50px 50px;
@@ -746,7 +743,7 @@ input:-webkit-autofill:active {
 
 .available {
   color: black;
-  background-image: url("/public/img/seat.png");
+  background-image: url('/public/img/seat.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 50px 50px;
@@ -886,14 +883,13 @@ hr {
 
 /* Clear floats */
 .clearfix::after {
-  content: "";
+  content: '';
   clear: both;
   display: table;
 }
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
-
   .cancelbtn,
   .signupbtn {
     width: 100%;

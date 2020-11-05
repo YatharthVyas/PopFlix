@@ -1,88 +1,110 @@
 <%- include('../Includes/header.ejs') %>
 <style type="text/css">
-	.movie-name-review {
-		border-left: 10px solid #f00;
-		border-radius: 14px;
-		padding: 20px;
-		padding-left: 4%;
-	}
+  .movie-name-review {
+    border-left: 10px solid #f00;
+    border-radius: 14px;
+    padding: 20px;
+    padding-left: 4%;
+    color: black;
+  }
 
-	.comments {
-		border-left: 10px solid #ccc;
-		border-radius: 14px;
-		padding: 20px;
-		padding-left: 4%;
-		margin-top: 30px;
-	}
+  .comments {
+    border-left: 10px solid #ccc;
+    border-radius: 14px;
+    padding: 20px;
+    padding-left: 4%;
+    margin-top: 30px;
+  }
 
-	.comment-header {
-		font-size: x-large;
-		padding-bottom: 5px;
-	}
+  .comment-header {
+    font-size: x-large;
+    padding-bottom: 5px;
+  }
 
-	.name-avatar {
-		border-radius: 50%;
-		padding: 2px 14px;
-		margin-right: 4px;
-		background-color: #f00;
-		color: white;
-	}
+  .name-avatar {
+    border-radius: 50%;
+    padding: 2px 14px;
+    margin-right: 4px;
+    background-color: #f00;
+    color: white;
+  }
 
-	#review:hover {
-		background-color: #c70000;
-
-	}
+  #review:hover {
+    background-color: #c70000;
+  }
 </style>
 
 <body>
-	<%- include('../Includes/nav.ejs') %>
-	<div class="content" style="padding-left: 10%;padding-right: 10%">
+  <%- include('../Includes/nav.ejs') %>
+  <div class="content" style="padding-left: 10%; padding-right: 10%">
+    <form
+      action="/review/movieReview/<%= movie_id %>"
+      method="POST"
+      class="card comments"
+      style="
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-left: 10px solid black;
+      "
+    >
+      <input
+        cols="type"
+        ="textbox"
+        minlength="4"
+        maxlength="100"
+        placeholder="Write here..."
+        style="
+          height: 25px;
+          width: 80%;
+          padding: 10px;
+          border: none;
+          border-bottom: 1px solid black;
+        "
+        required
+        name="description"
+      />
+      <button id="review" style="margin: 3px" class="btn-curved" type="submit">
+        Add Review
+      </button>
+    </form>
+    <div class="card movie-name-review">
+      <% if (review.length>0){ %>
 
-		<div class="card movie-name-review">
-			<% if (review.length>0){ %>
+      <div class="card-header"><%=movie[0].name%></div>
+      <div class="card-content">
+        <br />
+        <b>Date:</b> <%=movie[0].release_date%> <br /><br />
+        Actor : <% for (i in movie.actors) { %>
+        <a
+          href="https://www.imdb.com/search/name/?name=<%= movie.actors[i].name %>"
+          ><%= movie.actors[i].name %></a
+        >
+        , <% } %><br /><br />
+        <b>Movie description:</b> Movie description: Movie description: Movie
+        description: Movie description: Movie description: Ut tempor et minim id
+        occaecat qui fugiat est ea quis qui sunt consequat aute dolore officia
+        nisi fugiat deserunt anim anim culpa commodo ut eu qui ullamco
+        incididunt.
+      </div>
+      <% for(x in review){ %>
+      <div class="card comments">
+        <div class="card-header comment-header">
+          <span class="name-avatar"><%=review[x].name.charAt(0)%></span><%=
+          review[x].name %>
+        </div>
+        <div class="card-content">
+          <br />
+          <%= review[x].description%>
+        </div>
+      </div>
+      <%}%>
+    </div>
+    <% }else { %>
 
-			<div class="card-header">
-				<%=movie[0].name%>
-			</div>
-			<div class="card-content">
-				<br />
-				<b>Date:</b> <%=movie[0].release_date%>
-				<br /><br>
-				Actor : <% for (i in movie.actors) { %> <a
-					href="https://www.imdb.com/search/name/?name=<%= movie.actors[i].name %>"><%= movie.actors[i].name %></a>
-				, <% } %><br><br>
-				<b>Movie description:</b> Movie description: Movie description: Movie description: Movie description:
-				Movie
-				description: Ut tempor et minim id occaecat qui fugiat est ea quis qui sunt consequat aute dolore
-				officia nisi fugiat deserunt anim anim culpa commodo ut eu qui ullamco incididunt.
-			</div>
-			<% for(x in review){ %>
-			<div class="card comments">
-				<div class="card-header comment-header">
-					<span class="name-avatar"><%=review[x].name.charAt(0)%></span><%= review[x].name %>
-				</div>
-				<div class="card-content">
-					<br />
-					<%= review[x].description%>
-				</div>
-			</div>
-			<%}%>
+    <div class="card movie-name-review">No Reviews Available</div>
+    <%}%>
+  </div>
 
-		</div>
-		<% }else { %>
-
-			<div class="card movie-name-review">No Reviews Available</div>
-			<%}%>
-			<form action="/review/movieReview/<%= movie_id %>" method="POST" class="card comments" style="margin-top:
-			10px;padding: 10px; border-left: 10px solid black;">
-			<input cols=type="textbox" minlength="4" maxlength="100" placeholder="Write here..."
-				style="height: 25px;width: 80%; padding: 10px;border: none;border-bottom: 1px solid black; " required
-				name="description">
-			<button id="review" style="margin: 3px;" class="btn-curved" type="submit">Add Review</button>
-			</form>
-		</div>
-
-		<%- include('../Includes/footer.ejs') %>
+  <%- include('../Includes/footer.ejs') %>
 </body>
-
-</html>
