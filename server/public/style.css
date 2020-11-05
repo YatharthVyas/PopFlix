@@ -6,9 +6,10 @@ body {
   width: 100vw;
   overflow-x: hidden;
   background: #394255;
-  background: -webkit-radial-gradient(center, #8ca2d1, #242936);
+  background-image: linear-gradient(to right,#242936, #8ca2d1, #242936);
+  /* background: -webkit-radial-gradient(center, #8ca2d1, #242936);
   background: -moz-radial-gradient(center, #8ca2d1, #242936);
-  background: radial-gradient(ellipse at center, #8ca2d1 #242936);
+  background: radial-gradient(ellipse at center, #8ca2d1 #242936); */
 }
 
 
