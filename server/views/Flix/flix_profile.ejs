@@ -325,47 +325,35 @@
               <button class="delete-btn">X</button>
             </a>
           </div>
-          <div class="movie-card-content">
+          <div class="movie-card-content" align="center">
             <h2 class="card-header"><%= theater_movies[x].name %></h2>
-            <img
+            <img  style="border: 3px solid black"
               src="https://picsum.photos/220?random=<%= theater_movies[x].name%>"
               width="100%"
               height="100%"
             />
           </div>
-          <div class="movie-card-content" style="border-top: 1px solid #ccc">
-            Directed by:
-            <a href="https://www.imdb.com/search/name/?name=">
-              Director Name
-            </a>
+          <br>
+          <div class="movie-card-content" style="border: 3px solid black;border-radius: 5%;background-color:  #262626;color: blanchedalmond;">
+            <div align="left">
+             <span style="font-weight: bold;font-style: Righteous cursive; color: white;"> SHOWS :</span>
+              <% for (i in theater_movies[x].slots) { %>
+              <%= theater_movies[x].slots[i].slot %></a>
+                ,<% } %>
+            </div>
             <br />
-            Language : <%= theater_movies[x].language %> <br />
-            Release Date : <%= theater_movies[x].release_date %> <br />
-            Actors:
-            <a href="https://www.imdb.com/search/name/?name=">
-              Actor Name #1
-            </a>
-            ,
-            <a href="https://www.imdb.com/search/name/?name=">
-              Actor Name #2
-            </a>
-            <p>
-              Description. Lorem ipsum cillum nostrud ullamco dolor est magna
+            <span style="font-weight: bold;font-style: Righteous cursive; color: white;">LANGUAGE :</span> <%= theater_movies[x].language %> <br /><br />
+            <span style="font-weight: bold;font-style: Righteous cursive; color: white;">RELEASE DATE : </span><%= theater_movies[x].release_date %> <br /><br />
+            <span style="font-weight: bold;font-style: Righteous cursive; color: white;">ACTORS:</span>
+            <% for (i in theater_movies[x].actors) { %>
+							<a	style="color: black; margin-right: 3%;"
+								href="https://www.imdb.com/search/name/?name=<%= theater_movies[x].actors[i].name %>"><%= theater_movies[x].actors[i].name %></a>
+							, <% } %>
+              <br><br />
+              <span style="font-weight: bold;font-style: Righteous cursive; color: white;">DESCRIPTION.</span> Lorem ipsum cillum nostrud ullamco dolor est magna
               magna ut commodo fugiat enim ad ut. Magna sunt elit cupidatat esse
               duis ut sed est magna laboris est.
-            </p>
-            <div align="center">
-              <a href="#"
-                ><button class="btn-curved bg-red btn-book-now">
-                  Shows
-                </button></a
-              >
-              <a href="#"
-                ><button class="btn-curved bg-red btn-book-now">
-                  Analytics
-                </button></a
-              >
-            </div>
+          
           </div>
         </div>
         <%if((x+1) % 3 == 0){%>

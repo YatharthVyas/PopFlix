@@ -71,6 +71,21 @@ exports.getFlixProfile = async (req, res, next) => {
       `SELECT * from movies where m_id IN (select m_id from shows where t_id=${req.user.theater_id});`
     );
     let theater_movies = filterMovieData(mov);
+    let i=0;
+    console.log(theater_movies.length);
+    while(i<theater_movies.length)
+    {
+      let act = await query(
+        `SELECT name from person where p_id IN (select p_id from acted_in where m_id=${theater_movies[i].m_id});`
+      );
+      theater_movies[i].actors=act;
+      let slots = await query(
+        `SELECT slot from shows where m_id = ${theater_movies[i].m_id} AND t_id=${req.user.theater_id};`
+      );
+      theater_movies[i].slots=slots;
+      i=i+1;
+    }
+    console.log(theater_movies.actors,theater_movies.slots,theater_movies.length);
     res.render('Flix/flix_profile', {
       pg: 'profile',
       user: req.user,
