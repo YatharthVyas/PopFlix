@@ -26,7 +26,7 @@
           >About Us</a
         >
       </li>
-      <%if(user && user.type !== "Admin"){%>
+      <%if(user && user.type === "Customer"){%>
       <li>
         <a href="/user/profile" class="<%= pg==='profile'? 'on':'' %>"
           >Profile</a
@@ -35,6 +35,12 @@
       <%}%> <%if(user && user.type==="Admin"){%>
       <li>
         <a href="/admin/home" class="login-nav">Admin</a>
+      </li>
+      <%}%> <%if(user && user.type==="Theater"){%>
+      <li>
+        <a href="/flix/profile" class="<%= pg==='profile'? 'on':'' %>"
+          >Profile</a
+        >
       </li>
       <%}%>
       <li>
