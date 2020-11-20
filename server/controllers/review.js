@@ -63,7 +63,9 @@ exports.getParticularMovieReview = async (req, res) => {
   }
 };
 exports.postReview = async (req, res) => {
-  const movieId = req.params.movieId;
+  try
+  {
+   const movieId = req.params.movieId;
 
   let description = req.body.description;
   const p_id = req.user.p_id;
@@ -130,6 +132,15 @@ exports.postReview = async (req, res) => {
       user: req.user,
       review: movieReviews,
       movie_id: movieId,
+    });
+  }
+  }
+  catch(e){
+    console.log(e);
+    res.render('Error/error', {
+      pg: 'error',
+      user: req.user,
+      error: 'Error Occured',
     });
   }
   // res.render("Flix/reviews", {
