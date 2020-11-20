@@ -63,6 +63,11 @@ exports.searchFlix = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
+    res.render('Error/error', {
+      pg: 'error',
+      user: req.user,
+      error: 'No such flix or Error Occured',
+    });
   }
 };
 
@@ -117,6 +122,11 @@ exports.getMovieFlix = async (req, res) => {
   } catch (err) {
     console.log(err);
     /*TODO Error pg */
+    res.render('Error/error', {
+      pg: 'error',
+      user: req.user,
+      error: 'Error Occured',
+    });
   }
 };
 
@@ -194,6 +204,11 @@ exports.searchMovie = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
+    res.render('Error/error', {
+      pg: 'error',
+      user: req.user,
+      error: 'No such movie or Error Occured',
+    });
   }
 };
 
@@ -225,6 +240,11 @@ exports.getSelectFlix = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
+    res.render('Error/error', {
+      pg: 'error',
+      user: req.user,
+      error: 'Error Occured',
+    });
   }
 };
 exports.getSelectSeat = async (req, res) => {
